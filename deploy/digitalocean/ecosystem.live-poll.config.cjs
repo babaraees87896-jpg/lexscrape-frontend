@@ -27,7 +27,7 @@ const pollEnv = {
   PYTHONUNBUFFERED: "1",
   PYTHONIOENCODING: "utf-8",
   LOGIN_USER: env.LOGIN_USER || "Demo9304",
-  LOGIN_PASS: env.LOGIN_PASS || "",
+  LOGIN_PASS: env.LOGIN_PASS || "Demo1234",
   SPORT_POLL_INTERVAL: env.SPORT_POLL_INTERVAL || "30",
   SPORT_MATCH_DETAIL: env.SPORT_MATCH_DETAIL || "1",
   SPORT_MATCH_ALL: env.SPORT_MATCH_ALL || "0",
@@ -44,7 +44,7 @@ const apps = [];
 
 if (env.EX99_ENABLE_SPORT_POLL !== "0") {
   apps.push({
-    name: "1ex-sport-poll",
+    name: "lex-sport-poll",
     cwd: scrapeCwd,
     script: "poll_sport.py",
     interpreter: py,
@@ -59,7 +59,7 @@ if (env.EX99_ENABLE_SPORT_POLL !== "0") {
 
 if (env.EX99_ENABLE_CASINO_POLL === "1") {
   apps.push({
-    name: "1ex-casino-poll",
+    name: "lex-casino-poll",
     cwd: scrapeCwd,
     script: "poll.py",
     interpreter: py,
