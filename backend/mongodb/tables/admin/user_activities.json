@@ -1,0 +1,50 @@
+{
+  "collection": "user_activities",
+  "database": "ex99_local",
+  "description": "user/userActivity, user/userLoginActivity \u2014 login aur action logs",
+  "indexes": [
+    {
+      "keys": {
+        "userId": 1,
+        "createdAt": -1
+      }
+    },
+    {
+      "keys": {
+        "activityType": 1
+      }
+    }
+  ],
+  "fields": {
+    "userId": {
+      "type": "string",
+      "required": true
+    },
+    "activityType": {
+      "type": "enum",
+      "values": [
+        "login",
+        "logout",
+        "bet",
+        "update",
+        "transfer"
+      ]
+    },
+    "ip": {
+      "type": "string"
+    },
+    "device": {
+      "type": "string"
+    },
+    "payload": {
+      "type": "object"
+    },
+    "createdAt": {
+      "type": "date"
+    }
+  },
+  "admin_apis": [
+    "user/userActivity",
+    "user/userLoginActivity"
+  ]
+}

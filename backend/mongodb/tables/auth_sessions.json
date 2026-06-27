@@ -1,0 +1,35 @@
+{
+  "collection": "auth_sessions",
+  "database": "ex99_local",
+  "description": "JWT tokens \u2014 user/login response",
+  "fields": {
+    "token": "string",
+    "userId": "string",
+    "username": "string",
+    "expiresAt": "date",
+    "createdAt": "date"
+  },
+  "indexes": [
+    {
+      "keys": {
+        "token": 1
+      }
+    },
+    {
+      "keys": {
+        "userId": 1
+      }
+    }
+  ],
+  "apis": [
+    "logout"
+  ],
+  "document_count": 1,
+  "sample_document": {
+    "token": "local-demo-jwt-token",
+    "userId": "6946a4bc25b6ee438db6ff4d",
+    "username": "C358167",
+    "expiresAt": "2026-06-13 08:21:58.040812+00:00",
+    "createdAt": "2026-06-12 08:21:58.040813+00:00"
+  }
+}

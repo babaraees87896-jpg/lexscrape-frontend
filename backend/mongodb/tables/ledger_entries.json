@@ -1,0 +1,40 @@
+{
+  "collection": "ledger_entries",
+  "database": "ex99_local",
+  "description": "user/userLedger, completeLedgerDetails, ledgerCreditDebit",
+  "fields": {
+    "userId": "string",
+    "type": "credit|debit",
+    "amount": "number",
+    "description": "string",
+    "category": "sport|casino|matka|cash",
+    "balanceAfter": "number",
+    "createdAt": "date"
+  },
+  "indexes": [
+    {
+      "keys": {
+        "userId": 1,
+        "createdAt": -1
+      }
+    }
+  ],
+  "apis": [
+    "user/completeLedgerDetails",
+    "user/deleteUserLedger",
+    "user/ledgerCreditDebit",
+    "user/lenaDena",
+    "user/userLedger"
+  ],
+  "document_count": 38,
+  "sample_document": {
+    "ledgerId": "led-001",
+    "userId": "6946a4bc25b6ee438db6ff4d",
+    "type": "credit",
+    "amount": 5000,
+    "description": "Opening balance",
+    "category": "cash",
+    "balanceAfter": 5000,
+    "createdAt": "2026-06-10 08:21:58.040618+00:00"
+  }
+}

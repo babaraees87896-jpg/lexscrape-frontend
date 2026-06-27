@@ -1,0 +1,11 @@
+{
+  "message": "Fetch List Successfuly",
+  "code": 0,
+  "error": false,
+  "data": {
+    "oddsBetData": [],
+    "fancyBetData": [],
+    "totalOddsCount": 0,
+    "totalFancyCount": 0
+  }
+}

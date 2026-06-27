@@ -1,0 +1,9 @@
+{
+  "message": "Failed In validation",
+  "code": 1,
+  "error": true,
+  "data": [
+    "\"pageNo\" is required",
+    "\"size\" is required"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "message": "OK",
+  "code": 0,
+  "error": false,
+  "data": [
+    {
+      "sportId": 4,
+      "sportName": "Cricket",
+      "status": 1
+    },
+    {
+      "sportId": 1,
+      "sportName": "Soccer",
+      "status": 1
+    },
+    {
+      "sportId": 2,
+      "sportName": "Tennis",
+      "status": 1
+    }
+  ]
+}

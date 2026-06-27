@@ -1,0 +1,710 @@
+[
+  {
+    "activityId": "act-login-uid-subowner-001",
+    "userId": "uid-subowner",
+    "activityType": "login",
+    "ip": "192.168.1.10",
+    "device": "Mobile/Android",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "Android"
+    },
+    "createdAt": "2026-06-12 05:51:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-uid-subowner-002",
+    "userId": "uid-subowner",
+    "activityType": "login",
+    "ip": "103.21.45.88",
+    "device": "Chrome/Windows",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "Windows"
+    },
+    "createdAt": "2026-06-11 07:21:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-uid-subowner2-001",
+    "userId": "uid-subowner2",
+    "activityType": "login",
+    "ip": "103.21.45.88",
+    "device": "Chrome/Windows",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "Windows"
+    },
+    "createdAt": "2026-06-12 05:21:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-uid-subowner2-002",
+    "userId": "uid-subowner2",
+    "activityType": "login",
+    "ip": "49.36.120.15",
+    "device": "Safari/iOS",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "iOS"
+    },
+    "createdAt": "2026-06-11 06:21:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-uid-subowner3-001",
+    "userId": "uid-subowner3",
+    "activityType": "login",
+    "ip": "49.36.120.15",
+    "device": "Safari/iOS",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "iOS"
+    },
+    "createdAt": "2026-06-12 04:51:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-uid-subowner3-002",
+    "userId": "uid-subowner3",
+    "activityType": "login",
+    "ip": "10.0.0.55",
+    "device": "Firefox/Linux",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "Linux"
+    },
+    "createdAt": "2026-06-11 05:21:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-uid-superadmin-001",
+    "userId": "uid-superadmin",
+    "activityType": "login",
+    "ip": "10.0.0.55",
+    "device": "Firefox/Linux",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "Linux"
+    },
+    "createdAt": "2026-06-12 04:21:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-uid-superadmin-002",
+    "userId": "uid-superadmin",
+    "activityType": "login",
+    "ip": "127.0.0.1",
+    "device": "Chrome/Windows",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "Windows"
+    },
+    "createdAt": "2026-06-11 04:21:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-uid-superadmin2-001",
+    "userId": "uid-superadmin2",
+    "activityType": "login",
+    "ip": "127.0.0.1",
+    "device": "Chrome/Windows",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "Windows"
+    },
+    "createdAt": "2026-06-12 03:51:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-uid-superadmin2-002",
+    "userId": "uid-superadmin2",
+    "activityType": "login",
+    "ip": "192.168.1.10",
+    "device": "Mobile/Android",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "Android"
+    },
+    "createdAt": "2026-06-11 03:21:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-uid-superadmin3-001",
+    "userId": "uid-superadmin3",
+    "activityType": "login",
+    "ip": "192.168.1.10",
+    "device": "Mobile/Android",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "Android"
+    },
+    "createdAt": "2026-06-12 03:21:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-uid-superadmin3-002",
+    "userId": "uid-superadmin3",
+    "activityType": "login",
+    "ip": "103.21.45.88",
+    "device": "Chrome/Windows",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "Windows"
+    },
+    "createdAt": "2026-06-11 02:21:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-uid-admin-001",
+    "userId": "uid-admin",
+    "activityType": "login",
+    "ip": "103.21.45.88",
+    "device": "Chrome/Windows",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "Windows"
+    },
+    "createdAt": "2026-06-12 02:51:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-uid-admin-002",
+    "userId": "uid-admin",
+    "activityType": "login",
+    "ip": "49.36.120.15",
+    "device": "Safari/iOS",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "iOS"
+    },
+    "createdAt": "2026-06-11 01:21:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-uid-admin2-001",
+    "userId": "uid-admin2",
+    "activityType": "login",
+    "ip": "49.36.120.15",
+    "device": "Safari/iOS",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "iOS"
+    },
+    "createdAt": "2026-06-12 02:21:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-uid-admin2-002",
+    "userId": "uid-admin2",
+    "activityType": "login",
+    "ip": "10.0.0.55",
+    "device": "Firefox/Linux",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "Linux"
+    },
+    "createdAt": "2026-06-11 00:21:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-uid-admin3-001",
+    "userId": "uid-admin3",
+    "activityType": "login",
+    "ip": "10.0.0.55",
+    "device": "Firefox/Linux",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "Linux"
+    },
+    "createdAt": "2026-06-12 01:51:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-uid-admin3-002",
+    "userId": "uid-admin3",
+    "activityType": "login",
+    "ip": "127.0.0.1",
+    "device": "Chrome/Windows",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "Windows"
+    },
+    "createdAt": "2026-06-10 23:21:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-uid-subadmin-001",
+    "userId": "uid-subadmin",
+    "activityType": "login",
+    "ip": "127.0.0.1",
+    "device": "Chrome/Windows",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "Windows"
+    },
+    "createdAt": "2026-06-12 01:21:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-uid-subadmin-002",
+    "userId": "uid-subadmin",
+    "activityType": "login",
+    "ip": "192.168.1.10",
+    "device": "Mobile/Android",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "Android"
+    },
+    "createdAt": "2026-06-10 22:21:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-uid-subadmin2-001",
+    "userId": "uid-subadmin2",
+    "activityType": "login",
+    "ip": "192.168.1.10",
+    "device": "Mobile/Android",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "Android"
+    },
+    "createdAt": "2026-06-12 00:51:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-uid-subadmin2-002",
+    "userId": "uid-subadmin2",
+    "activityType": "login",
+    "ip": "103.21.45.88",
+    "device": "Chrome/Windows",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "Windows"
+    },
+    "createdAt": "2026-06-10 21:21:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-uid-subadmin3-001",
+    "userId": "uid-subadmin3",
+    "activityType": "login",
+    "ip": "103.21.45.88",
+    "device": "Chrome/Windows",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "Windows"
+    },
+    "createdAt": "2026-06-12 00:21:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-uid-subadmin3-002",
+    "userId": "uid-subadmin3",
+    "activityType": "login",
+    "ip": "49.36.120.15",
+    "device": "Safari/iOS",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "iOS"
+    },
+    "createdAt": "2026-06-10 20:21:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-uid-master-001",
+    "userId": "uid-master",
+    "activityType": "login",
+    "ip": "49.36.120.15",
+    "device": "Safari/iOS",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "iOS"
+    },
+    "createdAt": "2026-06-11 23:51:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-uid-master-002",
+    "userId": "uid-master",
+    "activityType": "login",
+    "ip": "10.0.0.55",
+    "device": "Firefox/Linux",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "Linux"
+    },
+    "createdAt": "2026-06-10 19:21:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-uid-master2-001",
+    "userId": "uid-master2",
+    "activityType": "login",
+    "ip": "10.0.0.55",
+    "device": "Firefox/Linux",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "Linux"
+    },
+    "createdAt": "2026-06-11 23:21:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-uid-master2-002",
+    "userId": "uid-master2",
+    "activityType": "login",
+    "ip": "127.0.0.1",
+    "device": "Chrome/Windows",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "Windows"
+    },
+    "createdAt": "2026-06-10 18:21:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-uid-master3-001",
+    "userId": "uid-master3",
+    "activityType": "login",
+    "ip": "127.0.0.1",
+    "device": "Chrome/Windows",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "Windows"
+    },
+    "createdAt": "2026-06-11 22:51:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-uid-master3-002",
+    "userId": "uid-master3",
+    "activityType": "login",
+    "ip": "192.168.1.10",
+    "device": "Mobile/Android",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "Android"
+    },
+    "createdAt": "2026-06-10 17:21:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-uid-superagent-001",
+    "userId": "uid-superagent",
+    "activityType": "login",
+    "ip": "192.168.1.10",
+    "device": "Mobile/Android",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "Android"
+    },
+    "createdAt": "2026-06-11 22:21:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-uid-superagent-002",
+    "userId": "uid-superagent",
+    "activityType": "login",
+    "ip": "103.21.45.88",
+    "device": "Chrome/Windows",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "Windows"
+    },
+    "createdAt": "2026-06-10 16:21:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-uid-superagent2-001",
+    "userId": "uid-superagent2",
+    "activityType": "login",
+    "ip": "103.21.45.88",
+    "device": "Chrome/Windows",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "Windows"
+    },
+    "createdAt": "2026-06-11 21:51:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-uid-superagent2-002",
+    "userId": "uid-superagent2",
+    "activityType": "login",
+    "ip": "49.36.120.15",
+    "device": "Safari/iOS",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "iOS"
+    },
+    "createdAt": "2026-06-10 15:21:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-uid-superagent3-001",
+    "userId": "uid-superagent3",
+    "activityType": "login",
+    "ip": "49.36.120.15",
+    "device": "Safari/iOS",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "iOS"
+    },
+    "createdAt": "2026-06-11 21:21:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-uid-superagent3-002",
+    "userId": "uid-superagent3",
+    "activityType": "login",
+    "ip": "10.0.0.55",
+    "device": "Firefox/Linux",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "Linux"
+    },
+    "createdAt": "2026-06-10 14:21:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-uid-agent-001",
+    "userId": "uid-agent",
+    "activityType": "login",
+    "ip": "10.0.0.55",
+    "device": "Firefox/Linux",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "Linux"
+    },
+    "createdAt": "2026-06-11 20:51:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-uid-agent-002",
+    "userId": "uid-agent",
+    "activityType": "login",
+    "ip": "127.0.0.1",
+    "device": "Chrome/Windows",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "Windows"
+    },
+    "createdAt": "2026-06-10 13:21:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-uid-agent2-001",
+    "userId": "uid-agent2",
+    "activityType": "login",
+    "ip": "127.0.0.1",
+    "device": "Chrome/Windows",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "Windows"
+    },
+    "createdAt": "2026-06-11 20:21:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-uid-agent2-002",
+    "userId": "uid-agent2",
+    "activityType": "login",
+    "ip": "192.168.1.10",
+    "device": "Mobile/Android",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "Android"
+    },
+    "createdAt": "2026-06-10 12:21:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-uid-client-001",
+    "userId": "uid-client",
+    "activityType": "login",
+    "ip": "192.168.1.10",
+    "device": "Mobile/Android",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "Android"
+    },
+    "createdAt": "2026-06-11 19:51:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-uid-client-002",
+    "userId": "uid-client",
+    "activityType": "login",
+    "ip": "103.21.45.88",
+    "device": "Chrome/Windows",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "Windows"
+    },
+    "createdAt": "2026-06-10 11:21:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-6946a4bc25b6ee438db6ff4d-001",
+    "userId": "6946a4bc25b6ee438db6ff4d",
+    "activityType": "login",
+    "ip": "103.21.45.88",
+    "device": "Chrome/Windows",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "Windows"
+    },
+    "createdAt": "2026-06-11 19:21:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-6946a4bc25b6ee438db6ff4d-002",
+    "userId": "6946a4bc25b6ee438db6ff4d",
+    "activityType": "login",
+    "ip": "49.36.120.15",
+    "device": "Safari/iOS",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "iOS"
+    },
+    "createdAt": "2026-06-10 10:21:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-6a1bd2d7356a85a557003d5d-001",
+    "userId": "6a1bd2d7356a85a557003d5d",
+    "activityType": "login",
+    "ip": "49.36.120.15",
+    "device": "Safari/iOS",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "iOS"
+    },
+    "createdAt": "2026-06-11 18:51:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-6a1bd2d7356a85a557003d5d-002",
+    "userId": "6a1bd2d7356a85a557003d5d",
+    "activityType": "login",
+    "ip": "10.0.0.55",
+    "device": "Firefox/Linux",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "Linux"
+    },
+    "createdAt": "2026-06-10 09:21:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-6946a4bc25b6ee438db6ff4d-001",
+    "userId": "6946a4bc25b6ee438db6ff4d",
+    "activityType": "login",
+    "ip": "127.0.0.1",
+    "device": "Chrome/Windows",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "Windows"
+    },
+    "createdAt": "2026-06-12 07:21:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-6946a4bc25b6ee438db6ff4d-002",
+    "userId": "6946a4bc25b6ee438db6ff4d",
+    "activityType": "login",
+    "ip": "103.21.45.88",
+    "device": "Chrome/Windows",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "Windows"
+    },
+    "createdAt": "2026-06-11 20:21:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-6946a4bc25b6ee438db6ff4d-003",
+    "userId": "6946a4bc25b6ee438db6ff4d",
+    "activityType": "login",
+    "ip": "49.36.120.15",
+    "device": "Safari/iOS",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "iOS"
+    },
+    "createdAt": "2026-06-10 08:21:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-uid-client-001",
+    "userId": "uid-client",
+    "activityType": "login",
+    "ip": "192.168.1.10",
+    "device": "Mobile/Android",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "Android"
+    },
+    "createdAt": "2026-06-12 07:03:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-uid-client-002",
+    "userId": "uid-client",
+    "activityType": "login",
+    "ip": "49.36.120.15",
+    "device": "Safari/iOS",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "iOS"
+    },
+    "createdAt": "2026-06-11 19:21:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-uid-client-003",
+    "userId": "uid-client",
+    "activityType": "login",
+    "ip": "10.0.0.55",
+    "device": "Firefox/Linux",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "Linux"
+    },
+    "createdAt": "2026-06-10 07:21:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-6a1bd2d7356a85a557003d5d-001",
+    "userId": "6a1bd2d7356a85a557003d5d",
+    "activityType": "login",
+    "ip": "103.21.45.88",
+    "device": "Chrome/Windows",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "Windows"
+    },
+    "createdAt": "2026-06-12 06:45:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-6a1bd2d7356a85a557003d5d-002",
+    "userId": "6a1bd2d7356a85a557003d5d",
+    "activityType": "login",
+    "ip": "10.0.0.55",
+    "device": "Firefox/Linux",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "Linux"
+    },
+    "createdAt": "2026-06-11 18:21:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-6a1bd2d7356a85a557003d5d-003",
+    "userId": "6a1bd2d7356a85a557003d5d",
+    "activityType": "login",
+    "ip": "127.0.0.1",
+    "device": "Chrome/Windows",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "Windows"
+    },
+    "createdAt": "2026-06-10 06:21:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-85098e9c10864fcb8f65efdf-001",
+    "userId": "85098e9c10864fcb8f65efdf",
+    "activityType": "login",
+    "ip": "49.36.120.15",
+    "device": "Safari/iOS",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "iOS"
+    },
+    "createdAt": "2026-06-12 06:27:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-85098e9c10864fcb8f65efdf-002",
+    "userId": "85098e9c10864fcb8f65efdf",
+    "activityType": "login",
+    "ip": "127.0.0.1",
+    "device": "Chrome/Windows",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "Windows"
+    },
+    "createdAt": "2026-06-11 17:21:58.040814+00:00"
+  },
+  {
+    "activityId": "act-login-85098e9c10864fcb8f65efdf-003",
+    "userId": "85098e9c10864fcb8f65efdf",
+    "activityType": "login",
+    "ip": "192.168.1.10",
+    "device": "Mobile/Android",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "Android"
+    },
+    "createdAt": "2026-06-10 05:21:58.040814+00:00"
+  },
+  {
+    "activityId": "act-bet-uid-client-001",
+    "userId": "uid-client",
+    "activityType": "bet",
+    "ip": "192.168.1.10",
+    "device": "Mobile/Android",
+    "payload": {
+      "marketId": "1.245690241",
+      "stake": 100
+    },
+    "createdAt": "2026-06-12 07:51:58.040814+00:00"
+  }
+]

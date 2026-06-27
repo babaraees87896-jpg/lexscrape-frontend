@@ -1,0 +1,31 @@
+{
+  "collection": "center_manual_scores",
+  "database": "ex99_local",
+  "description": "centerPanel/getManualScore, updateManualScore, getManualScoreHistory",
+  "fields": {
+    "eventId": "string",
+    "marketId": "string",
+    "score": "object",
+    "updatedAt": "date"
+  },
+  "indexes": [
+    {
+      "keys": {
+        "eventId": 1,
+        "marketId": 1
+      }
+    }
+  ],
+  "apis": [],
+  "document_count": 1,
+  "sample_document": {
+    "eventId": "28127348",
+    "marketId": "1.245690241",
+    "score": {
+      "team1": 120,
+      "team2": 95,
+      "overs": 20
+    },
+    "updatedAt": "2026-06-12 08:21:58.041967+00:00"
+  }
+}

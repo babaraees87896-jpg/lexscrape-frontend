@@ -1,0 +1,30 @@
+{
+  "collection": "casino_rounds",
+  "database": "ex99_local",
+  "description": "casino/roundWiseResult",
+  "indexes": [
+    {
+      "keys": {
+        "eventId": 1,
+        "roundId": 1
+      }
+    }
+  ],
+  "fields": {
+    "eventId": {
+      "type": "number"
+    },
+    "roundId": {
+      "type": "string"
+    },
+    "result": {
+      "type": "object"
+    },
+    "createdAt": {
+      "type": "date"
+    }
+  },
+  "admin_apis": [
+    "casino/roundWiseResult"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "collection": "day_wise_casino",
+  "database": "ex99_local",
+  "description": "casino/dayWiseCasinoReport \u2014 data array rows",
+  "fields": {
+    "_id": "object",
+    "eventId": "number",
+    "eventName": "string",
+    "userNetProfitLoss": "number",
+    "clientNetAmount": "number",
+    "createdAt": "number|date"
+  },
+  "indexes": [
+    {
+      "keys": {
+        "eventId": 1
+      }
+    }
+  ],
+  "apis": [],
+  "document_count": 2,
+  "sample_document": {
+    "_id": {
+      "date": "1780252200000"
+    },
+    "eventId": 3030,
+    "eventName": "20-20 Teenpatti (01-06-2026)",
+    "userNetProfitLoss": 1250.5,
+    "userOddsComm": 85.25,
+    "clientOddsAmount": 42.1,
+    "clientNetAmount": 1123.15,
+    "createdAt": 1780252901535
+  }
+}

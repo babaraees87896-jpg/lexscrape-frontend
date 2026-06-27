@@ -1,0 +1,30 @@
+{
+  "collection": "center_master_settings",
+  "database": "ex99_local",
+  "description": "centerPanel/getMasterSettingData, masterSettingUpdate",
+  "fields": {
+    "settingKey": "string",
+    "value": "mixed",
+    "description": "string",
+    "updatedAt": "date"
+  },
+  "indexes": [
+    {
+      "keys": {
+        "settingKey": 1
+      },
+      "unique": true
+    }
+  ],
+  "apis": [
+    "centerPanel/getMasterSettingData",
+    "centerPanel/masterSettingUpdate"
+  ],
+  "document_count": 1,
+  "sample_document": {
+    "settingKey": "betDelayGlobal",
+    "value": 2,
+    "description": "Global bet delay seconds",
+    "updatedAt": "2026-06-12 08:21:58.040899+00:00"
+  }
+}

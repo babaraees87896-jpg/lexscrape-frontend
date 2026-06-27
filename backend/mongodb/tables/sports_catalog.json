@@ -1,0 +1,27 @@
+{
+  "collection": "sports_catalog",
+  "database": "ex99_local",
+  "description": "decision/completeSportList",
+  "fields": {
+    "sportId": "number",
+    "sportName": "string",
+    "status": "boolean"
+  },
+  "indexes": [
+    {
+      "keys": {
+        "sportId": 1
+      },
+      "unique": true
+    }
+  ],
+  "apis": [
+    "decision/completeSportList"
+  ],
+  "document_count": 2,
+  "sample_document": {
+    "sportId": 4,
+    "sportName": "Cricket",
+    "status": true
+  }
+}

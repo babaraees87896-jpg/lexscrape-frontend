@@ -1,0 +1,1469 @@
+{
+  "database": "ex99_local",
+  "mongo_uri": "mongodb://localhost:27017",
+  "total_apis": 141,
+  "collections_used": [
+    "auth_sessions",
+    "bpexch_accounts",
+    "casino_bets",
+    "casino_games",
+    "casino_rounds",
+    "center_betfair_results",
+    "center_custom_series",
+    "center_domain_ips",
+    "center_fancy_categories",
+    "center_manual_bookmaker",
+    "center_manual_fancy",
+    "center_master_settings",
+    "center_projects",
+    "center_racing_events",
+    "center_squad_templates",
+    "decision_logs",
+    "domains",
+    "ledger_entries",
+    "matches",
+    "matka_bets",
+    "matka_events",
+    "positions",
+    "reports",
+    "sports_bets",
+    "sports_catalog",
+    "statements",
+    "user_activities",
+    "users"
+  ],
+  "apis": [
+    {
+      "endpoint": "bluexchReports/clientPlusMinus",
+      "method": "POST",
+      "panel": "client",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [
+        "userId"
+      ],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "bpexch/bpexchAccountStatement",
+      "method": "POST",
+      "panel": "client",
+      "collection": "bpexch_accounts",
+      "operation": "read",
+      "request_fields": [
+        "userId"
+      ],
+      "response_source": "bpexch_accounts"
+    },
+    {
+      "endpoint": "bpexch/loadBalance",
+      "method": "POST",
+      "panel": "client",
+      "collection": "bpexch_accounts",
+      "operation": "read",
+      "request_fields": [
+        "userId"
+      ],
+      "response_source": "bpexch_accounts"
+    },
+    {
+      "endpoint": "casino/avaitorCashOut",
+      "method": "POST",
+      "panel": "client",
+      "collection": "casino_bets",
+      "operation": "update",
+      "request_fields": [
+        "betId"
+      ],
+      "response_source": "casino_bets"
+    },
+    {
+      "endpoint": "casino/avaitorGamePlace",
+      "method": "POST",
+      "panel": "client",
+      "collection": "casino_bets",
+      "operation": "create",
+      "request_fields": [
+        "stake",
+        "multiplier"
+      ],
+      "response_source": "casino_bets"
+    },
+    {
+      "endpoint": "casino/casinoBetPlace",
+      "method": "POST",
+      "panel": "client",
+      "collection": "casino_bets",
+      "operation": "create",
+      "request_fields": [
+        "eventId",
+        "stake",
+        "roundId"
+      ],
+      "response_source": "casino_bets"
+    },
+    {
+      "endpoint": "casino/dayWiseCasinoReport",
+      "method": "POST",
+      "panel": "admin",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [
+        "fromDate",
+        "toDate"
+      ],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "casino/diamondBetsList",
+      "method": "POST",
+      "panel": "client",
+      "collection": "casino_bets",
+      "operation": "read",
+      "request_fields": [
+        "userId"
+      ],
+      "response_source": "casino_bets"
+    },
+    {
+      "endpoint": "casino/diamondCasinoReportByUser",
+      "method": "POST",
+      "panel": "admin",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [
+        "userId"
+      ],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "casino/getDiamondCasinoByEventId",
+      "method": "POST",
+      "panel": "client",
+      "collection": "casino_games",
+      "operation": "read",
+      "request_fields": [
+        "eventId"
+      ],
+      "response_source": "casino_games"
+    },
+    {
+      "endpoint": "casino/getDiamondCasinoData",
+      "method": "POST",
+      "panel": "client",
+      "collection": "casino_games",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "casino_games"
+    },
+    {
+      "endpoint": "casino/getPlusMinusCasinoDetail",
+      "method": "POST",
+      "panel": "admin",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [
+        "userId"
+      ],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "casino/getProfitLossPos",
+      "method": "POST",
+      "panel": "admin",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [
+        "userId"
+      ],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "casino/realTimeDataPosDataDiamondCasino",
+      "method": "POST",
+      "panel": "admin",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [
+        "eventId"
+      ],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "casino/resultByRoundWise",
+      "method": "POST",
+      "panel": "client",
+      "collection": "casino_rounds",
+      "operation": "read",
+      "request_fields": [
+        "eventId"
+      ],
+      "response_source": "casino_rounds"
+    },
+    {
+      "endpoint": "casino/roundWiseResult",
+      "method": "POST",
+      "panel": "client",
+      "collection": "casino_rounds",
+      "operation": "read",
+      "request_fields": [
+        "eventId",
+        "roundId"
+      ],
+      "response_source": "casino_rounds"
+    },
+    {
+      "endpoint": "centerPanel/assignDomainIpToUser",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "center_domain_ips",
+      "operation": "update",
+      "request_fields": [],
+      "response_source": "center_domain_ips"
+    },
+    {
+      "endpoint": "centerPanel/createCustomMatch",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "centerPanel/createCustomSeries",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "center_custom_series",
+      "operation": "create",
+      "request_fields": [],
+      "response_source": "center_custom_series"
+    },
+    {
+      "endpoint": "centerPanel/createCustomer",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "users",
+      "operation": "create",
+      "request_fields": [],
+      "response_source": "users"
+    },
+    {
+      "endpoint": "centerPanel/createFancyCategory",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "center_fancy_categories",
+      "operation": "create",
+      "request_fields": [],
+      "response_source": "center_fancy_categories"
+    },
+    {
+      "endpoint": "centerPanel/createUpdateProject",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "center_projects",
+      "operation": "create",
+      "request_fields": [],
+      "response_source": "center_projects"
+    },
+    {
+      "endpoint": "centerPanel/deleteDomainIp",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "centerPanel/deleteFancyCategory",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "centerPanel/deleteMarket",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "centerPanel/deleteProject",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "centerPanel/deleteRacingEvents",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "centerPanel/deleteSquadTemplate",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "centerPanel/diamondMatchList",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "matches",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "matches"
+    },
+    {
+      "endpoint": "centerPanel/getAllCustomSeries",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "center_custom_series",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "center_custom_series"
+    },
+    {
+      "endpoint": "centerPanel/getAllEvents",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "matches",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "matches"
+    },
+    {
+      "endpoint": "centerPanel/getBetfairResults",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "center_betfair_results",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "center_betfair_results"
+    },
+    {
+      "endpoint": "centerPanel/getDecisionLogs",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "decision_logs",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "decision_logs"
+    },
+    {
+      "endpoint": "centerPanel/getDomainIpList",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "center_domain_ips",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "center_domain_ips"
+    },
+    {
+      "endpoint": "centerPanel/getFancyAuditLog",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "centerPanel/getFancyCategoryList",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "center_fancy_categories",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "center_fancy_categories"
+    },
+    {
+      "endpoint": "centerPanel/getLatiyalLiveScoreId",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "centerPanel/getLatiyalSeriesList",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "centerPanel/getManualBookmakerList",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "center_manual_bookmaker",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "center_manual_bookmaker"
+    },
+    {
+      "endpoint": "centerPanel/getManualFancyList",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "center_manual_fancy",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "center_manual_fancy"
+    },
+    {
+      "endpoint": "centerPanel/getManualScore",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "centerPanel/getManualScoreHistory",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "centerPanel/getMasterSettingData",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "center_master_settings",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "center_master_settings"
+    },
+    {
+      "endpoint": "centerPanel/getMatchListBySeriesIdLatiyal",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "centerPanel/getProjectList",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "center_projects",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "center_projects"
+    },
+    {
+      "endpoint": "centerPanel/getRacingEvents",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "center_racing_events",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "center_racing_events"
+    },
+    {
+      "endpoint": "centerPanel/getRacingEventsByCompetitionId",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "centerPanel/getRacingEventsByEventId",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "centerPanel/getRacingSeriesList",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "centerPanel/getRacingSportsData",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "centerPanel/getSeriesBySportId",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "centerPanel/getSeriesList",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "centerPanel/getSessionByDatabase",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "centerPanel/getSessionListByApiAndDatabase",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "centerPanel/getSportDataByEventId",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "centerPanel/getSportsMatchList",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "matches",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "matches"
+    },
+    {
+      "endpoint": "centerPanel/getSquadTemplates",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "center_squad_templates",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "center_squad_templates"
+    },
+    {
+      "endpoint": "centerPanel/marketDecision",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "centerPanel/masterSettingUpdate",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "center_master_settings",
+      "operation": "update",
+      "request_fields": [],
+      "response_source": "center_master_settings"
+    },
+    {
+      "endpoint": "centerPanel/matchListByDatabase",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "centerPanel/retryFailedDecision",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "centerPanel/rollbackFancy",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "centerPanel/saveFancyAuditLog",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "centerPanel/saveFancyByCenterPanel",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "centerPanel/saveManualBookmaker",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "center_manual_bookmaker",
+      "operation": "create",
+      "request_fields": [],
+      "response_source": "center_manual_bookmaker"
+    },
+    {
+      "endpoint": "centerPanel/saveManualFancy",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "center_manual_fancy",
+      "operation": "create",
+      "request_fields": [],
+      "response_source": "center_manual_fancy"
+    },
+    {
+      "endpoint": "centerPanel/saveManualMatch",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "centerPanel/saveRacingEventByMarketIdAndEventId",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "centerPanel/saveRacingEventsList",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "center_racing_events",
+      "operation": "create",
+      "request_fields": [],
+      "response_source": "center_racing_events"
+    },
+    {
+      "endpoint": "centerPanel/saveSportsByEventId",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "centerPanel/saveSportsDataInRedisByDatabase",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "centerPanel/saveSquadTemplate",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "center_squad_templates",
+      "operation": "create",
+      "request_fields": [],
+      "response_source": "center_squad_templates"
+    },
+    {
+      "endpoint": "centerPanel/undoManualScore",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "centerPanel/updateCustomMatchStatus",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "centerPanel/updateCustomSeries",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "centerPanel/updateCustomSeriesStatus",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "centerPanel/updateCustomer",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "centerPanel/updateFancyCategory",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "centerPanel/updateFancyDecision",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "centerPanel/updateManualScore",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "centerPanel/updateProjectStatus",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "centerPanel/updateRacingEventListInredis",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "centerPanel/updateSportByEventId",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "centerPanel/updateUser",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "users",
+      "operation": "update",
+      "request_fields": [],
+      "response_source": "users"
+    },
+    {
+      "endpoint": "centerPanel/userCreate",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "users",
+      "operation": "create",
+      "request_fields": [],
+      "response_source": "users"
+    },
+    {
+      "endpoint": "centerPanel/userList",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "users",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "users"
+    },
+    {
+      "endpoint": "centerPanel/userLogin",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "users",
+      "operation": "auth",
+      "request_fields": [],
+      "response_source": "users+auth_sessions"
+    },
+    {
+      "endpoint": "centerPanel/website/fileUpload",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "crick365/agentProfitLossCrick",
+      "method": "POST",
+      "panel": "admin",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [
+        "userId"
+      ],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "decision/completeSportList",
+      "method": "POST",
+      "panel": "admin",
+      "collection": "sports_catalog",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "sports_catalog"
+    },
+    {
+      "endpoint": "decision/getPlusMinusByMarketId",
+      "method": "POST",
+      "panel": "admin",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [
+        "marketId"
+      ],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "halkabhari/inplayOddsPositionHalkaBhari",
+      "method": "POST",
+      "panel": "client",
+      "collection": "positions",
+      "operation": "read",
+      "request_fields": [
+        "marketId"
+      ],
+      "response_source": "positions"
+    },
+    {
+      "endpoint": "logout",
+      "method": "POST",
+      "panel": "admin",
+      "collection": "auth_sessions",
+      "operation": "delete",
+      "request_fields": [],
+      "response_source": "auth_sessions"
+    },
+    {
+      "endpoint": "matka/dayWiseMatkaReport",
+      "method": "POST",
+      "panel": "admin",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [
+        "fromDate",
+        "toDate"
+      ],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "matka/getMatkaByMatkaEventId",
+      "method": "POST",
+      "panel": "client",
+      "collection": "matka_events",
+      "operation": "read",
+      "request_fields": [
+        "matkaEventId"
+      ],
+      "response_source": "matka_events"
+    },
+    {
+      "endpoint": "matka/getMatkaList",
+      "method": "POST",
+      "panel": "client",
+      "collection": "matka_events",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "matka_events"
+    },
+    {
+      "endpoint": "matka/getProfitLossPosMatka",
+      "method": "POST",
+      "panel": "admin",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [
+        "userId"
+      ],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "matka/matkaBetList",
+      "method": "POST",
+      "panel": "client",
+      "collection": "matka_bets",
+      "operation": "read",
+      "request_fields": [
+        "userId"
+      ],
+      "response_source": "matka_bets"
+    },
+    {
+      "endpoint": "matka/matkaPlaceBet",
+      "method": "POST",
+      "panel": "client",
+      "collection": "matka_bets",
+      "operation": "create",
+      "request_fields": [
+        "matkaEventId",
+        "number",
+        "stake"
+      ],
+      "response_source": "matka_bets"
+    },
+    {
+      "endpoint": "matka/matkaReportByUser",
+      "method": "POST",
+      "panel": "client",
+      "collection": "matka_bets",
+      "operation": "read",
+      "request_fields": [
+        "userId"
+      ],
+      "response_source": "matka_bets"
+    },
+    {
+      "endpoint": "reports/blockMarket",
+      "method": "POST",
+      "panel": "admin",
+      "collection": "matches",
+      "operation": "update",
+      "request_fields": [
+        "marketId"
+      ],
+      "response_source": "matches"
+    },
+    {
+      "endpoint": "reports/casinoTransactionReport",
+      "method": "POST",
+      "panel": "client",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [
+        "userId"
+      ],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "reports/getOddsPositionForAllexch",
+      "method": "POST",
+      "panel": "client",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [
+        "marketId"
+      ],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "reports/getPlusMinusByMarketIdByUserWise",
+      "method": "POST",
+      "panel": "admin",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [
+        "marketId"
+      ],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "reports/userProfitLoss",
+      "method": "POST",
+      "panel": "admin",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [
+        "userId"
+      ],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "sports/betsList",
+      "method": "POST",
+      "panel": "client",
+      "collection": "sports_bets",
+      "operation": "read",
+      "request_fields": [
+        "userId"
+      ],
+      "response_source": "sports_bets"
+    },
+    {
+      "endpoint": "sports/clientListByMarketId",
+      "method": "POST",
+      "panel": "admin",
+      "collection": "sports_bets",
+      "operation": "read",
+      "request_fields": [
+        "marketId"
+      ],
+      "response_source": "sports_bets"
+    },
+    {
+      "endpoint": "sports/getOddsPosition",
+      "method": "POST",
+      "panel": "admin",
+      "collection": "positions",
+      "operation": "read",
+      "request_fields": [
+        "marketId"
+      ],
+      "response_source": "positions"
+    },
+    {
+      "endpoint": "sports/getSessionPositionBySelectionId",
+      "method": "POST",
+      "panel": "admin",
+      "collection": "positions",
+      "operation": "read",
+      "request_fields": [
+        "selectionId"
+      ],
+      "response_source": "positions"
+    },
+    {
+      "endpoint": "sports/matchList",
+      "method": "POST",
+      "panel": "client",
+      "collection": "matches",
+      "operation": "read",
+      "request_fields": [
+        "sportId"
+      ],
+      "response_source": "matches"
+    },
+    {
+      "endpoint": "sports/meterKhadoOddEvenCricketCassinoBetPlace",
+      "method": "POST",
+      "panel": "client",
+      "collection": "sports_bets",
+      "operation": "create",
+      "request_fields": [
+        "marketId",
+        "stake"
+      ],
+      "response_source": "sports_bets"
+    },
+    {
+      "endpoint": "sports/oddBetPlaced",
+      "method": "POST",
+      "panel": "client",
+      "collection": "sports_bets",
+      "operation": "create",
+      "request_fields": [
+        "marketId",
+        "selectionId",
+        "stake",
+        "odds",
+        "betType"
+      ],
+      "response_source": "sports_bets"
+    },
+    {
+      "endpoint": "sports/sessionBetPlaced",
+      "method": "POST",
+      "panel": "client",
+      "collection": "sports_bets",
+      "operation": "create",
+      "request_fields": [
+        "marketId",
+        "selectionId",
+        "stake",
+        "session_id"
+      ],
+      "response_source": "sports_bets"
+    },
+    {
+      "endpoint": "sports/sportByMarketId",
+      "method": "POST",
+      "panel": "client",
+      "collection": "matches",
+      "operation": "read",
+      "request_fields": [
+        "marketId"
+      ],
+      "response_source": "matches"
+    },
+    {
+      "endpoint": "sports/userPositionByMarketId",
+      "method": "POST",
+      "panel": "client",
+      "collection": "positions",
+      "operation": "read",
+      "request_fields": [
+        "marketId",
+        "userId"
+      ],
+      "response_source": "positions"
+    },
+    {
+      "endpoint": "user/casinoLoginUrl",
+      "method": "POST",
+      "panel": "client",
+      "collection": "users",
+      "operation": "read",
+      "request_fields": [
+        "userId"
+      ],
+      "response_source": "users"
+    },
+    {
+      "endpoint": "user/clientBetListByMarketId",
+      "method": "POST",
+      "panel": "client",
+      "collection": "sports_bets",
+      "operation": "read",
+      "request_fields": [
+        "userId",
+        "marketId"
+      ],
+      "response_source": "sports_bets"
+    },
+    {
+      "endpoint": "user/completeLedgerDetails",
+      "method": "POST",
+      "panel": "client",
+      "collection": "ledger_entries",
+      "operation": "read",
+      "request_fields": [
+        "userId"
+      ],
+      "response_source": "ledger_entries"
+    },
+    {
+      "endpoint": "user/create",
+      "method": "POST",
+      "panel": "admin",
+      "collection": "users",
+      "operation": "create",
+      "request_fields": [
+        "username",
+        "password",
+        "userType",
+        "parentId"
+      ],
+      "response_source": "users"
+    },
+    {
+      "endpoint": "user/create1",
+      "method": "POST",
+      "panel": "centerpanel",
+      "collection": "reports",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "reports"
+    },
+    {
+      "endpoint": "user/deleteUserLedger",
+      "method": "POST",
+      "panel": "admin",
+      "collection": "ledger_entries",
+      "operation": "delete",
+      "request_fields": [
+        "ledgerId"
+      ],
+      "response_source": "ledger_entries"
+    },
+    {
+      "endpoint": "user/domainList",
+      "method": "POST",
+      "panel": "admin",
+      "collection": "domains",
+      "operation": "read",
+      "request_fields": [],
+      "response_source": "domains"
+    },
+    {
+      "endpoint": "user/getUserShareData",
+      "method": "POST",
+      "panel": "admin",
+      "collection": "users",
+      "operation": "read",
+      "request_fields": [
+        "userId"
+      ],
+      "response_source": "users"
+    },
+    {
+      "endpoint": "user/ledgerCreditDebit",
+      "method": "POST",
+      "panel": "admin",
+      "collection": "ledger_entries",
+      "operation": "create",
+      "request_fields": [
+        "userId",
+        "amount",
+        "type"
+      ],
+      "response_source": "ledger_entries"
+    },
+    {
+      "endpoint": "user/lenaDena",
+      "method": "POST",
+      "panel": "admin",
+      "collection": "ledger_entries",
+      "operation": "create",
+      "request_fields": [
+        "fromUserId",
+        "toUserId",
+        "amount"
+      ],
+      "response_source": "ledger_entries"
+    },
+    {
+      "endpoint": "user/login",
+      "method": "POST",
+      "panel": "client",
+      "collection": "users",
+      "operation": "auth",
+      "request_fields": [
+        "username",
+        "password",
+        "host",
+        "isClient"
+      ],
+      "response_source": "users+auth_sessions"
+    },
+    {
+      "endpoint": "user/updateBulkStatus",
+      "method": "POST",
+      "panel": "admin",
+      "collection": "users",
+      "operation": "update",
+      "request_fields": [
+        "userIds",
+        "status"
+      ],
+      "response_source": "users"
+    },
+    {
+      "endpoint": "user/updateCoins",
+      "method": "POST",
+      "panel": "admin",
+      "collection": "users",
+      "operation": "update",
+      "request_fields": [
+        "userId",
+        "coins"
+      ],
+      "response_source": "users"
+    },
+    {
+      "endpoint": "user/updateRateReffrenece",
+      "method": "POST",
+      "panel": "admin",
+      "collection": "users",
+      "operation": "update",
+      "request_fields": [
+        "userId",
+        "rateReffrence"
+      ],
+      "response_source": "users"
+    },
+    {
+      "endpoint": "user/updateUserPassword",
+      "method": "POST",
+      "panel": "admin",
+      "collection": "users",
+      "operation": "update",
+      "request_fields": [
+        "userId",
+        "password"
+      ],
+      "response_source": "users"
+    },
+    {
+      "endpoint": "user/userAccountDetails",
+      "method": "POST",
+      "panel": "client",
+      "collection": "users",
+      "operation": "read",
+      "request_fields": [
+        "userId"
+      ],
+      "response_source": "users"
+    },
+    {
+      "endpoint": "user/userActivity",
+      "method": "POST",
+      "panel": "admin",
+      "collection": "user_activities",
+      "operation": "read",
+      "request_fields": [
+        "userId"
+      ],
+      "response_source": "user_activities"
+    },
+    {
+      "endpoint": "user/userBalance",
+      "method": "POST",
+      "panel": "client",
+      "collection": "users",
+      "operation": "read",
+      "request_fields": [
+        "userId"
+      ],
+      "response_source": "users"
+    },
+    {
+      "endpoint": "user/userDetails",
+      "method": "POST",
+      "panel": "client",
+      "collection": "users",
+      "operation": "read",
+      "request_fields": [
+        "userId"
+      ],
+      "response_source": "users"
+    },
+    {
+      "endpoint": "user/userLedger",
+      "method": "POST",
+      "panel": "client",
+      "collection": "ledger_entries",
+      "operation": "read",
+      "request_fields": [
+        "userId",
+        "fromDate",
+        "toDate"
+      ],
+      "response_source": "ledger_entries"
+    },
+    {
+      "endpoint": "user/userList",
+      "method": "POST",
+      "panel": "admin",
+      "collection": "users",
+      "operation": "read",
+      "request_fields": [
+        "downlineUserType",
+        "parentId"
+      ],
+      "response_source": "users"
+    },
+    {
+      "endpoint": "user/userLoginActivity",
+      "method": "POST",
+      "panel": "admin",
+      "collection": "user_activities",
+      "operation": "read",
+      "request_fields": [
+        "userId"
+      ],
+      "response_source": "user_activities"
+    },
+    {
+      "endpoint": "user/userSearch",
+      "method": "POST",
+      "panel": "admin",
+      "collection": "users",
+      "operation": "read",
+      "request_fields": [
+        "searchTerm"
+      ],
+      "response_source": "users"
+    },
+    {
+      "endpoint": "user/userStatement",
+      "method": "POST",
+      "panel": "client",
+      "collection": "statements",
+      "operation": "read",
+      "request_fields": [
+        "userId",
+        "startDate",
+        "endDate"
+      ],
+      "response_source": "statements"
+    },
+    {
+      "endpoint": "user/userUpdate",
+      "method": "POST",
+      "panel": "admin",
+      "collection": "users",
+      "operation": "update",
+      "request_fields": [
+        "userId"
+      ],
+      "response_source": "users"
+    },
+    {
+      "endpoint": "website/domainSettingByDomainName",
+      "method": "POST",
+      "panel": "client",
+      "collection": "domains",
+      "operation": "read",
+      "request_fields": [
+        "domainName"
+      ],
+      "response_source": "domains"
+    }
+  ]
+}

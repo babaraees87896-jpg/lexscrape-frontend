@@ -1,0 +1,15 @@
+{
+  "base_url": "https://staff.bluewin.live",
+  "username": "OW1000",
+  "output": "/Users/abhishekojha/Desktop/working/bluewin-scraped/output",
+  "pages": {
+    "ok": 32,
+    "fail": 0,
+    "total": 32
+  },
+  "routes_total": 32,
+  "api_data_files": {
+    "ok": 2,
+    "skip": 0
+  }
+}

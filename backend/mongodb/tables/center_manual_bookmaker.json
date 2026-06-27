@@ -1,0 +1,33 @@
+{
+  "collection": "center_manual_bookmaker",
+  "database": "ex99_local",
+  "description": "centerPanel/getManualBookmakerList, saveManualBookmaker",
+  "fields": {
+    "bookmakerId": "string",
+    "marketId": "string",
+    "runnerName": "string",
+    "back": "number",
+    "lay": "number",
+    "status": "string"
+  },
+  "indexes": [
+    {
+      "keys": {
+        "bookmakerId": 1
+      }
+    }
+  ],
+  "apis": [
+    "centerPanel/getManualBookmakerList",
+    "centerPanel/saveManualBookmaker"
+  ],
+  "document_count": 1,
+  "sample_document": {
+    "bookmakerId": "bm-001",
+    "marketId": "1.245690241",
+    "runnerName": "Team A",
+    "back": 1.85,
+    "lay": 1.87,
+    "status": "active"
+  }
+}

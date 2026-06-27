@@ -1,0 +1,30 @@
+{
+  "collection": "center_betfair_results",
+  "database": "ex99_local",
+  "description": "centerPanel/getBetfairResults",
+  "fields": {
+    "marketId": "string",
+    "eventId": "string",
+    "winnerSelectionId": "number",
+    "resultStatus": "string",
+    "declaredAt": "date"
+  },
+  "indexes": [
+    {
+      "keys": {
+        "marketId": 1
+      }
+    }
+  ],
+  "apis": [
+    "centerPanel/getBetfairResults"
+  ],
+  "document_count": 1,
+  "sample_document": {
+    "marketId": "1.245690241",
+    "eventId": "28127348",
+    "winnerSelectionId": 49749064,
+    "resultStatus": "declared",
+    "declaredAt": "2026-06-12 08:21:58.040899+00:00"
+  }
+}

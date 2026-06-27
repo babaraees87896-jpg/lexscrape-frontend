@@ -1,0 +1,10 @@
+{
+  "message": "OK",
+  "code": 0,
+  "error": false,
+  "data": {
+    "domainName": "1ex99.in",
+    "domainUrl": "1ex99.in",
+    "status": true
+  }
+}

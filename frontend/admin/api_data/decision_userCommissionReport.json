@@ -1,0 +1,22 @@
+{
+  "message": "Commission report fetched",
+  "code": 0,
+  "error": false,
+  "data": [
+    {
+      "_id": "uid-agent",
+      "userInfo": {
+        "userId": "uid-agent",
+        "username": "AGENT001",
+        "name": "Agent Demo",
+        "userType": "agent"
+      },
+      "oddsComm": 25.0,
+      "sessionComm": 10.0,
+      "casinoComm": 85.0,
+      "downlineOddsComm": 12.5,
+      "downlineSessionComm": 5.0,
+      "downlineCasinoComm": 42.5
+    }
+  ]
+}

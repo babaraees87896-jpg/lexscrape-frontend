@@ -1,0 +1,39 @@
+{
+  "message": "OK",
+  "code": 0,
+  "error": false,
+  "data": [
+    {
+      "eventId": "34567890",
+      "marketId": "1.234567890",
+      "matchName": "India v Australia",
+      "seriesName": "ICC World Test Championship",
+      "seriesId": "12444343",
+      "sportId": 4,
+      "sportName": "Cricket",
+      "sportType": "Cricket",
+      "matchType": "Test",
+      "status": "COMPLETED",
+      "matchDate": "30-05-2026 14:30:00",
+      "updatedAt": "2026-05-31T12:30:00",
+      "wonBookmakerTeamName": "India",
+      "hitApiType": "sportex"
+    },
+    {
+      "eventId": "34567891",
+      "marketId": "1.234567891",
+      "matchName": "England v Pakistan",
+      "seriesName": "Test Series 2026",
+      "seriesId": "12444344",
+      "sportId": 4,
+      "sportName": "Cricket",
+      "sportType": "Cricket",
+      "matchType": "Test",
+      "status": "COMPLETED",
+      "matchDate": "29-05-2026 14:30:00",
+      "updatedAt": "2026-05-30T14:30:00",
+      "wonBookmakerTeamName": "England",
+      "hitApiType": "sportex"
+    }
+  ]
+}

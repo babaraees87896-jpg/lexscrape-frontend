@@ -1,0 +1,50 @@
+{
+  "collection": "casino_games",
+  "database": "ex99_local",
+  "description": "casino/getDiamondCasinoData, getDiamondCasinoByEventId",
+  "indexes": [
+    {
+      "keys": {
+        "eventId": 1
+      },
+      "unique": true
+    }
+  ],
+  "fields": {
+    "eventId": {
+      "type": "number",
+      "required": true
+    },
+    "name": {
+      "type": "string"
+    },
+    "shortName": {
+      "type": "string"
+    },
+    "minStake": {
+      "type": "number"
+    },
+    "maxStake": {
+      "type": "number"
+    },
+    "betStatus": {
+      "type": "boolean"
+    },
+    "socketURL": {
+      "type": "string"
+    },
+    "cacheURL": {
+      "type": "string"
+    },
+    "videoUrl1": {
+      "type": "string"
+    },
+    "setting": {
+      "type": "object"
+    }
+  },
+  "admin_apis": [
+    "casino/getDiamondCasinoByEventId",
+    "casino/getDiamondCasinoData"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "collection": "sports_catalog",
+  "database": "ex99_local",
+  "description": "decision/completeSportList",
+  "indexes": [
+    {
+      "keys": {
+        "sportId": 1
+      },
+      "unique": true
+    }
+  ],
+  "fields": {
+    "sportId": {
+      "type": "number"
+    },
+    "sportName": {
+      "type": "string"
+    },
+    "status": {
+      "type": "boolean"
+    }
+  },
+  "admin_apis": [
+    "decision/completeSportList"
+  ]
+}

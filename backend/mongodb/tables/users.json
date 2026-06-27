@@ -1,0 +1,121 @@
+{
+  "collection": "users",
+  "database": "ex99_local",
+  "description": "Saari hierarchy \u2014 owner se client tak + login/auth",
+  "fields": {
+    "userId": "string (ObjectId)",
+    "username": "string",
+    "password": "string",
+    "name": "string",
+    "mobile": "string",
+    "userType": "owner|subowner|superadmin|admin|subadmin|master|superagent|agent|client",
+    "userPriority": "number 1-9",
+    "parentId": "string",
+    "creatorId": "string",
+    "coins": "number",
+    "exposure": "number",
+    "profitLoss": "number",
+    "casinoStatus": "boolean",
+    "matkaStatus": "boolean",
+    "betStatus": "boolean",
+    "matchShare": "number",
+    "casinoShare": "number",
+    "betChipsData": "object",
+    "status": "number",
+    "isDeleted": "boolean",
+    "createdAt": "date",
+    "updatedAt": "date"
+  },
+  "indexes": [
+    {
+      "keys": {
+        "username": 1
+      },
+      "unique": true
+    },
+    {
+      "keys": {
+        "userId": 1
+      },
+      "unique": true
+    },
+    {
+      "keys": {
+        "userType": 1
+      }
+    },
+    {
+      "keys": {
+        "parentId": 1
+      }
+    }
+  ],
+  "apis": [
+    "centerPanel/createCustomer",
+    "centerPanel/updateUser",
+    "centerPanel/userCreate",
+    "centerPanel/userList",
+    "centerPanel/userLogin",
+    "user/casinoLoginUrl",
+    "user/create",
+    "user/getUserShareData",
+    "user/login",
+    "user/updateBulkStatus",
+    "user/updateCoins",
+    "user/updateRateReffrenece",
+    "user/updateUserPassword",
+    "user/userAccountDetails",
+    "user/userBalance",
+    "user/userDetails",
+    "user/userList",
+    "user/userSearch",
+    "user/userUpdate"
+  ],
+  "document_count": 24,
+  "sample_document": {
+    "userId": "uid-owner",
+    "username": "OWNER001",
+    "password": "admin@123",
+    "name": "Owner Demo",
+    "mobile": "9999999999",
+    "userType": "owner",
+    "userPriority": 9,
+    "parentId": null,
+    "creatorId": "uid-owner",
+    "coins": 10000000,
+    "creditLimit": 10000000,
+    "exposure": 0,
+    "profitLoss": 0,
+    "casinoStatus": true,
+    "matkaStatus": true,
+    "betStatus": true,
+    "matchStatus": true,
+    "intCasinoStatus": false,
+    "matchShare": 100,
+    "casinoShare": 100,
+    "matchCommission": 2,
+    "sessionCommission": 3,
+    "casinoCommission": 2,
+    "commissionType": "BetByBet",
+    "betChipsData": {
+      "100": 100,
+      "500": 500,
+      "1000": 1000,
+      "2000": 2000,
+      "5000": 5000,
+      "10000": 10000,
+      "25000": 25000,
+      "50000": 50000,
+      "100000": 100000,
+      "200000": 200000,
+      "300000": 300000,
+      "500000": 500000
+    },
+    "isPasswordChanged": true,
+    "status": 1,
+    "isDeleted": false,
+    "referralCode": "OWNER001100100",
+    "createdAt": "2026-06-12 08:21:58.039262+00:00",
+    "updatedAt": "2026-06-12 08:21:58.039262+00:00"
+  }
+}

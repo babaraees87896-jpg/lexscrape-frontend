@@ -1,0 +1,10 @@
+[
+  {
+    "eventId": "race-001",
+    "competitionId": "comp-001",
+    "eventName": "Demo Horse Race",
+    "venue": "Mumbai",
+    "startTime": "2026-06-12 11:21:58.040897+00:00",
+    "status": "scheduled"
+  }
+]

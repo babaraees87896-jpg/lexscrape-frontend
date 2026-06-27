@@ -1,0 +1,23 @@
+{
+  "message": "OK",
+  "code": 0,
+  "error": false,
+  "data": [
+    {
+      "seriesId": "12444343",
+      "seriesName": "ICC World Test Championship",
+      "sportsId": 4,
+      "sportId": 4,
+      "sportName": "Cricket",
+      "marketCount": 12
+    },
+    {
+      "seriesId": "12444345",
+      "seriesName": "IPL 2026",
+      "sportsId": 4,
+      "sportId": 4,
+      "sportName": "Cricket",
+      "marketCount": 74
+    }
+  ]
+}

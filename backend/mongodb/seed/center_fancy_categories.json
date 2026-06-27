@@ -1,0 +1,12 @@
+[
+  {
+    "categoryId": "fc-1",
+    "name": "Normal Fancy",
+    "status": true
+  },
+  {
+    "categoryId": "fc-2",
+    "name": "Khado",
+    "status": true
+  }
+]

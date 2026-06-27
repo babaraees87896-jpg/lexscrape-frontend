@@ -1,0 +1,33 @@
+{
+  "collection": "decision_logs",
+  "database": "ex99_local",
+  "description": "centerPanel/getDecisionLogs, decision/*",
+  "fields": {
+    "marketId": "string",
+    "eventId": "string",
+    "action": "string",
+    "payload": "object",
+    "createdAt": "date"
+  },
+  "indexes": [
+    {
+      "keys": {
+        "marketId": 1
+      }
+    }
+  ],
+  "apis": [
+    "centerPanel/getDecisionLogs"
+  ],
+  "document_count": 1,
+  "sample_document": {
+    "logId": "dec-001",
+    "marketId": "1.245690241",
+    "eventId": "28127348",
+    "action": "declare_result",
+    "payload": {
+      "winnerSelectionId": 49749064
+    },
+    "createdAt": "2026-06-12 08:21:58.040812+00:00"
+  }
+}

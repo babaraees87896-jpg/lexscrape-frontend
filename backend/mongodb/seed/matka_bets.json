@@ -1,0 +1,60 @@
+[
+  {
+    "betId": "bet-matka-001",
+    "userId": "6946a4bc25b6ee438db6ff4d",
+    "matkaEventId": "matka-kalyan-001",
+    "number": "123",
+    "betNumber": "123",
+    "gameType": "SINGLE",
+    "betType": "OPEN",
+    "priority": 1,
+    "stake": 100,
+    "profitLoss": 0,
+    "status": "open",
+    "createdAt": "2026-06-12 08:21:58.040617+00:00"
+  },
+  {
+    "betId": "bet-matka-002",
+    "userId": "6946a4bc25b6ee438db6ff4d",
+    "matkaEventId": "matka-milan-001",
+    "number": "456",
+    "betNumber": "456",
+    "gameType": "JODI",
+    "betType": "CLOSE",
+    "priority": 2,
+    "stake": 200,
+    "profitLoss": 150,
+    "status": "settled",
+    "createdAt": "2026-06-12 08:21:58.040617+00:00"
+  },
+  {
+    "betId": "bet-matka-uid-001",
+    "userId": "uid-client",
+    "matkaEventId": "matka-kalyan-001",
+    "matkaName": "Kalyan",
+    "number": "123",
+    "betNumber": "123",
+    "gameType": "SINGLE",
+    "betType": "OPEN",
+    "priority": 1,
+    "stake": 100,
+    "profitLoss": 0,
+    "status": "open",
+    "createdAt": "2026-06-12 08:21:58.040617+00:00"
+  },
+  {
+    "betId": "bet-matka-uid-002",
+    "userId": "uid-client",
+    "matkaEventId": "matka-milan-001",
+    "matkaName": "Milan Day",
+    "number": "456",
+    "betNumber": "456",
+    "gameType": "JODI",
+    "betType": "CLOSE",
+    "priority": 2,
+    "stake": 200,
+    "profitLoss": 150,
+    "status": "settled",
+    "createdAt": "2026-06-12 08:21:58.040618+00:00"
+  }
+]

@@ -1,0 +1,27 @@
+{
+  "collection": "center_fancy_categories",
+  "database": "ex99_local",
+  "description": "centerPanel/getFancyCategoryList, createFancyCategory",
+  "fields": {
+    "categoryId": "string",
+    "name": "string",
+    "status": "boolean"
+  },
+  "indexes": [
+    {
+      "keys": {
+        "categoryId": 1
+      }
+    }
+  ],
+  "apis": [
+    "centerPanel/createFancyCategory",
+    "centerPanel/getFancyCategoryList"
+  ],
+  "document_count": 2,
+  "sample_document": {
+    "categoryId": "fc-1",
+    "name": "Normal Fancy",
+    "status": true
+  }
+}

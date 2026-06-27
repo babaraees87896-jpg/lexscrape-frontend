@@ -1,0 +1,32 @@
+{
+  "collection": "center_fancy_audit",
+  "database": "ex99_local",
+  "description": "centerPanel/getFancyAuditLog, saveFancyAuditLog",
+  "fields": {
+    "fancyId": "string",
+    "marketId": "string",
+    "action": "string",
+    "userId": "string",
+    "payload": "object",
+    "createdAt": "date"
+  },
+  "indexes": [
+    {
+      "keys": {
+        "fancyId": 1
+      }
+    }
+  ],
+  "apis": [],
+  "document_count": 1,
+  "sample_document": {
+    "fancyId": "mf-001",
+    "marketId": "1.245690241",
+    "action": "create",
+    "userId": "uid-admin",
+    "payload": {
+      "sessionName": "10 Over Runs"
+    },
+    "createdAt": "2026-06-12 08:21:58.041973+00:00"
+  }
+}

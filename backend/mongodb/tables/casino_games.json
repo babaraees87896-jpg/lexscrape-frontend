@@ -1,0 +1,56 @@
+{
+  "collection": "casino_games",
+  "database": "ex99_local",
+  "description": "casino/getDiamondCasinoData, getDiamondCasinoByEventId",
+  "fields": {
+    "eventId": "number",
+    "name": "string",
+    "shortName": "string",
+    "minStake": "number",
+    "maxStake": "number",
+    "betStatus": "boolean",
+    "socketURL": "string",
+    "cacheURL": "string",
+    "videoUrl1": "string",
+    "setting": "object"
+  },
+  "indexes": [
+    {
+      "keys": {
+        "eventId": 1
+      },
+      "unique": true
+    }
+  ],
+  "apis": [
+    "casino/getDiamondCasinoByEventId",
+    "casino/getDiamondCasinoData"
+  ],
+  "document_count": 35,
+  "sample_document": {
+    "_id": "64aff010e90fd65d3bbd7f02",
+    "maxStake": 20000,
+    "minStake": 100,
+    "socketURL": "https://casinoapi.tresting.com",
+    "cacheURL": "https://casinoapi.tresting.com/v2/api/casinoData?casinoType=teen20",
+    "betStatus": true,
+    "cashinoStatus": true,
+    "videoUrl1": "https://casinostream.tresting.com/route/?id3030",
+    "videoUrl2": "https://stream.1ex99.in/casinoVideo/video?id3030",
+    "videoUrl3": "",
+    "videoUrlType": "1",
+    "isDisable": false,
+    "name": "20-20 Teenpatti",
+    "shortName": "teen20",
+    "eventId": 3030,
+    "fetchData": "socket",
+    "date": 1689206400000,
+    "time": 1689251856647,
+    "createdAt": 1689251856647,
+    "setting": {
+      "oddsDifference": "0.03",
+      "errorMessage": "Game is under maintenanc"
+    },
+    "isVirtual": false
+  }
+}

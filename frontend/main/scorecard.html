@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live Scorecard</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      background: #1a2332;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #fff;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      padding: 0;
+    }
+    .scorecard {
+      width: 100%;
+      max-width: 420px;
+      background: #232f3e;
+      overflow: hidden;
+    }
+    body.compact-scorecard {
+      background: #232f3e;
+    }
+    .scorecard, .scorecard * {
+      transition: none !important;
+      animation: none !important;
+    }
+
+    /* ── Scores header ── */
+    .scores-head {
+      padding: 10px 12px 8px;
+      background: #232f3e;
+    }
+    .team-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 0;
+      min-height: 32px;
+    }
+    .team-row.inactive { opacity: 0.55; }
+    .flag {
+      width: 28px;
+      height: 20px;
+      border-radius: 2px;
+      flex-shrink: 0;
+      background: #3a4a5c;
+      overflow: hidden;
+      display: block;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .flag img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .bat-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #3cb371;
+      flex-shrink: 0;
+      opacity: 0;
+    }
+    .team-row.active .bat-dot { opacity: 1; }
+    .team-code {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      min-width: 28px;
+    }
+    .team-score-wrap {
+      margin-left: auto;
+      text-align: right;
+      font-weight: 700;
+      font-size: 15px;
+      white-space: nowrap;
+    }
+    .team-score-wrap .overs {
+      font-weight: 400;
+      font-size: 12px;
+      color: #9aa8b8;
+      margin-left: 2px;
+    }
+
+    /* ── Ball-by-ball strip (header ke upar) ── */
+    .balls-strip {
+      background: #1e2836;
+      padding: 7px 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .balls-strip.hidden { display: none; }
+    .ball-chip {
+      min-width: 22px;
+      height: 22px;
+      padding: 0 4px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      font-weight: 800;
+      line-height: 1;
+      text-transform: uppercase;
+      flex-shrink: 0;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+    .ball-chip.dot { background: rgba(255,255,255,0.12); color: #dfe6ee; }
+    .ball-chip.run { background: #fff; color: #1a2332; }
+    .ball-chip.boundary { background: #3cb371; color: #fff; border-color: #3cb371; }
+    .ball-chip.wicket { background: #e74c3c; color: #fff; border-color: #e74c3c; }
+    .ball-chip.extra { background: #f5c518; color: #1a2332; border-color: #f5c518; }
+
+    /* ── Green status bar ── */
+    .status-bar {
+      background: #2a5c40;
+      padding: 7px 10px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px 10px;
+      min-height: 34px;
+    }
+    .status-msg {
+      flex: 1 1 140px;
+      min-width: 0;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      text-transform: uppercase;
+      line-height: 1.3;
+      color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .status-stats {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+      font-size: 10px;
+      font-weight: 700;
+      color: #fff;
+      white-space: nowrap;
+    }
+    .status-stats .val { font-size: 11px; }
+    .status-stats #pshipStat { display: none; }
+    .speaker-btn {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #3cb371;
+      border: none;
+      padding: 0;
+      -webkit-appearance: none;
+      appearance: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      cursor: pointer;
+      font-size: 11px;
+      line-height: 1;
+      color: #fff;
+      transition: background 0.2s, opacity 0.2s;
+    }
+    .speaker-btn.muted {
+      background: #5a7088;
+      opacity: 0.85;
+    }
+
+    /* ── Section headings ── */
+    .section-head {
+      padding: 8px 12px 4px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      color: #8a96a3;
+      text-transform: uppercase;
+      background: #232f3e;
+    }
+
+    /* ── Player rows ── */
+    .player-table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+    .player-table thead th {
+      font-size: 9px;
+      font-weight: 600;
+      color: #7a8794;
+      padding: 0 4px 4px;
+      text-align: right;
+    }
+    .player-table thead th:first-child { width: 46%; text-align: left; padding-left: 12px; }
+    .player-table thead th:not(:first-child) { width: 10.8%; }
+    .player-table tbody td {
+      font-size: 12px;
+      font-weight: 600;
+      padding: 7px 5px;
+      text-align: right;
+      vertical-align: middle;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .player-table tbody td:first-child {
+      text-align: left;
+      padding-left: 12px;
+    }
+    .player-cell {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+    }
+    .player-avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #4a5f75, #354657);
+      border: 1px solid #5a7088;
+      flex-shrink: 0;
+      object-fit: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      font-weight: 700;
+      color: #cdd5df;
+      overflow: hidden;
+    }
+    .player-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    .player-name {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      text-transform: uppercase;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 130px;
+    }
+    .strike-star {
+      color: #f5c518;
+      font-size: 10px;
+      margin-left: 3px;
+      vertical-align: middle;
+    }
+    .bowler-row td:first-child {
+      border-left: 3px solid #e74c3c;
+    }
+    .empty-row td {
+      color: #6a7888;
+      font-size: 11px;
+      font-style: italic;
+      text-align: center;
+      padding: 10px;
+    }
+    .dash { color: #6a7888; }
+
+    /* ── Footer ── */
+    .last-wkt {
+      padding: 8px 12px 10px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      color: #9aa8b8;
+      background: #1e2836;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .last-wkt b { color: #fff; font-weight: 700; }
+    .last-wkt.hidden { display: none; }
+    .section-block.hidden { display: none; }
+
+    .err {
+      color: #ff7675;
+      font-size: 11px;
+      padding: 8px 12px;
+      text-align: center;
+    }
+    .err.hidden { display: none; }
+  </style>
+</head>
+<body class="compact-scorecard">
+  <div class="scorecard" id="card">
+    <div class="scores-head">
+      <div class="team-row active" id="team1Row">
+        <span class="flag"><img id="flag1" alt="" /></span>
+        <span class="bat-dot"></span>
+        <span class="team-code" id="team1Code">—</span>
+        <span class="team-score-wrap"><span id="score1Main">—</span><span class="overs" id="score1Over"></span></span>
+      </div>
+      <div class="team-row inactive" id="team2Row">
+        <span class="flag"><img id="flag2" alt="" /></span>
+        <span class="bat-dot"></span>
+        <span class="team-code" id="team2Code">—</span>
+        <span class="team-score-wrap"><span id="score2Main">—</span><span class="overs" id="score2Over"></span></span>
+      </div>
+    </div>
+
+    <div class="balls-strip hidden" id="ballsRow"></div>
+
+    <div class="status-bar">
+      <div class="status-msg" id="infoMsg">Loading...</div>
+      <div class="status-stats">
+        <span id="crrStat">CRR: <span class="val">—</span></span>
+        <span id="pshipStat"></span>
+      </div>
+      <button class="speaker-btn" type="button" id="speakerBtn" title="Ball voice on — tap to mute" aria-label="Toggle ball voice">🔊</button>
+    </div>
+
+    <div class="err hidden" id="errBox"></div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(location.search);
+    const EID = params.get("eid") || "4";
+    const GMID = params.get("gmid") || "";
+    const API_BASE = `/sport/scorecard/${EID}/${GMID}.json`;
+    const POLL_MS = Math.max(300, Number(params.get("poll")) || 400);
+    let lastSnapshot = "";
+    let pollTimer = null;
+    let fetchInFlight = false;
+    let speechEnabled = localStorage.getItem("sc_voice") !== "0";
+    let lastBallsKey = "";
+    let lastSpokenBall = "";
+    let ballsInitialized = false;
+    let speechPrimed = false;
+
+    function primeSpeech() {
+      if (!window.speechSynthesis) return;
+      try {
+        window.speechSynthesis.resume();
+        window.speechSynthesis.getVoices();
+        speechPrimed = true;
+      } catch (e) {}
+    }
+
+    if (window.speechSynthesis) {
+      window.speechSynthesis.addEventListener("voiceschanged", primeSpeech);
+      primeSpeech();
+    }
+
+    /* Cricket team code → ISO (original tresting scorecard jaisa — flagcdn.com) */
+    const TEAM_ISO = {
+      IND:"IN",INDIA:"IN",AUS:"AU",AUSTRALIA:"AU",ENG:"GB",ENGLAND:"GB",
+      PAK:"PK",PAKISTAN:"PK",SA:"ZA",RSA:"ZA",NZ:"NZ",SL:"LK",BAN:"BD",BNG:"BD",
+      WI:"JM",AFG:"AF",ZIM:"ZW",IRE:"IE",NEP:"NP",SCO:"GB-SCT",UAE:"AE",NAM:"NA",
+      OMA:"OM",USA:"US",CAN:"CA",NED:"NL",HK:"HK",PNG:"PG",KEN:"KE",ITA:"IT",
+      GER:"DE",JPN:"JP",KOR:"KR",THA:"TH",SGP:"SG",MAL:"MY",MAS:"MY",
+      LEI:"GB",ESS:"GB",MID:"GB",WOR:"GB",SUR:"GB",YOR:"GB",LAN:"GB",HAM:"GB",
+      SOM:"GB",GLA:"GB",KNT:"GB",SUS:"GB",NOR:"GB",WAR:"GB",DER:"GB",NOT:"GB"
+    };
+
+    function flagUrl(code, directImg) {
+      const img = String(directImg || "").trim();
+      if (img && img !== "-") return img;
+      const key = String(code || "").toUpperCase().trim();
+      const iso = TEAM_ISO[key];
+      if (!iso) return "";
+      return "https://flagcdn.com/w40/" + iso.toLowerCase() + ".png";
+    }
+
+    function setFlag(imgId, code, directImg) {
+      const el = document.getElementById(imgId);
+      if (!el) return;
+      const url = flagUrl(code, directImg);
+      if (!url) {
+        el.removeAttribute("src");
+        el.alt = code || "";
+        return;
+      }
+      el.src = url;
+      el.alt = code || "";
+      el.onerror = function() {
+        this.onerror = null;
+        this.removeAttribute("src");
+      };
+    }
+
+    function fmt(v) {
+      if (v === null || v === undefined) return '<span class="dash">-</span>';
+      const s = String(v).trim();
+      return s === "" || s === "-" ? '<span class="dash">-</span>' : s;
+    }
+
+    function initials(name) {
+      if (!name) return "?";
+      return name.split(/\s+/).map(w => w[0]).join("").slice(0, 2).toUpperCase();
+    }
+
+    function parseScore(raw) {
+      const s = String(raw || "").trim();
+      if (!s) return { main: "—", over: "" };
+      const m = s.match(/^(.+?)\s*(\([\d.]+\))\s*$/);
+      if (m) return { main: m[1].trim(), over: m[2] };
+      return { main: s, over: "" };
+    }
+
+    function normalizeMsg(msg) {
+      return String(msg || "")
+        .replace(/\s+/g, " ")
+        .trim()
+        .toUpperCase()
+        .replace(/NEEDED/g, "NEEDS")
+        .replace(/FROM/g, "IN")
+        .replace(/BALLS?/g, "BALLS");
+    }
+
+    function pickBatsmen(sc) {
+      const out = [];
+      for (let i = 1; i <= 4; i++) {
+        const name = sc[`spnbatsman${i}`] || sc[`batsman${i}`] || sc[`spnbatsman${i}name`];
+        if (!name) continue;
+        out.push({
+          name,
+          img: sc[`spnbatsman${i}img`] || sc[`batsman${i}img`] || "",
+          runs: sc[`spnbatsman${i}run`] ?? sc[`batsman${i}run`] ?? "-",
+          balls: sc[`spnbatsman${i}ball`] ?? sc[`batsman${i}ball`] ?? "-",
+          fours: sc[`spnbatsman${i}four`] ?? sc[`spnbatsman${i}4s`] ?? "-",
+          sixes: sc[`spnbatsman${i}six`] ?? sc[`spnbatsman${i}6s`] ?? "-",
+          sr: sc[`spnbatsman${i}sr`] ?? "-",
+          strike: sc[`spnbatsman${i}strike`] === "1" || sc[`spnbatsman${i}onstrike`] === "1" || i === 1
+        });
+      }
+      if (Array.isArray(sc.batsmen)) {
+        sc.batsmen.forEach((b, i) => out.push({
+          name: b.name || b.player || "—",
+          img: b.img || b.image || "",
+          runs: b.runs ?? b.run ?? "-",
+          balls: b.balls ?? b.ball ?? "-",
+          fours: b.fours ?? b.four ?? "-",
+          sixes: b.sixes ?? b.six ?? "-",
+          sr: b.sr ?? b.strikeRate ?? "-",
+          strike: b.onStrike || b.strike || i === 0
+        }));
+      }
+      return out.slice(0, 2);
+    }
+
+    function pickBowler(sc) {
+      const name = sc.spnbowler || sc.spnbowler1 || sc.bowler || sc.spnbowlername;
+      if (!name) return null;
+      return {
+        name,
+        img: sc.spnbowlerimg || sc.bowlerimg || "",
+        overs: sc.spnbowlerover ?? sc.bowlerover ?? "-",
+        maidens: sc.spnbowlermaiden ?? sc.bowlermaiden ?? "-",
+        runs: sc.spnbowlerrun ?? sc.bowlerrun ?? "-",
+        wickets: sc.spnbowlerwicket ?? sc.bowlerwicket ?? "-",
+        eco: sc.spnbowlerecon ?? sc.bowlerecon ?? "-"
+      };
+    }
+
+    function avatarHtml(name, img) {
+      if (img) return `<span class="player-avatar"><img src="${img}" alt="" onerror="this.parentElement.textContent='${initials(name)}'"></span>`;
+      return `<span class="player-avatar">${initials(name)}</span>`;
+    }
+
+    function renderBatsmen(list) {
+      const block = document.getElementById("batsmenBlock");
+      const body = document.getElementById("batsmenBody");
+      body.innerHTML = "";
+      if (!list.length) {
+        block.classList.add("hidden");
+        return;
+      }
+      block.classList.remove("hidden");
+      list.forEach(p => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td><div class="player-cell">${avatarHtml(p.name, p.img)}<span class="player-name">${p.name}${p.strike ? '<span class="strike-star">★</span>' : ""}</span></div></td>
+          <td>${fmt(p.runs)}</td><td>${fmt(p.balls)}</td><td>${fmt(p.fours)}</td><td>${fmt(p.sixes)}</td><td>${fmt(p.sr)}</td>`;
+        body.appendChild(tr);
+      });
+    }
+
+    function renderBowler(b) {
+      const block = document.getElementById("bowlerBlock");
+      const body = document.getElementById("bowlerBody");
+      body.innerHTML = "";
+      if (!b) {
+        block.classList.add("hidden");
+        return;
+      }
+      block.classList.remove("hidden");
+      const tr = document.createElement("tr");
+      tr.className = "bowler-row";
+      tr.innerHTML = `
+        <td><div class="player-cell">${avatarHtml(b.name, b.img)}<span class="player-name">${b.name}</span></div></td>
+        <td>${fmt(b.overs)}</td><td>${fmt(b.maidens)}</td><td>${fmt(b.runs)}</td><td>${fmt(b.wickets)}</td><td>${fmt(b.eco)}</td>`;
+      body.appendChild(tr);
+    }
+
+    function partnership(sc) {
+      return sc.spnpartnership || sc.spnpship || sc.partnership || sc.spnpship || "";
+    }
+
+    function ballClass(raw) {
+      const b = String(raw || "").trim().toLowerCase();
+      if (!b) return "dot";
+      if (b === "w" || b === "wk" || b === "out") return "wicket";
+      if (b === "ww" || b === "wd" || b === "wde" || b === "nb" || b === "lb" || b === "b") return "extra";
+      if (b === "4" || b === "6") return "boundary";
+      if (b === "0" || b === ".") return "dot";
+      return "run";
+    }
+
+    function ballLabel(raw) {
+      const b = String(raw || "").trim().toLowerCase();
+      if (b === "ww") return "Wd";
+      if (b === "wd" || b === "wde") return "Wd";
+      if (b === "w" || b === "wk") return "W";
+      if (b === "nb") return "Nb";
+      if (b === "0" || b === ".") return "•";
+      return String(raw).toUpperCase();
+    }
+
+    function ballSpeechText(raw) {
+      const b = String(raw || "").trim().toLowerCase();
+      if (b === "0" || b === ".") return "Dot ball";
+      if (b === "1") return "One run";
+      if (b === "2") return "Two runs";
+      if (b === "3") return "Three runs";
+      if (b === "4") return "Four";
+      if (b === "6") return "Six";
+      if (b === "w" || b === "wk" || b === "out") return "Wicket";
+      if (b === "ww" || b === "wd" || b === "wde") return "Wide";
+      if (b === "nb") return "No ball";
+      if (b === "lb") return "Leg bye";
+      if (b === "b") return "Bye";
+      const n = parseInt(b, 10);
+      if (!isNaN(n)) return n + " run" + (n === 1 ? "" : "s");
+      return String(raw);
+    }
+
+    function pickVoice() {
+      const voices = window.speechSynthesis ? window.speechSynthesis.getVoices() : [];
+      return voices.find(v => (v.lang || "").toLowerCase().startsWith("en-in"))
+        || voices.find(v => (v.lang || "").toLowerCase().startsWith("en-gb"))
+        || voices.find(v => (v.lang || "").toLowerCase().startsWith("en"))
+        || voices[0]
+        || null;
+    }
+
+    function speakText(text) {
+      if (!speechEnabled || !window.speechSynthesis || !text) return;
+      primeSpeech();
+      try { window.speechSynthesis.resume(); } catch (e) {}
+      const utter = new SpeechSynthesisUtterance(String(text));
+      utter.lang = "en-IN";
+      utter.rate = 1.05;
+      utter.volume = 1;
+      const voice = pickVoice();
+      if (voice) utter.voice = voice;
+      window.speechSynthesis.speak(utter);
+    }
+
+    function speakBall(raw) {
+      const ball = String(raw || "").trim();
+      if (!ball || ball === lastSpokenBall) return;
+      const text = ballSpeechText(ball);
+      if (!speechEnabled || !window.speechSynthesis) return;
+      primeSpeech();
+      try { window.speechSynthesis.resume(); } catch (e) {}
+      if (window.speechSynthesis.speaking) window.speechSynthesis.cancel();
+      setTimeout(() => {
+        const utter = new SpeechSynthesisUtterance(text);
+        utter.lang = "en-IN";
+        utter.rate = 1.05;
+        utter.volume = 1;
+        const voice = pickVoice();
+        if (voice) utter.voice = voice;
+        utter.onend = () => { lastSpokenBall = ball; };
+        utter.onerror = () => { lastSpokenBall = ball; };
+        window.speechSynthesis.speak(utter);
+      }, 80);
+    }
+
+    function updateSpeakerBtn() {
+      const btn = document.getElementById("speakerBtn");
+      if (!btn) return;
+      btn.classList.toggle("muted", !speechEnabled);
+      btn.title = speechEnabled ? "Ball voice on — tap to mute" : "Ball voice off — tap to enable";
+      btn.textContent = speechEnabled ? "🔊" : "🔇";
+    }
+
+    function toggleSpeech(ev) {
+      if (ev) ev.stopPropagation();
+      speechEnabled = !speechEnabled;
+      localStorage.setItem("sc_voice", speechEnabled ? "1" : "0");
+      updateSpeakerBtn();
+      if (speechEnabled) {
+        primeSpeech();
+        lastSpokenBall = "";
+        const chips = document.querySelectorAll("#ballsRow .ball-chip");
+        if (chips.length) {
+          speakBall(chips[chips.length - 1].title);
+        } else {
+          speakText("Ball voice on");
+        }
+      } else if (window.speechSynthesis) {
+        window.speechSynthesis.cancel();
+      }
+    }
+
+    function announceBallChange(balls) {
+      if (!speechEnabled) return;
+      const list = Array.isArray(balls) ? balls.map(b => String(b).trim()).filter(Boolean) : [];
+      if (!list.length) return;
+
+      const key = list.join("|");
+      if (key === lastBallsKey) return;
+
+      const prev = lastBallsKey ? lastBallsKey.split("|") : [];
+      const lastBall = list[list.length - 1];
+      let newBall = null;
+
+      if (!ballsInitialized) {
+        ballsInitialized = true;
+        lastBallsKey = key;
+        return;
+      }
+
+      if (list.length > prev.length && prev.length && list.slice(0, prev.length).join("|") === prev.join("|")) {
+        newBall = lastBall;
+      } else if (prev.length && lastBall !== prev[prev.length - 1]) {
+        newBall = lastBall;
+      } else if (list.length === prev.length && list.length >= 2
+        && list.slice(0, -1).join("|") === prev.slice(1).join("|")) {
+        newBall = lastBall;
+      }
+
+      lastBallsKey = key;
+      if (newBall) speakBall(newBall);
+    }
+
+    function renderBalls(balls) {
+      const row = document.getElementById("ballsRow");
+      row.innerHTML = "";
+      const list = Array.isArray(balls) ? balls.filter(b => String(b).trim() !== "") : [];
+      if (!list.length) {
+        row.classList.add("hidden");
+        return;
+      }
+      row.classList.remove("hidden");
+      list.slice(-6).forEach(raw => {
+        const chip = document.createElement("span");
+        chip.className = "ball-chip " + ballClass(raw);
+        chip.textContent = ballLabel(raw);
+        chip.title = String(raw);
+        row.appendChild(chip);
+      });
+      announceBallChange(list.slice(-6));
+    }
+
+    function flashScores(_changed) {
+      return;
+    }
+
+    function render(data) {
+      const sc = data.scorecard || {};
+      document.getElementById("errBox").classList.add("hidden");
+
+      const snapshot = JSON.stringify(sc);
+      const changed = lastSnapshot && snapshot !== lastSnapshot;
+      lastSnapshot = snapshot;
+
+      const s1 = parseScore(sc.score1);
+      const s2 = parseScore(sc.score2);
+      document.getElementById("team1Code").textContent = sc.spnnation1 || "T1";
+      document.getElementById("team2Code").textContent = sc.spnnation2 || "T2";
+      document.getElementById("score1Main").textContent = s1.main;
+      document.getElementById("score1Over").textContent = s1.over;
+      document.getElementById("score2Main").textContent = s2.main;
+      document.getElementById("score2Over").textContent = s2.over;
+      setFlag("flag1", sc.spnnation1, sc.team1_img || sc.spnflag1 || sc.nation1img);
+      setFlag("flag2", sc.spnnation2, sc.team2_img || sc.spnflag2 || sc.nation2img);
+      flashScores(changed);
+
+      const t1Active = sc.activenation1 === "1";
+      const t2Active = sc.activenation2 === "1";
+      document.getElementById("team1Row").className = "team-row" + (t1Active ? " active" : " inactive");
+      document.getElementById("team2Row").className = "team-row" + (t2Active ? " active" : " inactive");
+
+      const msg = normalizeMsg(sc.spnmessage || sc.spnballrunningstatus || "Live match");
+      document.getElementById("infoMsg").textContent = msg;
+
+      const crr = t1Active ? sc.spnrunrate1 : (t2Active ? sc.spnrunrate2 : sc.spnrunrate1 || sc.spnrunrate2);
+      document.getElementById("crrStat").innerHTML = 'CRR: <span class="val">' + (crr || "—") + "</span>";
+
+      renderBalls(sc.balls);
+      syncFrameHeight();
+    }
+
+    function syncFrameHeight() {
+      const card = document.getElementById("card");
+      if (!card) return;
+      const h = Math.ceil(card.getBoundingClientRect().height);
+      document.documentElement.style.height = h + "px";
+      document.body.style.height = h + "px";
+      try {
+        parent.postMessage({ type: "ex99-sc-height", height: h, expanded: !document.body.classList.contains("compact-scorecard") }, "*");
+      } catch (e) {}
+    }
+
+    async function fetchScorecard() {
+      if (fetchInFlight) return;
+      fetchInFlight = true;
+      const url = API_BASE + "?_=" + Date.now();
+      try {
+        const res = await fetch(url, { cache: "no-store" });
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        render(await res.json());
+      } catch (e) {
+        const errBox = document.getElementById("errBox");
+        errBox.textContent = "Score fetch failed: " + e.message;
+        errBox.classList.remove("hidden");
+      } finally {
+        fetchInFlight = false;
+      }
+    }
+
+    function startPolling() {
+      if (pollTimer) clearInterval(pollTimer);
+      fetchScorecard();
+      pollTimer = setInterval(fetchScorecard, POLL_MS);
+    }
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        clearInterval(pollTimer);
+        pollTimer = null;
+      } else {
+        startPolling();
+      }
+    });
+
+    startPolling();
+    window.addEventListener("resize", syncFrameHeight);
+    requestAnimationFrame(syncFrameHeight);
+
+    window.addEventListener("message", function(ev) {
+      if (!ev.data || ev.data.type !== "ex99-sc-expand") return;
+      document.body.classList.toggle("compact-scorecard", !ev.data.expanded);
+      syncFrameHeight();
+    });
+
+    document.getElementById("speakerBtn").addEventListener("click", toggleSpeech);
+    document.getElementById("card").addEventListener("click", primeSpeech);
+    updateSpeakerBtn();
+  </script>
+</body>
+</html>

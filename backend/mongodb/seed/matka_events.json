@@ -1,0 +1,18 @@
+[
+  {
+    "matkaEventId": "matka-kalyan-001",
+    "name": "Kalyan",
+    "openTime": "2026-06-12 08:21:58.040614+00:00",
+    "closeTime": "2026-06-12 10:21:58.040615+00:00",
+    "result": "",
+    "status": "open"
+  },
+  {
+    "matkaEventId": "matka-milan-001",
+    "name": "Milan Day",
+    "openTime": "2026-06-12 08:21:58.040616+00:00",
+    "closeTime": "2026-06-12 12:21:58.040616+00:00",
+    "result": "456",
+    "status": "declared"
+  }
+]

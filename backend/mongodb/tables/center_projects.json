@@ -1,0 +1,29 @@
+{
+  "collection": "center_projects",
+  "database": "ex99_local",
+  "description": "centerPanel/getProjectList, createUpdateProject",
+  "fields": {
+    "projectId": "string",
+    "name": "string",
+    "status": "boolean"
+  },
+  "indexes": [
+    {
+      "keys": {
+        "projectId": 1
+      }
+    }
+  ],
+  "apis": [
+    "centerPanel/createUpdateProject",
+    "centerPanel/getProjectList"
+  ],
+  "document_count": 1,
+  "sample_document": {
+    "projectId": "proj-001",
+    "name": "1ex99 Demo",
+    "projectName": "1ex99 Demo",
+    "domainUrl": "1ex99.in",
+    "status": 1
+  }
+}

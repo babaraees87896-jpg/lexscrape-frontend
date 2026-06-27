@@ -1,0 +1,27 @@
+{
+  "collection": "center_domain_ips",
+  "database": "ex99_local",
+  "description": "centerPanel/getDomainIpList, assignDomainIpToUser",
+  "fields": {
+    "domainUrl": "string",
+    "ip": "string",
+    "userId": "string"
+  },
+  "indexes": [
+    {
+      "keys": {
+        "domainUrl": 1
+      }
+    }
+  ],
+  "apis": [
+    "centerPanel/assignDomainIpToUser",
+    "centerPanel/getDomainIpList"
+  ],
+  "document_count": 1,
+  "sample_document": {
+    "domainUrl": "1ex99.in",
+    "ip": "103.83.129.157",
+    "userId": "uid-admin"
+  }
+}

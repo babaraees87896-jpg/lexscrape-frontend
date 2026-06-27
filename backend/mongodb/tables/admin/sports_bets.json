@@ -1,0 +1,75 @@
+{
+  "collection": "sports_bets",
+  "database": "ex99_local",
+  "description": "sports/betsList, clientListByMarketId",
+  "indexes": [
+    {
+      "keys": {
+        "userId": 1
+      }
+    },
+    {
+      "keys": {
+        "marketId": 1
+      }
+    },
+    {
+      "keys": {
+        "createdAt": -1
+      }
+    }
+  ],
+  "fields": {
+    "userId": {
+      "type": "string",
+      "required": true
+    },
+    "username": {
+      "type": "string"
+    },
+    "marketId": {
+      "type": "string"
+    },
+    "eventId": {
+      "type": "string"
+    },
+    "selectionId": {
+      "type": "number"
+    },
+    "stake": {
+      "type": "number"
+    },
+    "odds": {
+      "type": "number"
+    },
+    "betType": {
+      "type": "string",
+      "values": "B|K|L|N"
+    },
+    "betFor": {
+      "type": "string"
+    },
+    "marketType": {
+      "type": "string",
+      "values": "odds|fancy|bookmaker"
+    },
+    "profitLoss": {
+      "type": "number"
+    },
+    "status": {
+      "type": "enum",
+      "values": [
+        "open",
+        "settled",
+        "void"
+      ]
+    },
+    "createdAt": {
+      "type": "date"
+    }
+  },
+  "admin_apis": [
+    "sports/betsList",
+    "sports/clientListByMarketId"
+  ]
+}

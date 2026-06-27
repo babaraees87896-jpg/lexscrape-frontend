@@ -1,0 +1,12 @@
+[
+  {
+    "sportId": 4,
+    "sportName": "Cricket",
+    "status": true
+  },
+  {
+    "sportId": 1,
+    "sportName": "Soccer",
+    "status": true
+  }
+]

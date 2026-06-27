@@ -1,0 +1,38 @@
+{
+  "collection": "user_ledger",
+  "database": "ex99_local",
+  "description": "user/userLedger API data \u2014 totalCoins, ledgerData, sportLedger...",
+  "fields": {
+    "userId": "string",
+    "totalCoins": "number",
+    "creditAmount": "number",
+    "debitAmount": "number",
+    "sportLedger": "number",
+    "diamondCasinoLedger": "number",
+    "matkaLedger": "number",
+    "cashLedger": "number",
+    "ledgerData": "array"
+  },
+  "indexes": [
+    {
+      "keys": {
+        "userId": 1
+      }
+    }
+  ],
+  "apis": [],
+  "document_count": 28,
+  "sample_document": {
+    "userId": "uid-client",
+    "totalCoins": 10000,
+    "creditAmount": 5000,
+    "debitAmount": 2500,
+    "calAmount": 2500,
+    "sportLedger": 200,
+    "diamondCasinoLedger": 850,
+    "intCasinoLedger": 0,
+    "matkaLedger": 0,
+    "cashLedger": 1450,
+    "ledgerData": []
+  }
+}

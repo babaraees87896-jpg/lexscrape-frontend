@@ -1,0 +1,60 @@
+{
+  "collection": "casino_bets",
+  "database": "ex99_local",
+  "description": "casino/casinoBetPlace, diamondBetsList, avaitorGamePlace",
+  "fields": {
+    "userId": "string",
+    "eventId": "number",
+    "roundId": "string",
+    "stake": "number",
+    "selection": "string",
+    "profitLoss": "number",
+    "gameType": "diamond|aviator",
+    "status": "string",
+    "createdAt": "date"
+  },
+  "indexes": [
+    {
+      "keys": {
+        "userId": 1
+      }
+    },
+    {
+      "keys": {
+        "eventId": 1
+      }
+    }
+  ],
+  "apis": [
+    "casino/avaitorCashOut",
+    "casino/avaitorGamePlace",
+    "casino/casinoBetPlace",
+    "casino/diamondBetsList"
+  ],
+  "document_count": 12,
+  "sample_document": {
+    "betId": "bet-casino-001",
+    "userId": "6946a4bc25b6ee438db6ff4d",
+    "eventId": 3030,
+    "roundId": "R-12345",
+    "stake": 1000,
+    "odds": 1.85,
+    "selection": "Player A",
+    "playerName": "Player A",
+    "profitLoss": 850,
+    "gameType": "diamond",
+    "status": "settled",
+    "isDeclare": true,
+    "showResult": "Player A",
+    "resultDetails": {
+      "winner": "Player A",
+      "gtype": "teen20",
+      "cards": [
+        "H7",
+        "D9",
+        "C3"
+      ]
+    },
+    "createdAt": "2026-06-12 08:21:58.040605+00:00"
+  }
+}

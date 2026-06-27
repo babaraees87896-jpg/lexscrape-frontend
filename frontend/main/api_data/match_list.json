@@ -1,0 +1,157 @@
+{
+  "message": 0,
+  "code": 0,
+  "error": false,
+  "data": [
+    {
+      "_id": "6a2afe908669e65c9adaae34",
+      "marketId": "1.259059770",
+      "__v": 0,
+      "betDelaySetting": {
+        "tieBetDelay": 0,
+        "completedBetDelay": 0,
+        "bookMakerBetDelay": 2,
+        "matchOddsBetDelay": 2,
+        "tossBetDelay": 0
+      },
+      "betDelayTime": 2,
+      "betPerm": true,
+      "betfairSocketUrl": "https://1excache.tresting.com/",
+      "bookmakerRange": 0,
+      "cacheUrl": "https://1excache.tresting.com/v2/api/oddsDataNew?market_id=1.259059770",
+      "checkOddsUrl": "https://1excache.tresting.com/v2/api/oddsDataNew?market_id=1.259059770",
+      "countryCode": "",
+      "createdAt": "2026-06-11T18:29:36.096Z",
+      "date": "1781202576000",
+      "dateWiseLedger": false,
+      "eventId": "35705124",
+      "isBookmaker": true,
+      "isCompletedOdds": true,
+      "isDeclare": false,
+      "isFancy": true,
+      "isLineMarketOdds": true,
+      "isMatchOdds": true,
+      "isScore": true,
+      "isTieOdds": true,
+      "isToss": true,
+      "isTv": true,
+      "marketList": [
+        {
+          "marketId": "1.235983584",
+          "marketType": "Tied Match",
+          "eventId": "35705124",
+          "matchName": "England W v Sri Lanka W (T-20)",
+          "sportName": "England W v Sri Lanka W (T-20)",
+          "sportId": 4,
+          "seriesId": 12674617,
+          "status": "INPLAY",
+          "playStatus": true,
+          "selectionIdData": [
+            {
+              "selectionId": 37302,
+              "runnerName": "Yes",
+              "handicap": 0,
+              "sortPriority": 1
+            },
+            {
+              "selectionId": 37303,
+              "runnerName": "No",
+              "handicap": 0,
+              "sortPriority": 2
+            }
+          ]
+        },
+        {
+          "marketId": "1.235983583",
+          "marketType": "Match Odds",
+          "eventId": "35705124",
+          "matchName": "England W v Sri Lanka W (T-20)",
+          "sportName": "England W v Sri Lanka W (T-20)",
+          "sportId": 4,
+          "seriesId": 12674617,
+          "status": "INPLAY",
+          "playStatus": true,
+          "selectionIdData": [
+            {
+              "selectionId": 49749064,
+              "runnerName": "West Indies Academy",
+              "handicap": 0,
+              "sortPriority": 1
+            },
+            {
+              "selectionId": 17043776,
+              "runnerName": "Windward Islands Volcanoes",
+              "handicap": 0,
+              "sortPriority": 2
+            }
+          ]
+        },
+        {
+          "marketId": "1.235983588",
+          "marketType": "Completed Match",
+          "eventId": "35705124",
+          "matchName": "England W v Sri Lanka W (T-20)",
+          "sportName": "England W v Sri Lanka W (T-20)",
+          "sportId": 4,
+          "seriesId": 12674617,
+          "status": "INPLAY",
+          "playStatus": true,
+          "selectionIdData": [
+            {
+              "selectionId": 37302,
+              "runnerName": "Yes",
+              "handicap": 0,
+              "sortPriority": 1
+            },
+            {
+              "selectionId": 37303,
+              "runnerName": "No",
+              "handicap": 0,
+              "sortPriority": 2
+            }
+          ]
+        }
+      ],
+      "marketName": "",
+      "matchDate": "12-06-2026 23:00:00 PM",
+      "matchName": "England W v Sri Lanka W (T-20)",
+      "matchType": "T20",
+      "maxMinCoins": {
+        "maximum_match_bet": 200000,
+        "minimum_match_bet": 100,
+        "maximum_session_bet": 200000,
+        "minimum_session_bet": 100,
+        "maximum_tie_coins": 200000,
+        "maximum_completed_coins": 200000,
+        "maximum_matchOdds_coins": 200000,
+        "maximum_toss_coins": 200000
+      },
+      "notification": "",
+      "otherMarketCacheUrl": "https://1excache.tresting.com/v2/api/dataByEventId?eventId=35705124",
+      "priority": 0,
+      "scoreIframe": "https://score.tresting.com/socket-iframe-21/crickexpo/35705124",
+      "scoreIframe2": "https://score.akamaized.uk/live-src?id35705124",
+      "seriesId": 12674617,
+      "seriesName": "ICC Women's T20 World Cup",
+      "socketPerm": true,
+      "socketUrl": "https://1excache.tresting.com/",
+      "sportId": 4,
+      "sportName": "England W v Sri Lanka W (T-20)",
+      "sportType": "Cricket",
+      "status": "INPLAY",
+      "teamData": "[{\"selection_id\":1,\"market_id\":\"1.259059770\",\"runner_name\":\"England W\",\"bookmakerSelectionId\":1,\"betfairSelectionId\":83801504},{\"selection_id\":2,\"market_id\":\"1.259059770\",\"runner_name\":\"Sri Lanka W\",\"bookmakerSelectionId\":2,\"betfairSelectionId\":83500064}]",
+      "tossRate": 0.95,
+      "trackName": "",
+      "tvId": 0,
+      "tvUrl": "https://scorewidget.org/score/0d860d2d03f4726091f7d2f3ab9b22021164ed5e/35705124",
+      "updatedAt": "2026-06-11T18:29:36.096Z",
+      "wonCompletedSelectionId": "",
+      "wonTeamBetfairSelectionId": "",
+      "wonTeamBookmakerSelectionId": "",
+      "wonTeamName": null,
+      "wonTieSelectionId": "",
+      "wonTossSelectionId": "",
+      "wonTossTeamName": ""
+    }
+  ]
+}

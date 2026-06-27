@@ -1,0 +1,11 @@
+[
+  {
+    "templateId": "sq-001",
+    "sportId": 4,
+    "name": "IPL Default Squad",
+    "players": [
+      "Player 1",
+      "Player 2"
+    ]
+  }
+]

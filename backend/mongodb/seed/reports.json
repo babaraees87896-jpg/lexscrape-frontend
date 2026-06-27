@@ -1,0 +1,79 @@
+[
+  {
+    "reportType": "casino/dayWiseCasinoReport",
+    "userId": "uid-admin",
+    "marketId": null,
+    "payload": {
+      "_id": {
+        "date": "1780252200000"
+      },
+      "eventId": 3030,
+      "eventName": "20-20 Teenpatti (01-06-2026)",
+      "userNetProfitLoss": 1250.5,
+      "userOddsComm": 85.25,
+      "clientOddsAmount": 42.1,
+      "clientNetAmount": 1123.15,
+      "createdAt": 1780252901535
+    },
+    "createdAt": "2026-06-12 08:21:58.040667+00:00"
+  },
+  {
+    "reportType": "casino/dayWiseCasinoReport",
+    "userId": "uid-admin",
+    "marketId": null,
+    "payload": {
+      "_id": {
+        "date": "1780165800000"
+      },
+      "eventId": 3031,
+      "eventName": "Dragon Tiger (31-05-2026)",
+      "userNetProfitLoss": -320.0,
+      "userOddsComm": 15.0,
+      "clientOddsAmount": 8.5,
+      "clientNetAmount": -296.5,
+      "createdAt": 1780166501535
+    },
+    "createdAt": "2026-06-12 08:21:58.040667+00:00"
+  },
+  {
+    "reportType": "reports/userProfitLoss",
+    "userId": "uid-admin",
+    "marketId": null,
+    "payload": {
+      "profitLoss": 1250.5,
+      "exposure": 0
+    },
+    "createdAt": "2026-06-12 08:21:58.040668+00:00"
+  },
+  {
+    "reportType": "bluexchReports/clientPlusMinus",
+    "userId": "6946a4bc25b6ee438db6ff4d",
+    "marketId": "1.245690241",
+    "payload": {
+      "plusMinus": 420.5,
+      "commission": 12.5
+    },
+    "createdAt": "2026-06-12 08:21:58.040668+00:00"
+  },
+  {
+    "reportType": "decision/userCommissionReport",
+    "userId": "uid-agent",
+    "marketId": null,
+    "payload": {
+      "_id": "uid-agent",
+      "userInfo": {
+        "userId": "uid-agent",
+        "username": "AGENT001",
+        "name": "Agent Demo",
+        "userType": "agent"
+      },
+      "oddsComm": 25.0,
+      "sessionComm": 10.0,
+      "casinoComm": 85.0,
+      "downlineOddsComm": 12.5,
+      "downlineSessionComm": 5.0,
+      "downlineCasinoComm": 42.5
+    },
+    "createdAt": "2026-06-12 08:21:58.040669+00:00"
+  }
+]

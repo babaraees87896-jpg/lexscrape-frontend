@@ -1,0 +1,34 @@
+{
+  "collection": "positions",
+  "database": "ex99_local",
+  "description": "sports/getOddsPosition, getSessionPositionBySelectionId",
+  "indexes": [
+    {
+      "keys": {
+        "userId": 1,
+        "marketId": 1
+      }
+    }
+  ],
+  "fields": {
+    "userId": {
+      "type": "string"
+    },
+    "marketId": {
+      "type": "string"
+    },
+    "selectionId": {
+      "type": "number"
+    },
+    "position": {
+      "type": "number"
+    },
+    "exposure": {
+      "type": "number"
+    }
+  },
+  "admin_apis": [
+    "sports/getOddsPosition",
+    "sports/getSessionPositionBySelectionId"
+  ]
+}

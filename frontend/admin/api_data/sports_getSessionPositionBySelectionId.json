@@ -1,0 +1,18 @@
+{
+  "message": "Session position fetched",
+  "code": 0,
+  "error": false,
+  "data": [
+    {
+      "userId": "6a1bd2d7356a85a557003d5d",
+      "username": "C324001",
+      "name": "Demo User",
+      "marketId": "",
+      "selectionId": "c0961b79d76271cca38aceb0d98396194c336940",
+      "runnerName": "4 OVER RUN ENG W",
+      "position": 30.0,
+      "exposure": 0,
+      "run": "29"
+    }
+  ]
+}

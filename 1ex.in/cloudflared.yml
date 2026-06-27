@@ -1,0 +1,18 @@
+# Copy credentials-file path from your existing tunnel, or use Cloudflare dashboard.
+# Run: cloudflared tunnel --config cloudflared.yml run 1ex-live
+
+tunnel: 282ce0db-81fc-41f8-ba28-d64a2bae99a1
+credentials-file: C:\Users\user\.cloudflared\282ce0db-81fc-41f8-ba28-d64a2bae99a1.json
+
+ingress:
+  - hostname: 1ex.in
+    service: http://127.0.0.1:1456
+  - hostname: www.1ex.in
+    service: http://127.0.0.1:1456
+  - hostname: admin.1ex.in
+    service: http://127.0.0.1:1457
+  - hostname: center.1ex.in
+    service: http://127.0.0.1:1458
+  - hostname: staff.1ex.in
+    service: http://127.0.0.1:1460
+  - service: http_status:404

@@ -1,0 +1,69 @@
+{
+  "collection": "ledger_entries",
+  "database": "ex99_local",
+  "description": "user/userLedger, ledgerCreditDebit, lenaDena \u2014 paisa credit/debit history",
+  "indexes": [
+    {
+      "keys": {
+        "userId": 1,
+        "createdAt": -1
+      }
+    }
+  ],
+  "fields": {
+    "ledgerId": {
+      "type": "string"
+    },
+    "userId": {
+      "type": "string",
+      "required": true
+    },
+    "fromUserId": {
+      "type": "string",
+      "note": "lenaDena ke liye"
+    },
+    "toUserId": {
+      "type": "string",
+      "note": "lenaDena ke liye"
+    },
+    "type": {
+      "type": "enum",
+      "values": [
+        "credit",
+        "debit"
+      ]
+    },
+    "amount": {
+      "type": "number",
+      "required": true
+    },
+    "description": {
+      "type": "string"
+    },
+    "remark": {
+      "type": "string"
+    },
+    "category": {
+      "type": "enum",
+      "values": [
+        "sport",
+        "casino",
+        "matka",
+        "cash",
+        "transfer"
+      ]
+    },
+    "balanceAfter": {
+      "type": "number"
+    },
+    "createdAt": {
+      "type": "date"
+    }
+  },
+  "admin_apis": [
+    "user/deleteUserLedger",
+    "user/ledgerCreditDebit",
+    "user/lenaDena",
+    "user/userLedger"
+  ]
+}

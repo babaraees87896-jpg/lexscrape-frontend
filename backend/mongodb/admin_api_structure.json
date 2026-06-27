@@ -1,0 +1,4007 @@
+{
+  "panel": "admin.1ex99.in",
+  "api_base": "https://api.ons3.co/v1/",
+  "local_server": "http://localhost:8889",
+  "local_api_prefix": "/v1/",
+  "database": "ex99_local",
+  "mongo_uri": "mongodb://localhost:27017",
+  "total_endpoints": 43,
+  "modules": {
+    "Auth": {
+      "count": 2,
+      "endpoints": [
+        "logout",
+        "user/login"
+      ]
+    },
+    "Casino": {
+      "count": 9,
+      "endpoints": [
+        "casino/dayWiseCasinoReport",
+        "casino/diamondBetsList",
+        "casino/diamondCasinoReportByUser",
+        "casino/getDiamondCasinoByEventId",
+        "casino/getDiamondCasinoData",
+        "casino/getPlusMinusCasinoDetail",
+        "casino/getProfitLossPos",
+        "casino/realTimeDataPosDataDiamondCasino",
+        "casino/roundWiseResult"
+      ]
+    },
+    "Domain": {
+      "count": 2,
+      "endpoints": [
+        "user/domainList",
+        "website/domainSettingByDomainName"
+      ]
+    },
+    "Ledger": {
+      "count": 4,
+      "endpoints": [
+        "user/deleteUserLedger",
+        "user/ledgerCreditDebit",
+        "user/lenaDena",
+        "user/userLedger"
+      ]
+    },
+    "Matka": {
+      "count": 2,
+      "endpoints": [
+        "matka/dayWiseMatkaReport",
+        "matka/getProfitLossPosMatka"
+      ]
+    },
+    "Reports": {
+      "count": 6,
+      "endpoints": [
+        "bluexchReports/clientPlusMinus",
+        "decision/completeSportList",
+        "decision/getPlusMinusByMarketId",
+        "reports/blockMarket",
+        "reports/getPlusMinusByMarketIdByUserWise",
+        "reports/userProfitLoss"
+      ]
+    },
+    "Sports": {
+      "count": 6,
+      "endpoints": [
+        "sports/betsList",
+        "sports/clientListByMarketId",
+        "sports/getOddsPosition",
+        "sports/getSessionPositionBySelectionId",
+        "sports/matchList",
+        "sports/sportByMarketId"
+      ]
+    },
+    "Users": {
+      "count": 12,
+      "endpoints": [
+        "user/create",
+        "user/getUserShareData",
+        "user/updateCoins",
+        "user/updateUserPassword",
+        "user/userActivity",
+        "user/userBalance",
+        "user/userDetails",
+        "user/userList",
+        "user/userLoginActivity",
+        "user/userSearch",
+        "user/userUpdate",
+        "user/userupdate"
+      ]
+    }
+  },
+  "mongodb_collections": {
+    "auth_sessions": {
+      "description": "user/login token \u2014 JWT session store",
+      "indexes": [
+        {
+          "keys": {
+            "token": 1
+          }
+        },
+        {
+          "keys": {
+            "userId": 1
+          }
+        }
+      ],
+      "fields": {
+        "token": {
+          "type": "string",
+          "required": true
+        },
+        "userId": {
+          "type": "string",
+          "required": true
+        },
+        "username": {
+          "type": "string"
+        },
+        "expiresAt": {
+          "type": "date"
+        },
+        "createdAt": {
+          "type": "date"
+        }
+      }
+    },
+    "casino_bets": {
+      "description": "casino/diamondBetsList",
+      "indexes": [
+        {
+          "keys": {
+            "userId": 1
+          }
+        },
+        {
+          "keys": {
+            "eventId": 1
+          }
+        }
+      ],
+      "fields": {
+        "userId": {
+          "type": "string"
+        },
+        "eventId": {
+          "type": "number"
+        },
+        "roundId": {
+          "type": "string"
+        },
+        "stake": {
+          "type": "number"
+        },
+        "selection": {
+          "type": "string"
+        },
+        "profitLoss": {
+          "type": "number"
+        },
+        "status": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "date"
+        }
+      }
+    },
+    "casino_games": {
+      "description": "casino/getDiamondCasinoData, getDiamondCasinoByEventId",
+      "indexes": [
+        {
+          "keys": {
+            "eventId": 1
+          },
+          "unique": true
+        }
+      ],
+      "fields": {
+        "eventId": {
+          "type": "number",
+          "required": true
+        },
+        "name": {
+          "type": "string"
+        },
+        "shortName": {
+          "type": "string"
+        },
+        "minStake": {
+          "type": "number"
+        },
+        "maxStake": {
+          "type": "number"
+        },
+        "betStatus": {
+          "type": "boolean"
+        },
+        "socketURL": {
+          "type": "string"
+        },
+        "cacheURL": {
+          "type": "string"
+        },
+        "videoUrl1": {
+          "type": "string"
+        },
+        "setting": {
+          "type": "object"
+        }
+      }
+    },
+    "casino_rounds": {
+      "description": "casino/roundWiseResult",
+      "indexes": [
+        {
+          "keys": {
+            "eventId": 1,
+            "roundId": 1
+          }
+        }
+      ],
+      "fields": {
+        "eventId": {
+          "type": "number"
+        },
+        "roundId": {
+          "type": "string"
+        },
+        "result": {
+          "type": "object"
+        },
+        "createdAt": {
+          "type": "date"
+        }
+      }
+    },
+    "domains": {
+      "description": "user/domainList, website/domainSettingByDomainName",
+      "indexes": [
+        {
+          "keys": {
+            "domainName": 1
+          },
+          "unique": true
+        }
+      ],
+      "fields": {
+        "domainName": {
+          "type": "string",
+          "required": true
+        },
+        "domainUrl": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "userNotification": {
+          "type": "string"
+        },
+        "clientNotification": {
+          "type": "string"
+        },
+        "themeSetting": {
+          "type": "object"
+        },
+        "banner": {
+          "type": "array"
+        },
+        "status": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ledger_entries": {
+      "description": "user/userLedger, ledgerCreditDebit, lenaDena \u2014 paisa credit/debit history",
+      "indexes": [
+        {
+          "keys": {
+            "userId": 1,
+            "createdAt": -1
+          }
+        }
+      ],
+      "fields": {
+        "ledgerId": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string",
+          "required": true
+        },
+        "fromUserId": {
+          "type": "string",
+          "note": "lenaDena ke liye"
+        },
+        "toUserId": {
+          "type": "string",
+          "note": "lenaDena ke liye"
+        },
+        "type": {
+          "type": "enum",
+          "values": [
+            "credit",
+            "debit"
+          ]
+        },
+        "amount": {
+          "type": "number",
+          "required": true
+        },
+        "description": {
+          "type": "string"
+        },
+        "remark": {
+          "type": "string"
+        },
+        "category": {
+          "type": "enum",
+          "values": [
+            "sport",
+            "casino",
+            "matka",
+            "cash",
+            "transfer"
+          ]
+        },
+        "balanceAfter": {
+          "type": "number"
+        },
+        "createdAt": {
+          "type": "date"
+        }
+      }
+    },
+    "matches": {
+      "description": "sports/matchList, sportByMarketId, reports/blockMarket",
+      "indexes": [
+        {
+          "keys": {
+            "marketId": 1
+          }
+        },
+        {
+          "keys": {
+            "eventId": 1
+          }
+        }
+      ],
+      "fields": {
+        "marketId": {
+          "type": "string"
+        },
+        "eventId": {
+          "type": "string"
+        },
+        "sportId": {
+          "type": "number"
+        },
+        "seriesId": {
+          "type": "number"
+        },
+        "matchName": {
+          "type": "string"
+        },
+        "matchDate": {
+          "type": "string"
+        },
+        "marketList": {
+          "type": "array",
+          "note": "sub-markets: Match Odds, Fancy, Bookmaker"
+        },
+        "betDelaySetting": {
+          "type": "object"
+        },
+        "maxMinCoins": {
+          "type": "object"
+        },
+        "isMatchOdds": {
+          "type": "boolean"
+        },
+        "isFancy": {
+          "type": "boolean"
+        },
+        "isBookmaker": {
+          "type": "boolean"
+        },
+        "isDeclare": {
+          "type": "boolean"
+        },
+        "status": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "date"
+        }
+      }
+    },
+    "positions": {
+      "description": "sports/getOddsPosition, getSessionPositionBySelectionId",
+      "indexes": [
+        {
+          "keys": {
+            "userId": 1,
+            "marketId": 1
+          }
+        }
+      ],
+      "fields": {
+        "userId": {
+          "type": "string"
+        },
+        "marketId": {
+          "type": "string"
+        },
+        "selectionId": {
+          "type": "number"
+        },
+        "position": {
+          "type": "number"
+        },
+        "exposure": {
+          "type": "number"
+        }
+      }
+    },
+    "reports": {
+      "description": "casino/dayWiseCasinoReport, userProfitLoss, plus-minus reports \u2014 cached rows",
+      "indexes": [
+        {
+          "keys": {
+            "reportType": 1,
+            "userId": 1
+          }
+        },
+        {
+          "keys": {
+            "marketId": 1
+          }
+        }
+      ],
+      "fields": {
+        "reportType": {
+          "type": "string",
+          "examples": [
+            "dayWiseCasino",
+            "userProfitLoss",
+            "plusMinusMarket"
+          ]
+        },
+        "userId": {
+          "type": "string"
+        },
+        "marketId": {
+          "type": "string"
+        },
+        "eventId": {
+          "type": "number"
+        },
+        "fromDate": {
+          "type": "string"
+        },
+        "toDate": {
+          "type": "string"
+        },
+        "userNetProfitLoss": {
+          "type": "number"
+        },
+        "clientNetAmount": {
+          "type": "number"
+        },
+        "payload": {
+          "type": "object",
+          "note": "full API row store"
+        },
+        "createdAt": {
+          "type": "date"
+        }
+      }
+    },
+    "sports_bets": {
+      "description": "sports/betsList, clientListByMarketId",
+      "indexes": [
+        {
+          "keys": {
+            "userId": 1
+          }
+        },
+        {
+          "keys": {
+            "marketId": 1
+          }
+        },
+        {
+          "keys": {
+            "createdAt": -1
+          }
+        }
+      ],
+      "fields": {
+        "userId": {
+          "type": "string",
+          "required": true
+        },
+        "username": {
+          "type": "string"
+        },
+        "marketId": {
+          "type": "string"
+        },
+        "eventId": {
+          "type": "string"
+        },
+        "selectionId": {
+          "type": "number"
+        },
+        "stake": {
+          "type": "number"
+        },
+        "odds": {
+          "type": "number"
+        },
+        "betType": {
+          "type": "string",
+          "values": "B|K|L|N"
+        },
+        "betFor": {
+          "type": "string"
+        },
+        "marketType": {
+          "type": "string",
+          "values": "odds|fancy|bookmaker"
+        },
+        "profitLoss": {
+          "type": "number"
+        },
+        "status": {
+          "type": "enum",
+          "values": [
+            "open",
+            "settled",
+            "void"
+          ]
+        },
+        "createdAt": {
+          "type": "date"
+        }
+      }
+    },
+    "sports_catalog": {
+      "description": "decision/completeSportList",
+      "indexes": [
+        {
+          "keys": {
+            "sportId": 1
+          },
+          "unique": true
+        }
+      ],
+      "fields": {
+        "sportId": {
+          "type": "number"
+        },
+        "sportName": {
+          "type": "string"
+        },
+        "status": {
+          "type": "boolean"
+        }
+      }
+    },
+    "user_activities": {
+      "description": "user/userActivity, user/userLoginActivity \u2014 login aur action logs",
+      "indexes": [
+        {
+          "keys": {
+            "userId": 1,
+            "createdAt": -1
+          }
+        },
+        {
+          "keys": {
+            "activityType": 1
+          }
+        }
+      ],
+      "fields": {
+        "userId": {
+          "type": "string",
+          "required": true
+        },
+        "activityType": {
+          "type": "enum",
+          "values": [
+            "login",
+            "logout",
+            "bet",
+            "update",
+            "transfer"
+          ]
+        },
+        "ip": {
+          "type": "string"
+        },
+        "device": {
+          "type": "string"
+        },
+        "payload": {
+          "type": "object"
+        },
+        "createdAt": {
+          "type": "date"
+        }
+      }
+    },
+    "users": {
+      "description": "Poori user hierarchy \u2014 owner se client tak. Login, userList, userDetails, balance.",
+      "indexes": [
+        {
+          "keys": {
+            "username": 1
+          },
+          "unique": true
+        },
+        {
+          "keys": {
+            "userId": 1
+          },
+          "unique": true
+        },
+        {
+          "keys": {
+            "userType": 1
+          }
+        },
+        {
+          "keys": {
+            "parentId": 1
+          }
+        }
+      ],
+      "fields": {
+        "userId": {
+          "type": "string",
+          "required": true,
+          "example": "6946a4bc25b6ee438db6ff4d"
+        },
+        "username": {
+          "type": "string",
+          "required": true,
+          "example": "ADMIN001"
+        },
+        "password": {
+          "type": "string",
+          "required": true
+        },
+        "name": {
+          "type": "string",
+          "example": "Admin Demo"
+        },
+        "mobile": {
+          "type": "string"
+        },
+        "userType": {
+          "type": "enum",
+          "values": [
+            "owner",
+            "subowner",
+            "superadmin",
+            "admin",
+            "subadmin",
+            "master",
+            "superagent",
+            "agent",
+            "client"
+          ]
+        },
+        "userPriority": {
+          "type": "number",
+          "range": "1-9"
+        },
+        "parentId": {
+          "type": "string"
+        },
+        "creatorId": {
+          "type": "string"
+        },
+        "coins": {
+          "type": "number",
+          "note": "UI .toFixed() \u2014 hamesha number rakho"
+        },
+        "balance": {
+          "type": "number",
+          "note": "coins ke barabar hota hai list mein"
+        },
+        "exposure": {
+          "type": "number",
+          "default": 0
+        },
+        "profitLoss": {
+          "type": "number",
+          "default": 0
+        },
+        "creditLimit": {
+          "type": "number"
+        },
+        "matchShare": {
+          "type": "number"
+        },
+        "matchCommission": {
+          "type": "number"
+        },
+        "sessionCommission": {
+          "type": "number"
+        },
+        "casinoShare": {
+          "type": "number"
+        },
+        "casinoCommission": {
+          "type": "number"
+        },
+        "casinoStatus": {
+          "type": "boolean"
+        },
+        "intCasinoStatus": {
+          "type": "boolean"
+        },
+        "matkaStatus": {
+          "type": "boolean"
+        },
+        "betStatus": {
+          "type": "boolean"
+        },
+        "betChipsData": {
+          "type": "object",
+          "example": {
+            "100": 100,
+            "500": 500
+          }
+        },
+        "status": {
+          "type": "string|number",
+          "example": "1"
+        },
+        "isDeleted": {
+          "type": "boolean|string"
+        },
+        "referralCode": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "date|timestamp"
+        },
+        "updatedAt": {
+          "type": "date|timestamp"
+        }
+      }
+    }
+  },
+  "apis": [
+    {
+      "endpoint": "bluexchReports/clientPlusMinus",
+      "url": "https://api.ons3.co/v1/bluexchReports/clientPlusMinus",
+      "local_url": "http://localhost:8889/v1/bluexchReports/clientPlusMinus",
+      "method": "POST",
+      "module": "Reports",
+      "mongodb_collection": "reports",
+      "operation": "read",
+      "request_body": {
+        "userId": "required",
+        "marketId": "required"
+      },
+      "request_fields": [
+        "userId",
+        "marketId"
+      ],
+      "response": {
+        "message": "string",
+        "code": "number (0=success)",
+        "error": "boolean",
+        "data": "object|array \u2014 sample neeche",
+        "sample": null
+      }
+    },
+    {
+      "endpoint": "casino/dayWiseCasinoReport",
+      "url": "https://api.ons3.co/v1/casino/dayWiseCasinoReport",
+      "local_url": "http://localhost:8889/v1/casino/dayWiseCasinoReport",
+      "method": "POST",
+      "module": "Casino",
+      "mongodb_collection": "reports",
+      "operation": "read",
+      "request_body": {
+        "fromDate": "required",
+        "toDate": "required",
+        "isCasino": "required"
+      },
+      "request_fields": [
+        "fromDate",
+        "toDate",
+        "isCasino"
+      ],
+      "response": {
+        "message": "string",
+        "code": "number (0=success)",
+        "error": "boolean",
+        "data": "object|array \u2014 sample neeche",
+        "sample": {
+          "message": "Casino report fetched",
+          "code": 0,
+          "error": false,
+          "data": [
+            {
+              "_id": {
+                "date": "1780252200000"
+              },
+              "eventId": 3030,
+              "eventName": "20-20 Teenpatti (01-06-2026)",
+              "userNetProfitLoss": 1250.5,
+              "userOddsComm": 85.25,
+              "clientOddsAmount": 42.1,
+              "clientNetAmount": 1123.15,
+              "createdAt": 1780252901535
+            },
+            {
+              "_id": {
+                "date": "1780165800000"
+              },
+              "eventId": 3031,
+              "eventName": "Dragon Tiger (31-05-2026)",
+              "userNetProfitLoss": -320.0,
+              "userOddsComm": 15.0,
+              "clientOddsAmount": 8.5,
+              "clientNetAmount": -296.5,
+              "createdAt": 1780166501535
+            }
+          ]
+        }
+      }
+    },
+    {
+      "endpoint": "casino/diamondBetsList",
+      "url": "https://api.ons3.co/v1/casino/diamondBetsList",
+      "local_url": "http://localhost:8889/v1/casino/diamondBetsList",
+      "method": "POST",
+      "module": "Casino",
+      "mongodb_collection": "casino_bets",
+      "operation": "read",
+      "request_body": {
+        "userId": "required",
+        "eventId": "required"
+      },
+      "request_fields": [
+        "userId",
+        "eventId"
+      ],
+      "response": {
+        "message": "string",
+        "code": "number (0=success)",
+        "error": "boolean",
+        "data": "object|array \u2014 sample neeche",
+        "sample": {
+          "message": "Diamond Casino Bet List Fetch Successfully",
+          "code": 0,
+          "error": false,
+          "data": {
+            "casinoBetData": []
+          }
+        }
+      }
+    },
+    {
+      "endpoint": "casino/diamondCasinoReportByUser",
+      "url": "https://api.ons3.co/v1/casino/diamondCasinoReportByUser",
+      "local_url": "http://localhost:8889/v1/casino/diamondCasinoReportByUser",
+      "method": "POST",
+      "module": "Casino",
+      "mongodb_collection": "reports",
+      "operation": "read",
+      "request_body": {
+        "userId": "required",
+        "fromDate": "required",
+        "toDate": "required"
+      },
+      "request_fields": [
+        "userId",
+        "fromDate",
+        "toDate"
+      ],
+      "response": {
+        "message": "string",
+        "code": "number (0=success)",
+        "error": "boolean",
+        "data": "object|array \u2014 sample neeche",
+        "sample": null
+      }
+    },
+    {
+      "endpoint": "casino/getDiamondCasinoByEventId",
+      "url": "https://api.ons3.co/v1/casino/getDiamondCasinoByEventId",
+      "local_url": "http://localhost:8889/v1/casino/getDiamondCasinoByEventId",
+      "method": "POST",
+      "module": "Casino",
+      "mongodb_collection": "casino_games",
+      "operation": "read",
+      "request_body": {
+        "eventId": "required"
+      },
+      "request_fields": [
+        "eventId"
+      ],
+      "response": {
+        "message": "string",
+        "code": "number (0=success)",
+        "error": "boolean",
+        "data": "object|array \u2014 sample neeche",
+        "sample": null
+      }
+    },
+    {
+      "endpoint": "casino/getDiamondCasinoData",
+      "url": "https://api.ons3.co/v1/casino/getDiamondCasinoData",
+      "local_url": "http://localhost:8889/v1/casino/getDiamondCasinoData",
+      "method": "POST",
+      "module": "Casino",
+      "mongodb_collection": "casino_games",
+      "operation": "read",
+      "request_body": {},
+      "request_fields": [],
+      "response": {
+        "message": "string",
+        "code": "number (0=success)",
+        "error": "boolean",
+        "data": "object|array \u2014 sample neeche",
+        "sample": {
+          "message": "data fetched",
+          "code": 0,
+          "error": false,
+          "data": [
+            {
+              "_id": "64aff010e90fd65d3bbd7f02",
+              "maxStake": 20000,
+              "minStake": 100,
+              "socketURL": "https://casinoapi.tresting.com",
+              "cacheURL": "https://casinoapi.tresting.com/v2/api/casinoData?casinoType=teen20",
+              "betStatus": true,
+              "cashinoStatus": true,
+              "videoUrl1": "https://casinostream.tresting.com/route/?id3030",
+              "videoUrl2": "https://stream.1ex99.in/casinoVideo/video?id3030",
+              "videoUrl3": "",
+              "videoUrlType": "1",
+              "isDisable": false,
+              "name": "20-20 Teenpatti",
+              "shortName": "teen20",
+              "eventId": 3030,
+              "fetchData": "socket",
+              "date": 1689206400000,
+              "time": 1689251856647,
+              "createdAt": 1689251856647,
+              "setting": {
+                "oddsDifference": "0.03",
+                "errorMessage": "Game is under maintenanc"
+              },
+              "isVirtual": false
+            },
+            {
+              "_id": "64aff3eee90fd65d3bbd7f11",
+              "maxStake": 10000,
+              "minStake": 100,
+              "socketURL": "https://casinoapi.tresting.com",
+              "cacheURL": "https://casinoapi.tresting.com/v2/api/casinoData?casinoTypebaccarat2",
+              "betStatus": false,
+              "cashinoStatus": false,
+              "videoUrl1": "https://casinostream.tresting.com/route/?id3033",
+              "videoUrl2": "https://stream.1ex99.in/casinoVideo/video?id3033",
+              "videoUrl3": "",
+              "videoUrlType": "1",
+              "isDisable": false,
+              "name": "Baccarat 2",
+              "shortName": "baccarat2",
+              "eventId": 3033,
+              "fetchData": "socket",
+              "date": 1689206400000,
+              "time": 1689252846511,
+              "createdAt": 1689252846511,
+              "isVirtual": false
+            },
+            {
+              "_id": "64aff4f7e90fd65d3bbd7f16",
+              "maxStake": 20000,
+              "minStake": 100,
+              "socketURL": "https://casinoapi.tresting.com",
+              "cacheURL": "https://casinoapi.tresting.com/v2/api/casinoData?casinoTypecard=32eu",
+              "betStatus": true,
+              "cashinoStatus": true,
+              "videoUrl1": "https://casinostream.tresting.com/route/?id3034",
+              "videoUrl2": "https://stream.1ex99.in/casinoVideo/video?id3034",
+              "videoUrl3": "",
+              "videoUrlType": "1",
+              "isDisable": false,
+              "name": "32 Cards b",
+              "shortName": "card32eu",
+              "eventId": 3034,
+              "fetchData": "socket",
+              "date": 1689206400000,
+              "time": 1689253111270,
+              "createdAt": 1689253111270,
+              "setting": {
+                "oddsDifference": "0",
+                "errorMessage": "Game is under maintenanc"
+              },
+              "isVirtual": false
+            },
+            {
+              "_id": "64aff74ce90fd65d3bbd7f38",
+              "maxStake": 20000,
+              "minStake": 100,
+              "socketURL": "https://casinoapi.tresting.com",
+              "cacheURL": "https://casinoapi.tresting.com/v2/api/casinoData?casinoType=Teen",
+              "betStatus": true,
+              "cashinoStatus": true,
+              "videoUrl1": "https://casinostream.tresting.com/route/?id3031",
+              "videoUrl2": "https://stream.1ex99.in/casinoVideo/video?id3031",
+              "videoUrl3": "",
+              "videoUrlType": "1",
+              "isDisable": false,
+              "name": "Teenpatti onday",
+              "shortName": "Teen",
+              "eventId": 3031,
+              "fetchData": "socket",
+              "date": 1689206400000,
+              "time": 1689253708695,
+              "createdAt": 1689253708695,
+              "setting": {
+                "sss": 5677,
+                "errorMessage": "Game is under maintenanc",
+                "oddsDifference": "0"
+              },
+              "isVirtual": false
+            },
+            {
+              "_id": "64aff7c4e90fd65d3bbd7f3d",
+              "maxStake": 20000,
+              "minStake": 100,
+              "socketURL": "https://casinoapi.tresting.com",
+              "cacheURL": "https://casinoapi.tresting.com/v2/api/casinoData?casinoType=lucky7eu",
+              "betStatus": true,
+              "cashinoStatus": true,
+              "videoUrl1": "https://casinostream.tresting.com/route/?id3032",
+              "videoUrl2": "https://stream.1ex99.in/casinoVideo/video?id3032",
+              "videoUrl3": "",
+              "videoUrlType": "1",
+              "isDisable": false,
+              "name": "Lucky7 B",
+              "shortName": "lucky7eu",
+              "eventId": 3032,
+              "fetchData": "socket",
+              "date": 1689206400000,
+              "time": 1689253828485,
+              "createdAt": 1689253828485,
+              "setting": {
+                "oddsDifference": "0.05",
+                "errorMessage": "Game is under maintenanc"
+              },
+              "isVirtual": false
+            },
+            {
+              "_id": "64aff84ce90fd65d3bbd7f42",
+              "maxStake": 20000,
+              "minStake": 100,
+              "socketURL": "https://casinoapi.tresting.com",
+              "cacheURL": "https://casinoapi.tresting.com/v2/api/casinoData?casinoType=dt20",
+              "betStatus": true,
+              "cashinoStatus": true,
+              "videoUrl1": "https://casinostream.tresting.com/route/?id3035",
+              "videoUrl2": "https://stream.1ex99.in/casinoVideo/video?id3035",
+              "videoUrl3": "",
+              "videoUrlType": "1",
+              "isDisable": false,
+              "name": "20-20 Dragon Tiger",
+              "shortName": "dt20",
+              "eventId": 3035,
+              "fetchData": "socket",
+              "date": 1689206400000,
+              "time": 1689253964596,
+              "createdAt": 1689253964596,
+              "setting": {
+                "oddsDifference": "0.05"
+              },
+              "isVirtual": false
+            },
+            {
+              "_id": "64aff8c3e90fd65d3bbd7f47",
+              "maxStake": 10000,
+              "minStake": 100,
+              "socketURL": "https://casinoapi.tresting.com",
+              "cacheURL": "https://casinoapi.tresting.com/v2/api/casinoData?casinoTyperace20",
+              "betStatus": false,
+              "cashinoStatus": false,
+              "videoUrl1": "https://casinostream.tresting.com/route/?id3036",
+              "videoUrl2": "https://stream.1ex99.in/casinoVideo/video?id3036",
+              "videoUrl3": "",
+              "videoUrlType": "1",
+              "isDisable": false,
+              "name": "Race 20",
+              "shortName": "race20",
+              "eventId": 3036,
+              "fetchData": "socket",
+              "date": 1689206400000,
+              "time": 1689254083494,
+              "createdAt": 1689254083494,
+              "isVirtual": false
+            },
+            {
+              "_id": "64aff914e90fd65d3bbd7f4c",
+              "maxStake": 10000,
+              "minStake": 100,
+              "socketURL": "https://casinoapi.tresting.com",
+              "cacheURL": "https://casinoapi.tresting.com/v2/api/casinoData?casinoTypequeen",
+              "betStatus": false,
+              "cashinoStatus": false,
+              "videoUrl1": "https://casinostream.tresting.com/route/?id3037",
+              "videoUrl2": "https://stream.1ex99.in/casinoVideo/video?id3037",
+              "videoUrl3": "",
+              "videoUrlType": "1",
+              "isDisable": false,
+              "name": "Queen",
+              "shortName": "queen",
+              "eventId": 3037,
+              "fetchData": "socket",
+              "date": 1689206400000,
+              "time": 1689254164614,
+              "createdAt": 1689254164614,
+              "isVirtual": false
+            },
+            {
+              "isVirtual": false,
+              "_id": "64aff98ee90fd65d3bbd7f51",
+              "maxStake": 10000,
+              "minStake": 100,
+              "socketURL": "https://casinoapi.tresting.com",
+              "cacheURL": "https://casinoapi.tresting.com/v2/api/casinoData?casinoType=war",
+              "betStatus": false,
+              "cashinoStatus": false,
+              "videoUrl1": "https://casinostream.tresting.com/route/?id=3038",
+              "videoUrl2": "",
+              "videoUrl3": "https://stream.1ex99.in/casinoVideo/video?id=3038",
+              "videoUrlType": "1",
+              "isDisable": false,
+              "name": "Casino war",
+              "shortName": "war",
+              "eventId": 3038,
+              "fetchData": "socket",
+              "date": 1689206400000,
+              "time": 1689254286219,
+              "createdAt": 1689254286219
+            },
+            {
+              "isVirtual": false,
+              "_id": "64affa22e90fd65d3bbd7f56",
+              "maxStake": 10000,
+              "minStake": 100,
+              "socketURL": "https://casinoapi.tresting.com",
+              "cacheURL": "https://casinoapi.tresting.com/v2/api/casinoData?casinoType=3cardj",
+              "betStatus": false,
+              "cashinoStatus": false,
+              "videoUrl1": "https://casinostream.tresting.com/route/?id=3039",
+              "videoUrl2": "https://stream.1ex99.in/casinoVideo/video?id=3039",
+              "videoUrl3": "",
+              "videoUrlType": "1",
+              "isDisable": true,
+              "name": "3 Card",
+              "shortName": "3cardj",
+              "eventId": 3039,
+              "date": 1689206400000,
+              "time": 1689254434945,
+              "createdAt": 1689254434945
+            },
+            {
+              "isVirtual": false,
+              "_id": "64affa85e90fd65d3bbd7f5b",
+              "maxStake": 10000,
+              "minStake": 100,
+              "socketURL": "https://casinoapi.tresting.com",
+              "cacheURL": "https://casinoapi.tresting.com/v2/api/casinoData?casinoType=worli2",
+              "betStatus": false,
+              "cashinoStatus": false,
+              "videoUrl1": "https://casinostream.tresting.com/route/?id=3040",
+              "videoUrl2": "https://stream.1ex99.in/casinoVideo/video?id=3040",
+              "videoUrl3": "",
+              "videoUrlType": "1",
+              "isDisable": false,
+              "name": "instant Worli",
+              "shortName": "worli2",
+              "eventId": 3040,
+              "date": 1689206400000,
+              "time": 1689254533876,
+              "createdAt": 1689254533876
+            },
+            {
+              "isVirtual": false,
+              "_id": "64affc67e90fd65d3bbd7f60",
+              "maxStake": 10000,
+              "minStake": 100,
+              "socketURL": "https://casinoapi.tresting.com",
+              "cacheURL": "https://casinoapi.tresting.com/v2/api/casinoData?casinoType=btable",
+              "betStatus": false,
+              "cashinoStatus": false,
+              "videoUrl1": "https://casinostream.tresting.com/route/?id=3041",
+              "videoUrl2": "https://stream.1ex99.in/casinoVideo/video?id=3041",
+              "videoUrl3": "",
+              "videoUrlType": "1",
+              "isDisable": false,
+              "name": "Bollywood Casino",
+              "shortName": "btable",
+              "eventId": 3041,
+              "fetchData": "socket",
+              "date": 1689206400000,
+              "time": 1689255015625,
+              "createdAt": 1689255015625
+            },
+            {
+              "_id": "64affd14e90fd65d3bbd7f65",
+              "maxStake": 20000,
+              "minStake": 100,
+              "socketURL": "https://casinoapi.tresting.com",
+              "cacheURL": "https://casinoapi.tresting.com/v2/api/casinoData?casinoType=abj",
+              "betStatus": true,
+              "cashinoStatus": true,
+              "videoUrl1": "https://casinostream.tresting.com/route/?id3043",
+              "videoUrl2": "https://stream.1ex99.in/casinoVideo/video?id3043",
+              "videoUrl3": "",
+              "videoUrlType": "1",
+              "isDisable": false,
+              "name": "Andar Bahar 2",
+              "shortName": "abj",
+              "eventId": 3043,
+              "fetchData": "socket",
+              "date": 1689206400000,
+              "time": 1689255188863,
+              "createdAt": 1689255188863,
+              "setting": {
+                "oddsDifference": "0.05",
+                "errorMessage": "Game is under maintenanc"
+              },
+              "isVirtual": false
+            },
+            {
+              "isVirtual": false,
+              "_id": "64affe07e90fd65d3bbd7f6b",
+              "maxStake": 10000,
+              "minStake": 100,
+              "socketURL": "https://casinoapi.tresting.com",
+              "cacheURL": "https://casinoapi.tresting.com/v2/api/casinoData?casinoType=baccarat",
+              "betStatus": false,
+              "cashinoStatus": false,
+              "videoUrl1": "https://casinostream.tresting.com/route/?id=3044",
+              "videoUrl2": "https://stream.1ex99.in/casinoVideo/video?id=3044",
+              "videoUrl3": "",
+              "videoUrlType": "1",
+              "isDisable": false,
+              "name": "Baccarat",
+              "shortName": "baccarat",
+              "eventId": 3044,
+              "fetchData": "socket",
+              "date": 1689206400000,
+              "time": 1689255431657,
+              "createdAt": 1689255431657
+            },
+            {
+              "isVirtual": false,
+              "_id": "64affe80e90fd65d3bbd7f70",
+              "maxStake": 10000,
+              "minStake": 100,
+              "socketURL": "https://casinoapi.tresting.com",
+              "cacheURL": "https://casinoapi.tresting.com/v2/api/casinoData?casinoType=cmeter",
+              "betStatus": false,
+              "cashinoStatus": false,
+              "videoUrl1": "https://casinostream.tresting.com/route/?id=3046",
+              "videoUrl2": "https://stream.1ex99.in/casinoVideo/video?id=3046",
+              "videoUrl3": "",
+              "videoUrlType": "1",
+              "isDisable": false,
+              "name": "Casino Meter",
+              "shortName": "cmeter",
+              "eventId": 3046,
+              "fetchData": "socket",
+              "date": 1689206400000,
+              "time": 1689255552582,
+              "createdAt": 1689255552582
+            },
+            {
+              "isVirtual": false,
+              "_id": "64afff5ce90fd65d3bbd7f75",
+              "maxStake": 10000,
+              "minStake": 100,
+              "socketURL": "https://casinoapi.tresting.com",
+              "cacheURL": "https://casinoapi.tresting.com/v2/api/casinoData?casinoType=dtl20",
+              "betStatus": false,
+              "cashinoStatus": false,
+              "videoUrl1": "https://casinostream.tresting.com/route/?id=3047",
+              "videoUrl2": "https://stream.1ex99.in/casinoVideo/video?id=3047",
+              "videoUrl3": "",
+              "videoUrlType": "1",
+              "isDisable": false,
+              "name": "20-20 DTL",
+              "shortName": "dtl20",
+              "eventId": 3047,
+              "fetchData": "socket",
+              "date": 1689206400000,
+              "time": 1689255772847,
+              "createdAt": 1689255772847
+            },
+            {
+              "isVirtual": false,
+              "_id": "64b00024e90fd65d3bbd7f7a",
+              "maxStake": 10000,
+              "minStake": 100,
+              "socketURL": "https://casinoapi.tresting.com",
+              "cacheURL": "https://casinoapi.tresting.com/v2/api/casinoData?casinoType=6player",
+              "betStatus": false,
+              "cashinoStatus": false,
+              "videoUrl1": "https://casinostream.tresting.com/route/?id=3050",
+              "videoUrl2": "https://stream.1ex99.in/casinoVideo/video?id=3050",
+              "videoUrl3": "",
+              "videoUrlType": "1",
+              "isDisable": false,
+              "name": "Poker 6 Player",
+              "shortName": "6player",
+              "eventId": 3050,
+              "fetchData": "socket",
+              "date": 1689206400000,
+              "time": 1689255972351,
+              "createdAt": 1689255972351
+            },
+            {
+              "isVirtual": false,
+              "_id": "64b0c9b3e90fd65d3bbd7f93",
+              "maxStake": 10000,
+              "minStake": 100,
+              "socketURL": "https://casinoapi.tresting.com",
+              "cacheURL": "https://casinoapi.tresting.com/v2/api/casinoData?casinoType=poker",
+              "betStatus": false,
+              "cashinoStatus": false,
+              "videoUrl1": "https://casinostream.tresting.com/route/?id=3051",
+              "videoUrl2": "https://stream.1ex99.in/casinoVideo/video?id=3051",
+              "videoUrl3": "",
+              "videoUrlType": "1",
+              "isDisable": false,
+              "name": "One Day Poker",
+              "shortName": "poker",
+              "eventId": 3051,
+              "fetchData": "socket",
+              "date": 1689292800000,
+              "time": 1689307571161,
+              "createdAt": 1689307571161
+            },
+            {
+              "isVirtual": false,
+              "_id": "64b0ca43e90fd65d3bbd7f9c",
+              "maxStake": 10000,
+              "minStake": 100,
+              "socketURL": "https://casinoapi.tresting.com",
+              "cacheURL": "https://casinoapi.tresting.com/v2/api/casinoData?casinoType=poker20",
+              "betStatus": false,
+              "cashinoStatus": false,
+              "videoUrl1": "https://casinostream.tresting.com/route/?id=3052",
+              "videoUrl2": "https://stream.1ex99.in/casinoVideo/video?id=3052",
+              "videoUrl3": "",
+              "videoUrlType": "1",
+              "isDisable": false,
+              "name": "20-20 Poker",
+              "shortName": "poker20",
+              "eventId": 3052,
+              "fetchData": "socket",
+              "date": 1689292800000,
+              "time": 1689307715749,
+              "createdAt": 1689307715749
+            },
+            {
+              "isVirtual": false,
+              "_id": "64b0cbbce90fd65d3bbd7fa1",
+              "maxStake": 10000,
+              "minStake": 100,
+              "socketURL": "https://casinoapi.tresting.com",
+              "cacheURL": "https://casinoapi.tresting.com/v2/api/casinoData?casinoType=ab20",
+              "betStatus": false,
+              "cashinoStatus": false,
+              "videoUrl1": "https://casinostream.tresting.com/route/?id=3053",
+              "videoUrl2": "https://stream.1ex99.in/casinoVideo/video?id=3053",
+              "videoUrl3": "",
+              "videoUrlType": "1",
+              "isDisable": false,
+              "name": "Andar Bahar",
+              "shortName": "ab20",
+              "eventId": 3053,
+              "fetchData": "socket",
+              "date": 1689292800000,
+              "time": 1689308092150,
+              "createdAt": 1689308092150
+            },
+            {
+              "_id": "64b0d23ae90fd65d3bbd7fa6",
+              "maxStake": 20000,
+              "minStake": 100,
+              "socketURL": "https://casinoapi.tresting.com",
+              "cacheURL": "https://casinoapi.tresting.com/v2/api/casinoData?casinoType=worli",
+              "betStatus": true,
+              "cashinoStatus": true,
+              "videoUrl1": "https://casinostream.tresting.com/route/?id3054",
+              "videoUrl2": "https://stream.1ex99.in/casinoVideo/video?id3054",
+              "videoUrl3": "",
+              "videoUrlType": "1",
+              "isDisable": false,
+              "name": "Worli Matka",
+              "shortName": "worli",
+              "eventId": 3054,
+              "fetchData": "socket",
+              "date": 1689292800000,
+              "time": 1689309754056,
+              "createdAt": 1689309754056,
+              "setting": {
+                "oddsDifference": "0",
+                "errorMessage": "Game is under maintenanc"
+              },
+              "isVirtual": false
+            },
+            {
+              "_id": "64b0d9a9e90fd65d3bbd7fab",
+              "maxStake": 20000,
+              "minStake": 100,
+              "socketURL": "https://casinoapi.tresting.com",
+              "cacheURL": "https://casinoapi.tresting.com/v2/api/casinoData?casinoType=card32",
+              "betStatus": true,
+              "cashinoStatus": true,
+              "videoUrl1": "https://casinostream.tresting.com/route/?id3055",
+              "videoUrl2": "https://stream.1ex99.in/casinoVideo/video?id3055",
+              "videoUrl3": "",
+              "videoUrlType": "1",
+              "isDisable": false,
+              "name": "32 Card A",
+              "shortName": "card32",
+              "eventId": 3055,
+              "fetchData": "socket",
+              "date": 1689292800000,
+              "time": 1689311657405,
+              "createdAt": 1689311657405,
+              "setting": {
+                "errorMessage": "Game is under maintenanc",
+                "oddsDifference": "0"
+              },
+              "isVirtual": false
+            },
+            {
+              "_id": "64b0e226e90fd65d3bbd7fb7",
+              "maxStake": 20000,
+              "minStake": 100,
+              "socketURL": "https://casinoapi.tresting.com",
+              "cacheURL": "https://casinoapi.tresting.com/v2/api/casinoData?casinoTypeaaa",
+              "betStatus": true,
+              "cashinoStatus": true,
+              "videoUrl1": "https://casinostream.tresting.com/route/?id3056",
+              "videoUrl2": "https://stream.1ex99.in/casinoVideo/video?id3056",
+              "videoUrl3": "",
+              "videoUrlType": "1",
+              "isDisable": false,
+              "name": "Amar Akbar Anthony",
+              "shortName": "aaa",
+              "eventId": 3056,
+              "fetchData": "socket",
+              "date": 1689292800000,
+              "time": 1689313830071,
+              "createdAt": 1689313830071,
+              "isVirtual": false
+            },
+            {
+              "isVirtual": false,
+              "_id": "64b0e28de90fd65d3bbd7fbc",
+              "maxStake": 10000,
+              "minStake": 100,
+              "socketURL": "https://casinoapi.tresting.com",
+              "cacheURL": "https://casinoapi.tresting.com/v2/api/casinoData?casinoType=dt6",
+              "betStatus": false,
+              "cashinoStatus": false,
+              "videoUrl1": "https://casinostream.tresting.com/route/?id=3057",
+              "videoUrl2": "https://stream.1ex99.in/casinoVideo/video?id=3057",
+              "videoUrl3": "",
+              "videoUrlType": "1",
+              "isDisable": false,
+              "name": "1 Day Dragon Tiger",
+              "shortName": "dt6",
+              "eventId": 3057,
+              "fetchData": "socket",
+              "date": 1689292800000,
+              "time": 1689313933364,
+              "createdAt": 1689313933364
+            },
+            {
+              "isVirtual": false,
+              "_id": "64b0e6e2e90fd65d3bbd7fc1",
+              "maxStake": 10000,
+              "minStake": 100,
+              "socketURL": "https://casinoapi.tresting.com",
+              "cacheURL": "https://casinoapi.tresting.com/v2/api/casinoData?casinoType=lucky7",
+              "betStatus": false,
+              "cashinoStatus": false,
+              "videoUrl1": "https://casinostream.tresting.com/route/?id=3058",
+              "videoUrl2": "https://stream.1ex99.in/casinoVideo/video?id=3058",
+              "videoUrl3": "",
+              "videoUrlType": "1",
+              "isDisable": false,
+              "name": "Lucky-7 A",
+              "shortName": "lucky7",
+              "eventId": 3058,
+              "fetchData": "socket",
+              "date": 1689292800000,
+              "time": 1689315042938,
+              "createdAt": 1689315042938
+            },
+            {
+              "_id": "64b0e7a6e90fd65d3bbd7fc6",
+              "maxStake": 20000,
+              "minStake": 100,
+              "socketURL": "https://casinoapi.tresting.com",
+              "cacheURL": "https://casinoapi.tresting.com/v2/api/casinoData?casinoType=dt202",
+              "betStatus": true,
+              "cashinoStatus": true,
+              "videoUrl1": "https://casinostream.tresting.com/route/?id3059",
+              "videoUrl2": "https://stream.1ex99.in/casinoVideo/video?id3059",
+              "videoUrl3": "",
+              "videoUrlType": "1",
+              "isDisable": false,
+              "name": "20-20 Dragon Tiger 2",
+              "shortName": "dt202",
+              "eventId": 3059,
+              "fetchData": "socket",
+              "date": 1689292800000,
+              "time": 1689315238462,
+              "createdAt": 1689315238462,
+              "setting": {
+                "oddsDifference": "0.05",
+                "errorMessage": "Game is under maintenanc"
+              },
+              "isVirtual": false
+            },
+            {
+              "_id": "64b0e7f4e90fd65d3bbd7fcb",
+              "maxStake": 10000,
+              "minStake": 100,
+              "socketURL": "https://casinoapi.tresting.com",
+              "cacheURL": "https://casinoapi.tresting.com/v2/api/casinoData?casinoTypesuperover",
+              "betStatus": false,
+              "cashinoStatus": false,
+              "videoUrl1": "https://casinostream.tresting.com/route/?id3060",
+              "videoUrl2": "https://stream.1ex99.in/casinoVideo/video?id3060",
+              "videoUrl3": "",
+              "videoUrlType": "1",
+              "isDisable": false,
+              "name": "Super Over",
+              "shortName": "superover",
+              "eventId": 3060,
+              "fetchData": "socket",
+              "date": 1689292800000,
+              "time": 1689315316410,
+              "createdAt": 1689315316410,
+              "isVirtual": false
+            },
+            {
+              "isVirtual": false,
+              "_id": "64b0e9d4e90fd65d3bbd7fd2",
+              "maxStake": 10000,
+              "minStake": 100,
+              "socketURL": "https://casinoapi.tresting.com",
+              "cacheURL": "https://casinoapi.tresting.com/v2/api/casinoData?casinoType=cmatch20",
+              "betStatus": false,
+              "cashinoStatus": false,
+              "videoUrl1": "https://casinostream.tresting.com/route/?id=3045",
+              "videoUrl2": "https://stream.1ex99.in/casinoVideo/video?id=3045",
+              "videoUrl3": "",
+              "videoUrlType": "1",
+              "isDisable": false,
+              "name": "Cricket Match 20-20",
+              "shortName": "cmatch20",
+              "eventId": 3045,
+              "fetchData": "socket",
+              "date": 1689292800000,
+              "time": 1689315796354,
+              "createdAt": 1689315796354
+            },
+            {
+              "isVirtual": false,
+              "_id": "64b0eabee90fd65d3bbd7fd9",
+              "maxStake": 10000,
+              "minStake": 100,
+              "socketURL": "https://casinoapi.tresting.com",
+              "cacheURL": "https://casinoapi.tresting.com/v2/api/casinoData?casinoType=teen8",
+              "betStatus": false,
+              "cashinoStatus": false,
+              "videoUrl1": "https://casinostream.tresting.com/route/?id=3049",
+              "videoUrl2": "https://stream.1ex99.in/casinoVideo/video?id=3049",
+              "videoUrl3": "",
+              "videoUrlType": "1",
+              "isDisable": false,
+              "name": "Teenpatti open",
+              "shortName": "teen8",
+              "eventId": 3049,
+              "fetchData": "socket",
+              "date": 1689292800000,
+              "time": 1689316030877,
+              "createdAt": 1689316030877
+            },
+            {
+              "isVirtual": false,
+              "_id": "64b4ca586c77df9d7e5e1eb8",
+              "maxStake": 10000,
+              "minStake": 100,
+              "socketURL": "https://casinoapi.tresting.com",
+              "cacheURL": "https://casinoapi.tresting.com/v2/api/casinoData?casinoType=teen9",
+              "betStatus": false,
+              "cashinoStatus": false,
+              "videoUrl1": "https://casinostream.tresting.com/route/?id=3048",
+              "videoUrl2": "https://stream.1ex99.in/casinoVideo/video?id=3048",
+              "videoUrl3": "",
+              "videoUrlType": "1",
+              "isDisable": false,
+              "name": "Teenpatti Test",
+              "shortName": "teen9",
+              "eventId": 3048,
+              "date": 1689552000000,
+              "time": 1689569880260,
+              "createdAt": 1689569880260,
+              "fetchData": "socket"
+            },
+            {
+              "_id": "68ebd00c2cfffae10624ba8b",
+              "maxStake": 10000,
+              "minStake": 10,
+              "socketURL": "https://casinoapi.tresting.com",
+              "cacheURL": "https://casinoapi.tresting.com/v2/api/casinoData?casinoType=avaitor",
+              "betStatus": true,
+              "cashinoStatus": true,
+              "videoUrl1": "https://casinostream.tresting.com/route/?id=303031",
+              "videoUrl2": "https://live.oldd247.com/swiftdizire/?id=303031",
+              "videoUrl3": "",
+              "videoUrlType": "1",
+              "isDisable": false,
+              "name": "avaitor",
+              "shortName": "avaitor",
+              "eventId": 303031,
+              "fetchData": "socket",
+              "date": 1689206400000,
+              "time": 1689251856647,
+              "createdAt": 1689251856647,
+              "setting": {
+                "errorMessage": "BET LOCKED PLZ CONTACT ADMIN",
+                "oddsDifference": "0"
+              },
+              "isVirtual": false
+            },
+            {
+              "_id": "696f1c2fd4e19d4559f248e5",
+              "maxStake": 20000,
+              "minStake": 100,
+              "socketURL": "https://casinoapi.tresting.com",
+              "cacheURL": "https://casinoapi.tresting.com/v2/api/casinoData?casinoType=ballbyball",
+              "betStatus": true,
+              "cashinoStatus": true,
+              "videoUrl1": "https://casinostream.tresting.com/route/?id3061",
+              "videoUrl2": "https://live.oldd247.com/swiftdizire/?id3061",
+              "videoUrl3": "",
+              "videoUrlType": "1",
+              "isDisable": false,
+              "name": "BallByBall",
+              "shortName": "ballbyball",
+              "eventId": 3061,
+              "fetchData": "socket",
+              "date": 1689206400000,
+              "time": 1689251856647,
+              "createdAt": 1689251856647,
+              "setting": {
+                "errorMessage": "Game is under maintenance",
+                "oddsDifference": "0"
+              },
+              "isVirtual": false
+            },
+            {
+              "_id": "696fa31e16bdba0c6ea10580",
+              "maxStake": 100000,
+              "minStake": 10,
+              "socketURL": "https://casinoapi.tresting.com",
+              "cacheURL": "https://casinoapi.tresting.com/v2/api/casinoData?casinoType=goal",
+              "betStatus": false,
+              "cashinoStatus": false,
+              "videoUrl1": "https://casinostream.tresting.com/route/?id=3065",
+              "videoUrl2": "https://live.oldd247.com/swiftdizire/?id=3065",
+              "videoUrl3": "",
+              "videoUrlType": "1",
+              "isDisable": false,
+              "name": "Goal",
+              "shortName": "goal",
+              "eventId": 3065,
+              "fetchData": "socket",
+              "date": 1689206400000,
+              "time": 1689251856647,
+              "createdAt": 1689251856647,
+              "setting": {
+                "errorMessage": "Game is under maintenance",
+                "oddsDifference": "0"
+              },
+              "isVirtual": false
+            },
+            {
+              "_id": "69c7e1d9e37f091e04157789",
+              "eventId": 35364409,
+              "betStatus": false,
+              "cacheURL": "http://84.200.192.210:18895/v2/api/oddsDataNew?market_id=1.255200877",
+              "cashinoStatus": false,
+              "createdAt": 1774707161069,
+              "date": 1774636200000,
+              "isDisable": false,
+              "isVirtual": false,
+              "maxStake": 0,
+              "minStake": 0,
+              "socketURL": "",
+              "time": 1774707161069,
+              "videoUrl1": "",
+              "videoUrl2": "",
+              "videoUrl3": "",
+              "videoUrlType": "1"
+            },
+            {
+              "_id": "69cfd9ceed47bebd23c55e07",
+              "eventId": 35436411,
+              "betStatus": false,
+              "cacheURL": "http://84.200.192.210:18893/v2/api/oddsDataNew?market_id=1.256095371",
+              "cashinoStatus": false,
+              "createdAt": 1775229390471,
+              "date": 1775154600000,
+              "isDisable": false,
+              "isVirtual": false,
+              "maxStake": 0,
+              "minStake": 0,
+              "socketURL": "",
+              "time": 1775229390471,
+              "videoUrl1": "",
+              "videoUrl2": "",
+              "videoUrl3": "",
+              "videoUrlType": "1"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "endpoint": "casino/getPlusMinusCasinoDetail",
+      "url": "https://api.ons3.co/v1/casino/getPlusMinusCasinoDetail",
+      "local_url": "http://localhost:8889/v1/casino/getPlusMinusCasinoDetail",
+      "method": "POST",
+      "module": "Casino",
+      "mongodb_collection": "reports",
+      "operation": "read",
+      "request_body": {
+        "userId": "required",
+        "eventId": "required"
+      },
+      "request_fields": [
+        "userId",
+        "eventId"
+      ],
+      "response": {
+        "message": "string",
+        "code": "number (0=success)",
+        "error": "boolean",
+        "data": "object|array \u2014 sample neeche",
+        "sample": null
+      }
+    },
+    {
+      "endpoint": "casino/getProfitLossPos",
+      "url": "https://api.ons3.co/v1/casino/getProfitLossPos",
+      "local_url": "http://localhost:8889/v1/casino/getProfitLossPos",
+      "method": "POST",
+      "module": "Casino",
+      "mongodb_collection": "reports",
+      "operation": "read",
+      "request_body": {
+        "userId": "required",
+        "eventId": "required"
+      },
+      "request_fields": [
+        "userId",
+        "eventId"
+      ],
+      "response": {
+        "message": "string",
+        "code": "number (0=success)",
+        "error": "boolean",
+        "data": "object|array \u2014 sample neeche",
+        "sample": null
+      }
+    },
+    {
+      "endpoint": "casino/realTimeDataPosDataDiamondCasino",
+      "url": "https://api.ons3.co/v1/casino/realTimeDataPosDataDiamondCasino",
+      "local_url": "http://localhost:8889/v1/casino/realTimeDataPosDataDiamondCasino",
+      "method": "POST",
+      "module": "Casino",
+      "mongodb_collection": "reports",
+      "operation": "read",
+      "request_body": {
+        "eventId": "required",
+        "userId": "required"
+      },
+      "request_fields": [
+        "eventId",
+        "userId"
+      ],
+      "response": {
+        "message": "string",
+        "code": "number (0=success)",
+        "error": "boolean",
+        "data": "object|array \u2014 sample neeche",
+        "sample": null
+      }
+    },
+    {
+      "endpoint": "casino/roundWiseResult",
+      "url": "https://api.ons3.co/v1/casino/roundWiseResult",
+      "local_url": "http://localhost:8889/v1/casino/roundWiseResult",
+      "method": "POST",
+      "module": "Casino",
+      "mongodb_collection": "casino_rounds",
+      "operation": "read",
+      "request_body": {
+        "eventId": "required",
+        "roundId": "required"
+      },
+      "request_fields": [
+        "eventId",
+        "roundId"
+      ],
+      "response": {
+        "message": "string",
+        "code": "number (0=success)",
+        "error": "boolean",
+        "data": "object|array \u2014 sample neeche",
+        "sample": null
+      }
+    },
+    {
+      "endpoint": "decision/completeSportList",
+      "url": "https://api.ons3.co/v1/decision/completeSportList",
+      "local_url": "http://localhost:8889/v1/decision/completeSportList",
+      "method": "POST",
+      "module": "Reports",
+      "mongodb_collection": "sports_catalog",
+      "operation": "read",
+      "request_body": {
+        "pageNo": "required",
+        "size": "required"
+      },
+      "request_fields": [
+        "pageNo",
+        "size"
+      ],
+      "response": {
+        "message": "string",
+        "code": "number (0=success)",
+        "error": "boolean",
+        "data": "object|array \u2014 sample neeche",
+        "sample": {
+          "message": "Failed In validation",
+          "code": 1,
+          "error": true,
+          "data": [
+            "\"pageNo\" is required",
+            "\"size\" is required"
+          ]
+        }
+      }
+    },
+    {
+      "endpoint": "decision/getPlusMinusByMarketId",
+      "url": "https://api.ons3.co/v1/decision/getPlusMinusByMarketId",
+      "local_url": "http://localhost:8889/v1/decision/getPlusMinusByMarketId",
+      "method": "POST",
+      "module": "Reports",
+      "mongodb_collection": "reports",
+      "operation": "read",
+      "request_body": {
+        "marketId": "required"
+      },
+      "request_fields": [
+        "marketId"
+      ],
+      "response": {
+        "message": "string",
+        "code": "number (0=success)",
+        "error": "boolean",
+        "data": "object|array \u2014 sample neeche",
+        "sample": null
+      }
+    },
+    {
+      "endpoint": "logout",
+      "url": "https://api.ons3.co/v1/logout",
+      "local_url": "http://localhost:8889/v1/logout",
+      "method": "POST",
+      "module": "Auth",
+      "mongodb_collection": "auth_sessions",
+      "operation": "delete",
+      "request_body": {},
+      "request_fields": [],
+      "response": {
+        "message": "string",
+        "code": "number (0=success)",
+        "error": "boolean",
+        "data": "object|array \u2014 sample neeche",
+        "sample": null
+      }
+    },
+    {
+      "endpoint": "matka/dayWiseMatkaReport",
+      "url": "https://api.ons3.co/v1/matka/dayWiseMatkaReport",
+      "local_url": "http://localhost:8889/v1/matka/dayWiseMatkaReport",
+      "method": "POST",
+      "module": "Matka",
+      "mongodb_collection": "reports",
+      "operation": "read",
+      "request_body": {
+        "fromDate": "required",
+        "toDate": "required"
+      },
+      "request_fields": [
+        "fromDate",
+        "toDate"
+      ],
+      "response": {
+        "message": "string",
+        "code": "number (0=success)",
+        "error": "boolean",
+        "data": "object|array \u2014 sample neeche",
+        "sample": null
+      }
+    },
+    {
+      "endpoint": "matka/getProfitLossPosMatka",
+      "url": "https://api.ons3.co/v1/matka/getProfitLossPosMatka",
+      "local_url": "http://localhost:8889/v1/matka/getProfitLossPosMatka",
+      "method": "POST",
+      "module": "Matka",
+      "mongodb_collection": "reports",
+      "operation": "read",
+      "request_body": {
+        "userId": "required"
+      },
+      "request_fields": [
+        "userId"
+      ],
+      "response": {
+        "message": "string",
+        "code": "number (0=success)",
+        "error": "boolean",
+        "data": "object|array \u2014 sample neeche",
+        "sample": null
+      }
+    },
+    {
+      "endpoint": "reports/blockMarket",
+      "url": "https://api.ons3.co/v1/reports/blockMarket",
+      "local_url": "http://localhost:8889/v1/reports/blockMarket",
+      "method": "POST",
+      "module": "Reports",
+      "mongodb_collection": "matches",
+      "operation": "update",
+      "request_body": {
+        "marketId": "required",
+        "status": "required"
+      },
+      "request_fields": [
+        "marketId",
+        "status"
+      ],
+      "response": {
+        "message": "string",
+        "code": "number (0=success)",
+        "error": "boolean",
+        "data": "object|array \u2014 sample neeche",
+        "sample": null
+      }
+    },
+    {
+      "endpoint": "reports/getPlusMinusByMarketIdByUserWise",
+      "url": "https://api.ons3.co/v1/reports/getPlusMinusByMarketIdByUserWise",
+      "local_url": "http://localhost:8889/v1/reports/getPlusMinusByMarketIdByUserWise",
+      "method": "POST",
+      "module": "Reports",
+      "mongodb_collection": "reports",
+      "operation": "read",
+      "request_body": {
+        "marketId": "required"
+      },
+      "request_fields": [
+        "marketId"
+      ],
+      "response": {
+        "message": "string",
+        "code": "number (0=success)",
+        "error": "boolean",
+        "data": "object|array \u2014 sample neeche",
+        "sample": null
+      }
+    },
+    {
+      "endpoint": "reports/userProfitLoss",
+      "url": "https://api.ons3.co/v1/reports/userProfitLoss",
+      "local_url": "http://localhost:8889/v1/reports/userProfitLoss",
+      "method": "POST",
+      "module": "Reports",
+      "mongodb_collection": "reports",
+      "operation": "read",
+      "request_body": {
+        "userId": "required",
+        "fromDate": "required",
+        "toDate": "required"
+      },
+      "request_fields": [
+        "userId",
+        "fromDate",
+        "toDate"
+      ],
+      "response": {
+        "message": "string",
+        "code": "number (0=success)",
+        "error": "boolean",
+        "data": "object|array \u2014 sample neeche",
+        "sample": {
+          "message": false,
+          "code": 0,
+          "error": false,
+          "data": []
+        }
+      }
+    },
+    {
+      "endpoint": "sports/betsList",
+      "url": "https://api.ons3.co/v1/sports/betsList",
+      "local_url": "http://localhost:8889/v1/sports/betsList",
+      "method": "POST",
+      "module": "Sports",
+      "mongodb_collection": "sports_bets",
+      "operation": "read",
+      "request_body": {
+        "userId": "required",
+        "marketId": "required"
+      },
+      "request_fields": [
+        "userId",
+        "marketId"
+      ],
+      "response": {
+        "message": "string",
+        "code": "number (0=success)",
+        "error": "boolean",
+        "data": "object|array \u2014 sample neeche",
+        "sample": {
+          "message": "Fetch List Successfuly",
+          "code": 0,
+          "error": false,
+          "data": {}
+        }
+      }
+    },
+    {
+      "endpoint": "sports/clientListByMarketId",
+      "url": "https://api.ons3.co/v1/sports/clientListByMarketId",
+      "local_url": "http://localhost:8889/v1/sports/clientListByMarketId",
+      "method": "POST",
+      "module": "Sports",
+      "mongodb_collection": "sports_bets",
+      "operation": "read",
+      "request_body": {
+        "marketId": "required"
+      },
+      "request_fields": [
+        "marketId"
+      ],
+      "response": {
+        "message": "string",
+        "code": "number (0=success)",
+        "error": "boolean",
+        "data": "object|array \u2014 sample neeche",
+        "sample": null
+      }
+    },
+    {
+      "endpoint": "sports/getOddsPosition",
+      "url": "https://api.ons3.co/v1/sports/getOddsPosition",
+      "local_url": "http://localhost:8889/v1/sports/getOddsPosition",
+      "method": "POST",
+      "module": "Sports",
+      "mongodb_collection": "positions",
+      "operation": "read",
+      "request_body": {
+        "marketId": "required",
+        "userId": "required"
+      },
+      "request_fields": [
+        "marketId",
+        "userId"
+      ],
+      "response": {
+        "message": "string",
+        "code": "number (0=success)",
+        "error": "boolean",
+        "data": "object|array \u2014 sample neeche",
+        "sample": null
+      }
+    },
+    {
+      "endpoint": "sports/getSessionPositionBySelectionId",
+      "url": "https://api.ons3.co/v1/sports/getSessionPositionBySelectionId",
+      "local_url": "http://localhost:8889/v1/sports/getSessionPositionBySelectionId",
+      "method": "POST",
+      "module": "Sports",
+      "mongodb_collection": "positions",
+      "operation": "read",
+      "request_body": {
+        "selectionId": "required",
+        "marketId": "required"
+      },
+      "request_fields": [
+        "selectionId",
+        "marketId"
+      ],
+      "response": {
+        "message": "string",
+        "code": "number (0=success)",
+        "error": "boolean",
+        "data": "object|array \u2014 sample neeche",
+        "sample": null
+      }
+    },
+    {
+      "endpoint": "sports/matchList",
+      "url": "https://api.ons3.co/v1/sports/matchList",
+      "local_url": "http://localhost:8889/v1/sports/matchList",
+      "method": "POST",
+      "module": "Sports",
+      "mongodb_collection": "matches",
+      "operation": "read",
+      "request_body": {
+        "sportId": "required",
+        "pageNo": "required",
+        "size": "required"
+      },
+      "request_fields": [
+        "sportId",
+        "pageNo",
+        "size"
+      ],
+      "response": {
+        "message": "string",
+        "code": "number (0=success)",
+        "error": "boolean",
+        "data": "object|array \u2014 sample neeche",
+        "sample": {
+          "message": 0,
+          "code": 0,
+          "error": false,
+          "data": [
+            {
+              "_id": "6a0dd823b8d89bfea9ac32b6",
+              "marketId": "1.245690241",
+              "__v": 0,
+              "betDelaySetting": {
+                "tieBetDelay": 0,
+                "completedBetDelay": 0,
+                "bookMakerBetDelay": 2,
+                "matchOddsBetDelay": 2,
+                "tossBetDelay": 0
+              },
+              "betDelayTime": 2,
+              "betPerm": true,
+              "betfairSocketUrl": "https://1excache.tresting.com/",
+              "bookmakerRange": 0,
+              "cacheUrl": "https://1excache.tresting.com/v2/api/oddsDataNew?market_id=1.245690241",
+              "checkOddsUrl": "https://1excache.tresting.com/v2/api/oddsDataNew?market_id=1.245690241",
+              "countryCode": "",
+              "createdAt": "2026-05-20T15:49:55.705Z",
+              "date": "1779292195000",
+              "dateWiseLedger": false,
+              "eventId": "28127348",
+              "isBookmaker": true,
+              "isCompletedOdds": true,
+              "isDeclare": false,
+              "isFancy": true,
+              "isLineMarketOdds": true,
+              "isMatchOdds": true,
+              "isScore": true,
+              "isTieOdds": true,
+              "isToss": true,
+              "isTv": true,
+              "marketList": [
+                {
+                  "marketId": "1.235983584",
+                  "marketType": "Tied Match",
+                  "eventId": "28127348",
+                  "matchName": "     Indian Premier League",
+                  "sportName": "     Indian Premier League",
+                  "sportId": 4,
+                  "seriesId": 101480,
+                  "status": "INPLAY",
+                  "playStatus": true,
+                  "selectionIdData": [
+                    {
+                      "selectionId": 37302,
+                      "runnerName": "Yes",
+                      "handicap": 0,
+                      "sortPriority": 1
+                    },
+                    {
+                      "selectionId": 37303,
+                      "runnerName": "No",
+                      "handicap": 0,
+                      "sortPriority": 2
+                    }
+                  ]
+                },
+                {
+                  "marketId": "1.235983583",
+                  "marketType": "Match Odds",
+                  "eventId": "28127348",
+                  "matchName": "     Indian Premier League",
+                  "sportName": "     Indian Premier League",
+                  "sportId": 4,
+                  "seriesId": 101480,
+                  "status": "INPLAY",
+                  "playStatus": true,
+                  "selectionIdData": [
+                    {
+                      "selectionId": 49749064,
+                      "runnerName": "West Indies Academy",
+                      "handicap": 0,
+                      "sortPriority": 1
+                    },
+                    {
+                      "selectionId": 17043776,
+                      "runnerName": "Windward Islands Volcanoes",
+                      "handicap": 0,
+                      "sortPriority": 2
+                    }
+                  ]
+                },
+                {
+                  "marketId": "1.235983588",
+                  "marketType": "Completed Match",
+                  "eventId": "28127348",
+                  "matchName": "     Indian Premier League",
+                  "sportName": "     Indian Premier League",
+                  "sportId": 4,
+                  "seriesId": 101480,
+                  "status": "INPLAY",
+                  "playStatus": true,
+                  "selectionIdData": [
+                    {
+                      "selectionId": 37302,
+                      "runnerName": "Yes",
+                      "handicap": 0,
+                      "sortPriority": 1
+                    },
+                    {
+                      "selectionId": 37303,
+                      "runnerName": "No",
+                      "handicap": 0,
+                      "sortPriority": 2
+                    }
+                  ]
+                }
+              ],
+              "marketName": "",
+              "matchDate": "28-03-2026 19:30:00",
+              "matchName": "     Indian Premier League",
+              "matchType": "T20",
+              "maxMinCoins": {
+                "maximum_match_bet": 200000,
+                "minimum_match_bet": 100,
+                "maximum_session_bet": 200000,
+                "minimum_session_bet": 100,
+                "maximum_tie_coins": 200000,
+                "maximum_completed_coins": 200000,
+                "maximum_matchOdds_coins": 200000,
+                "maximum_toss_coins": 200000
+              },
+              "notification": "",
+              "otherMarketCacheUrl": "https://1excache.tresting.com/v2/api/dataByEventId?eventId=28127348",
+              "priority": 0,
+              "scoreIframe": "https://score.tresting.com/socket-iframe-21/crickexpo/28127348",
+              "scoreIframe2": "https://score.akamaized.uk/live-src?id28127348",
+              "seriesId": 101480,
+              "seriesName": "Indian Premier League",
+              "socketPerm": true,
+              "socketUrl": "https://1excache.tresting.com/",
+              "sportId": 4,
+              "sportName": "     Indian Premier League",
+              "sportType": "Cricket",
+              "status": "INPLAY",
+              "teamData": "[{\"selection_id\":1,\"market_id\":\"1.245690241\",\"runner_name\":\"Mumbai Indians\",\"bookmakerSelectionId\":1,\"betfairSelectionId\":2954281},{\"selection_id\":2,\"market_id\":\"1.245690241\",\"runner_name\":\"Royal Challengers Bengaluru\",\"bookmakerSelectionId\":2,\"betfairSelectionId\":67868736},{\"selection_id\":3,\"market_id\":\"1.245690241\",\"runner_name\":\"Gujarat Titans\",\"bookmakerSelectionId\":3,\"betfairSelectionId\":42821394},{\"selection_id\":4,\"market_id\":\"1.245690241\",\"runner_name\":\"Punjab Kings\",\"bookmakerSelectionId\":4,\"betfairSelectionId\":38528100},{\"selection_id\":5,\"market_id\":\"1.245690241\",\"runner_name\":\"Chennai Super Kings\",\"bookmakerSelectionId\":5,\"betfairSelectionId\":2954263},{\"selection_id\":6,\"market_id\":\"1.245690241\",\"runner_name\":\"Kolkata Knight Riders\",\"bookmakerSelectionId\":6,\"betfairSelectionId\":2954260},{\"selection_id\":7,\"market_id\":\"1.245690241\",\"runner_name\":\"Sunrisers Hyderabad\",\"bookmakerSelectionId\":7,\"betfairSelectionId\":7671295},{\"selection_id\":8,\"market_id\":\"1.245690241\",\"runner_name\":\"Delhi Capitals\",\"bookmakerSelectionId\":8,\"betfairSelectionId\":22121561},{\"selection_id\":9,\"market_id\":\"1.245690241\",\"runner_name\":\"Lucknow Super Giants\",\"bookmakerSelectionId\":9,\"betfairSelectionId\":42821393},{\"selection_id\":10,\"market_id\":\"1.245690241\",\"runner_name\":\"Rajasthan Royals\",\"bookmakerSelectionId\":10,\"betfairSelectionId\":2954266}]",
+              "tossRate": 0.95,
+              "trackName": "",
+              "tvId": 0,
+              "tvUrl": "https://getscoredata.com/score/0d860d2d03f4726091f7d2f3ab9b22021164ed5e/28127348",
+              "updatedAt": "2026-05-20T15:49:55.705Z",
+              "wonCompletedSelectionId": "",
+              "wonTeamBetfairSelectionId": "",
+              "wonTeamBookmakerSelectionId": "",
+              "wonTeamName": null,
+              "wonTieSelectionId": "",
+              "wonTossSelectionId": "",
+              "wonTossTeamName": ""
+            },
+            {
+              "_id": "6a19d897b8d89bfea9b8ad6f",
+              "marketId": "1.258603243",
+              "__v": 0,
+              "betDelaySetting": {
+                "tieBetDelay": 0,
+                "completedBetDelay": 0,
+                "bookMakerBetDelay": 2,
+                "matchOddsBetDelay": 2,
+                "tossBetDelay": 0
+              },
+              "betDelayTime": 2,
+              "betPerm": true,
+              "betfairSocketUrl": "https://1excache.tresting.com/",
+              "bookmakerRange": 0,
+              "cacheUrl": "https://1excache.tresting.com/v2/api/oddsDataNew?market_id=1.258603243",
+              "checkOddsUrl": "https://1excache.tresting.com/v2/api/oddsDataNew?market_id=1.258603243",
+              "countryCode": "",
+              "createdAt": "2026-05-29T18:19:03.898Z",
+              "date": "1780078743000",
+              "dateWiseLedger": false,
+              "eventId": "35649616",
+              "isBookmaker": true,
+              "isCompletedOdds": true,
+              "isDeclare": false,
+              "isFancy": true,
+              "isLineMarketOdds": true,
+              "isMatchOdds": true,
+              "isScore": true,
+              "isTieOdds": true,
+              "isToss": true,
+              "isTv": true,
+              "marketList": [
+                {
+                  "marketId": "1.235983584",
+                  "marketType": "Tied Match",
+                  "eventId": "35649616",
+                  "matchName": "Sussex v Middlesex (T-20)",
+                  "sportName": "Sussex v Middlesex (T-20)",
+                  "sportId": 4,
+                  "seriesId": 11893330,
+                  "status": "INPLAY",
+                  "playStatus": true,
+                  "selectionIdData": [
+                    {
+                      "selectionId": 37302,
+                      "runnerName": "Yes",
+                      "handicap": 0,
+                      "sortPriority": 1
+                    },
+                    {
+                      "selectionId": 37303,
+                      "runnerName": "No",
+                      "handicap": 0,
+                      "sortPriority": 2
+                    }
+                  ]
+                },
+                {
+                  "marketId": "1.235983583",
+                  "marketType": "Match Odds",
+                  "eventId": "35649616",
+                  "matchName": "Sussex v Middlesex (T-20)",
+                  "sportName": "Sussex v Middlesex (T-20)",
+                  "sportId": 4,
+                  "seriesId": 11893330,
+                  "status": "INPLAY",
+                  "playStatus": true,
+                  "selectionIdData": [
+                    {
+                      "selectionId": 49749064,
+                      "runnerName": "West Indies Academy",
+                      "handicap": 0,
+                      "sortPriority": 1
+                    },
+                    {
+                      "selectionId": 17043776,
+                      "runnerName": "Windward Islands Volcanoes",
+                      "handicap": 0,
+                      "sortPriority": 2
+                    }
+                  ]
+                },
+                {
+                  "marketId": "1.235983588",
+                  "marketType": "Completed Match",
+                  "eventId": "35649616",
+                  "matchName": "Sussex v Middlesex (T-20)",
+                  "sportName": "Sussex v Middlesex (T-20)",
+                  "sportId": 4,
+                  "seriesId": 11893330,
+                  "status": "INPLAY",
+                  "playStatus": true,
+                  "selectionIdData": [
+                    {
+                      "selectionId": 37302,
+                      "runnerName": "Yes",
+                      "handicap": 0,
+                      "sortPriority": 1
+                    },
+                    {
+                      "selectionId": 37303,
+                      "runnerName": "No",
+                      "handicap": 0,
+                      "sortPriority": 2
+                    }
+                  ]
+                }
+              ],
+              "marketName": "",
+              "matchDate": "30-05-2026 23:30:00 PM",
+              "matchName": "Sussex v Middlesex T-20",
+              "matchType": "T20",
+              "maxMinCoins": "{maximum_match_bet:200000,minimum_match_bet:100,maximum_session_bet:200000,minimum_session_bet:100,maximum_tie_coins:200000,maximum_completed_coins:200000,maximum_bookmaker_coins:0,maximum_matchOdds_coins:200000,maximum_toss_coins:200000,minimum_coins:0}",
+              "notification": "",
+              "otherMarketCacheUrl": "https://1excache.tresting.com/v2/api/dataByEventId?eventId=35649616",
+              "priority": 0,
+              "scoreIframe": "https://score.tresting.com/socket-iframe-21/crickexpo/35649616",
+              "scoreIframe2": "https://score.akamaized.uk/live-src?id35649616",
+              "seriesId": 11893330,
+              "seriesName": "T20 Blast",
+              "socketPerm": true,
+              "socketUrl": "https://1excache.tresting.com/",
+              "sportId": 4,
+              "sportName": "Sussex v Middlesex (T-20)",
+              "sportType": "Cricket",
+              "status": "INPLAY",
+              "teamData": "[{\"selection_id\":1,\"market_id\":\"1.258603243\",\"runner_name\":\"Sussex\",\"bookmakerSelectionId\":1,\"betfairSelectionId\":31379},{\"selection_id\":2,\"market_id\":\"1.258603243\",\"runner_name\":\"Middlesex\",\"bookmakerSelectionId\":2,\"betfairSelectionId\":31378}]",
+              "tossRate": 0.95,
+              "trackName": "",
+              "tvId": 0,
+              "tvUrl": "https://epic.tresting.com/?eventid=35649616",
+              "updatedAt": "2026-05-30T18:20:01.446Z",
+              "wonCompletedSelectionId": "",
+              "wonTeamBetfairSelectionId": "",
+              "wonTeamBookmakerSelectionId": "",
+              "wonTeamName": "",
+              "wonTieSelectionId": "",
+              "wonTossSelectionId": "10000",
+              "wonTossTeamName": ""
+            },
+            {
+              "_id": "6a1b37b0b8d89bfea9ba9669",
+              "marketId": "1.258701767",
+              "__v": 0,
+              "betDelaySetting": {
+                "tieBetDelay": 0,
+                "completedBetDelay": 0,
+                "bookMakerBetDelay": 2,
+                "matchOddsBetDelay": 2,
+                "tossBetDelay": 0
+              },
+              "betDelayTime": 2,
+              "betPerm": true,
+              "betfairSocketUrl": "https://1excache.tresting.com/",
+              "bookmakerRange": 0,
+              "cacheUrl": "https://1excache.tresting.com/v2/api/oddsDataNew?market_id=1.258701767",
+              "checkOddsUrl": "https://1excache.tresting.com/v2/api/oddsDataNew?market_id=1.258701767",
+              "countryCode": "",
+              "createdAt": "2026-05-30T19:17:04.445Z",
+              "date": "1780168624000",
+              "dateWiseLedger": false,
+              "eventId": "35661295",
+              "isBookmaker": true,
+              "isCompletedOdds": true,
+              "isDeclare": false,
+              "isFancy": true,
+              "isLineMarketOdds": true,
+              "isMatchOdds": true,
+              "isScore": true,
+              "isTieOdds": true,
+              "isToss": true,
+              "isTv": true,
+              "marketList": [
+                {
+                  "marketId": "1.235983584",
+                  "marketType": "Tied Match",
+                  "eventId": "35661295",
+                  "matchName": "Yorkshire v Gloucestershire (T-20)",
+                  "sportName": "Yorkshire v Gloucestershire (T-20)",
+                  "sportId": 4,
+                  "seriesId": 11893330,
+                  "status": "INPLAY",
+                  "playStatus": true,
+                  "selectionIdData": [
+                    {
+                      "selectionId": 37302,
+                      "runnerName": "Yes",
+                      "handicap": 0,
+                      "sortPriority": 1
+                    },
+                    {
+                      "selectionId": 37303,
+                      "runnerName": "No",
+                      "handicap": 0,
+                      "sortPriority": 2
+                    }
+                  ]
+                },
+                {
+                  "marketId": "1.235983583",
+                  "marketType": "Match Odds",
+                  "eventId": "35661295",
+                  "matchName": "Yorkshire v Gloucestershire (T-20)",
+                  "sportName": "Yorkshire v Gloucestershire (T-20)",
+                  "sportId": 4,
+                  "seriesId": 11893330,
+                  "status": "INPLAY",
+                  "playStatus": true,
+                  "selectionIdData": [
+                    {
+                      "selectionId": 49749064,
+                      "runnerName": "West Indies Academy",
+                      "handicap": 0,
+                      "sortPriority": 1
+                    },
+                    {
+                      "selectionId": 17043776,
+                      "runnerName": "Windward Islands Volcanoes",
+                      "handicap": 0,
+                      "sortPriority": 2
+                    }
+                  ]
+                },
+                {
+                  "marketId": "1.235983588",
+                  "marketType": "Completed Match",
+                  "eventId": "35661295",
+                  "matchName": "Yorkshire v Gloucestershire (T-20)",
+                  "sportName": "Yorkshire v Gloucestershire (T-20)",
+                  "sportId": 4,
+                  "seriesId": 11893330,
+                  "status": "INPLAY",
+                  "playStatus": true,
+                  "selectionIdData": [
+                    {
+                      "selectionId": 37302,
+                      "runnerName": "Yes",
+                      "handicap": 0,
+                      "sortPriority": 1
+                    },
+                    {
+                      "selectionId": 37303,
+                      "runnerName": "No",
+                      "handicap": 0,
+                      "sortPriority": 2
+                    }
+                  ]
+                }
+              ],
+              "marketName": "",
+              "matchDate": "31-05-2026 19:00:00 PM",
+              "matchName": "Yorkshire v Gloucestershire (T-20)",
+              "matchType": "T20",
+              "maxMinCoins": {
+                "maximum_match_bet": 200000,
+                "minimum_match_bet": 100,
+                "maximum_session_bet": 200000,
+                "minimum_session_bet": 100,
+                "maximum_tie_coins": 200000,
+                "maximum_completed_coins": 200000,
+                "maximum_matchOdds_coins": 200000,
+                "maximum_toss_coins": 200000
+              },
+              "notification": "",
+              "otherMarketCacheUrl": "https://1excache.tresting.com/v2/api/dataByEventId?eventId=35661295",
+              "priority": 0,
+              "scoreIframe": "https://score.tresting.com/socket-iframe-21/crickexpo/35661295",
+              "scoreIframe2": "https://score.akamaized.uk/live-src?id35661295",
+              "seriesId": 11893330,
+              "seriesName": "T20 Blast",
+              "socketPerm": true,
+              "socketUrl": "https://1excache.tresting.com/",
+              "sportId": 4,
+              "sportName": "Yorkshire v Gloucestershire (T-20)",
+              "sportType": "Cricket",
+              "status": "INPLAY",
+              "teamData": "[{\"selection_id\":1,\"market_id\":\"1.258701767\",\"runner_name\":\"Yorkshire\",\"bookmakerSelectionId\":1,\"betfairSelectionId\":655},{\"selection_id\":2,\"market_id\":\"1.258701767\",\"runner_name\":\"Gloucestershire\",\"bookmakerSelectionId\":2,\"betfairSelectionId\":2219}]",
+              "tossRate": 0.95,
+              "trackName": "",
+              "tvId": 0,
+              "tvUrl": "https://getscoredata.com/score/0d860d2d03f4726091f7d2f3ab9b22021164ed5e/35261",
+              "updatedAt": "2026-05-30T19:17:04.445Z",
+              "wonCompletedSelectionId": "",
+              "wonTeamBetfairSelectionId": "",
+              "wonTeamBookmakerSelectionId": "",
+              "wonTeamName": null,
+              "wonTieSelectionId": "",
+              "wonTossSelectionId": "",
+              "wonTossTeamName": ""
+            },
+            {
+              "_id": "6a1b37b0b8d89bfea9ba966a",
+              "marketId": "1.258739621",
+              "__v": 0,
+              "betDelaySetting": {
+                "tieBetDelay": 0,
+                "completedBetDelay": 0,
+                "bookMakerBetDelay": 2,
+                "matchOddsBetDelay": 2,
+                "tossBetDelay": 0
+              },
+              "betDelayTime": 2,
+              "betPerm": true,
+              "betfairSocketUrl": "https://1excache.tresting.com/",
+              "bookmakerRange": 0,
+              "cacheUrl": "https://1excache.tresting.com/v2/api/oddsDataNew?market_id=1.258739621",
+              "checkOddsUrl": "https://1excache.tresting.com/v2/api/oddsDataNew?market_id=1.258739621",
+              "countryCode": "",
+              "createdAt": "2026-05-30T19:17:04.447Z",
+              "date": "1780168624000",
+              "dateWiseLedger": false,
+              "eventId": "35666127",
+              "isBookmaker": true,
+              "isCompletedOdds": true,
+              "isDeclare": false,
+              "isFancy": true,
+              "isLineMarketOdds": true,
+              "isMatchOdds": true,
+              "isScore": true,
+              "isTieOdds": true,
+              "isToss": true,
+              "isTv": true,
+              "marketList": [
+                {
+                  "marketId": "1.235983584",
+                  "marketType": "Tied Match",
+                  "eventId": "35666127",
+                  "matchName": "Bangladesh W v Netherlands W (T-20)",
+                  "sportName": "Bangladesh W v Netherlands W (T-20)",
+                  "sportId": 4,
+                  "seriesId": 12072774,
+                  "status": "INPLAY",
+                  "playStatus": true,
+                  "selectionIdData": [
+                    {
+                      "selectionId": 37302,
+                      "runnerName": "Yes",
+                      "handicap": 0,
+                      "sortPriority": 1
+                    },
+                    {
+                      "selectionId": 37303,
+                      "runnerName": "No",
+                      "handicap": 0,
+                      "sortPriority": 2
+                    }
+                  ]
+                },
+                {
+                  "marketId": "1.235983583",
+                  "marketType": "Match Odds",
+                  "eventId": "35666127",
+                  "matchName": "Bangladesh W v Netherlands W (T-20)",
+                  "sportName": "Bangladesh W v Netherlands W (T-20)",
+                  "sportId": 4,
+                  "seriesId": 12072774,
+                  "status": "INPLAY",
+                  "playStatus": true,
+                  "selectionIdData": [
+                    {
+                      "selectionId": 49749064,
+                      "runnerName": "West Indies Academy",
+                      "handicap": 0,
+                      "sortPriority": 1
+                    },
+                    {
+                      "selectionId": 17043776,
+                      "runnerName": "Windward Islands Volcanoes",
+                      "handicap": 0,
+                      "sortPriority": 2
+                    }
+                  ]
+                },
+                {
+                  "marketId": "1.235983588",
+                  "marketType": "Completed Match",
+                  "eventId": "35666127",
+                  "matchName": "Bangladesh W v Netherlands W (T-20)",
+                  "sportName": "Bangladesh W v Netherlands W (T-20)",
+                  "sportId": 4,
+                  "seriesId": 12072774,
+                  "status": "INPLAY",
+                  "playStatus": true,
+                  "selectionIdData": [
+                    {
+                      "selectionId": 37302,
+                      "runnerName": "Yes",
+                      "handicap": 0,
+                      "sortPriority": 1
+                    },
+                    {
+                      "selectionId": 37303,
+                      "runnerName": "No",
+                      "handicap": 0,
+                      "sortPriority": 2
+                    }
+                  ]
+                }
+              ],
+              "marketName": "",
+              "matchDate": "31-05-2026 17:30:00 PM",
+              "matchName": "Bangladesh W v Netherlands W (T-20)",
+              "matchType": "T20",
+              "maxMinCoins": {
+                "maximum_match_bet": 200000,
+                "minimum_match_bet": 100,
+                "maximum_session_bet": 200000,
+                "minimum_session_bet": 100,
+                "maximum_tie_coins": 200000,
+                "maximum_completed_coins": 200000,
+                "maximum_matchOdds_coins": 200000,
+                "maximum_toss_coins": 200000
+              },
+              "notification": "",
+              "otherMarketCacheUrl": "https://1excache.tresting.com/v2/api/dataByEventId?eventId=35666127",
+              "priority": 0,
+              "scoreIframe": "https://score.tresting.com/socket-iframe-21/crickexpo/35666127",
+              "scoreIframe2": "https://score.akamaized.uk/live-src?id35666127",
+              "seriesId": 12072774,
+              "seriesName": "Womens International Twenty20 Matches",
+              "socketPerm": true,
+              "socketUrl": "https://1excache.tresting.com/",
+              "sportId": 4,
+              "sportName": "Bangladesh W v Netherlands W (T-20)",
+              "sportType": "Cricket",
+              "status": "INPLAY",
+              "teamData": "[{\"selection_id\":1,\"market_id\":\"1.258739621\",\"runner_name\":\"Bangladesh W\",\"bookmakerSelectionId\":1,\"betfairSelectionId\":88050762},{\"selection_id\":2,\"market_id\":\"1.258739621\",\"runner_name\":\"Netherlands W\",\"bookmakerSelectionId\":2,\"betfairSelectionId\":84485137}]",
+              "tossRate": 0.95,
+              "trackName": "",
+              "tvId": 0,
+              "tvUrl": "https://getscoredata.com/score/0d860d2d03f4726091f7d2f3ab9b22021164ed5e/35253",
+              "updatedAt": "2026-05-30T19:17:04.447Z",
+              "wonCompletedSelectionId": "",
+              "wonTeamBetfairSelectionId": "",
+              "wonTeamBookmakerSelectionId": "",
+              "wonTeamName": null,
+              "wonTieSelectionId": "",
+              "wonTossSelectionId": "",
+              "wonTossTeamName": ""
+            },
+            {
+              "_id": "6a1b37b0b8d89bfea9ba966b",
+              "marketId": "1.258716445",
+              "__v": 0,
+              "betDelaySetting": {
+                "tieBetDelay": 0,
+                "completedBetDelay": 0,
+                "bookMakerBetDelay": 2,
+                "matchOddsBetDelay": 2,
+                "tossBetDelay": 0
+              },
+              "betDelayTime": 2,
+              "betPerm": true,
+              "betfairSocketUrl": "https://1excache.tresting.com/",
+              "bookmakerRange": 0,
+              "cacheUrl": "https://1excache.tresting.com/v2/api/oddsDataNew?market_id=1.258716445",
+              "checkOddsUrl": "https://1excache.tresting.com/v2/api/oddsDataNew?market_id=1.258716445",
+              "countryCode": "",
+              "createdAt": "2026-05-30T19:17:04.450Z",
+              "date": "1780168624000",
+              "dateWiseLedger": false,
+              "eventId": "35662823",
+              "isBookmaker": true,
+              "isCompletedOdds": true,
+              "isDeclare": false,
+              "isFancy": true,
+              "isLineMarketOdds": true,
+              "isMatchOdds": true,
+              "isScore": true,
+              "isTieOdds": true,
+              "isToss": true,
+              "isTv": true,
+              "marketList": [
+                {
+                  "marketId": "1.235983584",
+                  "marketType": "Tied Match",
+                  "eventId": "35662823",
+                  "matchName": "Surrey W v Somerset W (T-20)",
+                  "sportName": "Surrey W v Somerset W (T-20)",
+                  "sportId": 4,
+                  "seriesId": 12735685,
+                  "status": "INPLAY",
+                  "playStatus": true,
+                  "selectionIdData": [
+                    {
+                      "selectionId": 37302,
+                      "runnerName": "Yes",
+                      "handicap": 0,
+                      "sortPriority": 1
+                    },
+                    {
+                      "selectionId": 37303,
+                      "runnerName": "No",
+                      "handicap": 0,
+                      "sortPriority": 2
+                    }
+                  ]
+                },
+                {
+                  "marketId": "1.235983583",
+                  "marketType": "Match Odds",
+                  "eventId": "35662823",
+                  "matchName": "Surrey W v Somerset W (T-20)",
+                  "sportName": "Surrey W v Somerset W (T-20)",
+                  "sportId": 4,
+                  "seriesId": 12735685,
+                  "status": "INPLAY",
+                  "playStatus": true,
+                  "selectionIdData": [
+                    {
+                      "selectionId": 49749064,
+                      "runnerName": "West Indies Academy",
+                      "handicap": 0,
+                      "sortPriority": 1
+                    },
+                    {
+                      "selectionId": 17043776,
+                      "runnerName": "Windward Islands Volcanoes",
+                      "handicap": 0,
+                      "sortPriority": 2
+                    }
+                  ]
+                },
+                {
+                  "marketId": "1.235983588",
+                  "marketType": "Completed Match",
+                  "eventId": "35662823",
+                  "matchName": "Surrey W v Somerset W (T-20)",
+                  "sportName": "Surrey W v Somerset W (T-20)",
+                  "sportId": 4,
+                  "seriesId": 12735685,
+                  "status": "INPLAY",
+                  "playStatus": true,
+                  "selectionIdData": [
+                    {
+                      "selectionId": 37302,
+                      "runnerName": "Yes",
+                      "handicap": 0,
+                      "sortPriority": 1
+                    },
+                    {
+                      "selectionId": 37303,
+                      "runnerName": "No",
+                      "handicap": 0,
+                      "sortPriority": 2
+                    }
+                  ]
+                }
+              ],
+              "marketName": "",
+              "matchDate": "31-05-2026 16:30:00 PM",
+              "matchName": "Surrey W v Somerset W (T-20)",
+              "matchType": "T20",
+              "maxMinCoins": {
+                "maximum_match_bet": 200000,
+                "minimum_match_bet": 100,
+                "maximum_session_bet": 200000,
+                "minimum_session_bet": 100,
+                "maximum_tie_coins": 200000,
+                "maximum_completed_coins": 200000,
+                "maximum_matchOdds_coins": 200000,
+                "maximum_toss_coins": 200000
+              },
+              "notification": "",
+              "otherMarketCacheUrl": "https://1excache.tresting.com/v2/api/dataByEventId?eventId=35662823",
+              "priority": 0,
+              "scoreIframe": "https://score.tresting.com/socket-iframe-21/crickexpo/35662823",
+              "scoreIframe2": "https://score.akamaized.uk/live-src?id35662823",
+              "seriesId": 12735685,
+              "seriesName": "Women's T20 Blast",
+              "socketPerm": true,
+              "socketUrl": "https://1excache.tresting.com/",
+              "sportId": 4,
+              "sportName": "Surrey W v Somerset W (T-20)",
+              "sportType": "Cricket",
+              "status": "INPLAY",
+              "teamData": "[{\"selection_id\":1,\"market_id\":\"1.258716445\",\"runner_name\":\"Surrey W\",\"bookmakerSelectionId\":1,\"betfairSelectionId\":82832996},{\"selection_id\":2,\"market_id\":\"1.258716445\",\"runner_name\":\"Somerset W\",\"bookmakerSelectionId\":2,\"betfairSelectionId\":82832998}]",
+              "tossRate": 0.95,
+              "trackName": "",
+              "tvId": 0,
+              "tvUrl": "https://getscoredata.com/score/0d860d2d03f4726091f7d2f3ab9b22021164ed5e/35252",
+              "updatedAt": "2026-05-30T19:17:04.450Z",
+              "wonCompletedSelectionId": "",
+              "wonTeamBetfairSelectionId": "",
+              "wonTeamBookmakerSelectionId": "",
+              "wonTeamName": null,
+              "wonTieSelectionId": "",
+              "wonTossSelectionId": "",
+              "wonTossTeamName": ""
+            },
+            {
+              "_id": "6a1b37b0b8d89bfea9ba966c",
+              "marketId": "1.258730078",
+              "__v": 0,
+              "betDelaySetting": {
+                "tieBetDelay": 0,
+                "completedBetDelay": 0,
+                "bookMakerBetDelay": 2,
+                "matchOddsBetDelay": 2,
+                "tossBetDelay": 0
+              },
+              "betDelayTime": 2,
+              "betPerm": true,
+              "betfairSocketUrl": "https://1excache.tresting.com/",
+              "bookmakerRange": 0,
+              "cacheUrl": "https://1excache.tresting.com/v2/api/oddsDataNew?market_id=1.258730078",
+              "checkOddsUrl": "https://1excache.tresting.com/v2/api/oddsDataNew?market_id=1.258730078",
+              "countryCode": "",
+              "createdAt": "2026-05-30T19:17:04.451Z",
+              "date": "1780168624000",
+              "dateWiseLedger": false,
+              "eventId": "35664715",
+              "isBookmaker": true,
+              "isCompletedOdds": true,
+              "isDeclare": false,
+              "isFancy": true,
+              "isLineMarketOdds": true,
+              "isMatchOdds": true,
+              "isScore": true,
+              "isTieOdds": true,
+              "isToss": true,
+              "isTv": true,
+              "marketList": [
+                {
+                  "marketId": "1.235983584",
+                  "marketType": "Tied Match",
+                  "eventId": "35664715",
+                  "matchName": "RC Bengaluru v Gujarat Titans (T-20)",
+                  "sportName": "RC Bengaluru v Gujarat Titans (T-20)",
+                  "sportId": 4,
+                  "seriesId": 101480,
+                  "status": "INPLAY",
+                  "playStatus": true,
+                  "selectionIdData": [
+                    {
+                      "selectionId": 37302,
+                      "runnerName": "Yes",
+                      "handicap": 0,
+                      "sortPriority": 1
+                    },
+                    {
+                      "selectionId": 37303,
+                      "runnerName": "No",
+                      "handicap": 0,
+                      "sortPriority": 2
+                    }
+                  ]
+                },
+                {
+                  "marketId": "1.235983583",
+                  "marketType": "Match Odds",
+                  "eventId": "35664715",
+                  "matchName": "RC Bengaluru v Gujarat Titans (T-20)",
+                  "sportName": "RC Bengaluru v Gujarat Titans (T-20)",
+                  "sportId": 4,
+                  "seriesId": 101480,
+                  "status": "INPLAY",
+                  "playStatus": true,
+                  "selectionIdData": [
+                    {
+                      "selectionId": 49749064,
+                      "runnerName": "West Indies Academy",
+                      "handicap": 0,
+                      "sortPriority": 1
+                    },
+                    {
+                      "selectionId": 17043776,
+                      "runnerName": "Windward Islands Volcanoes",
+                      "handicap": 0,
+                      "sortPriority": 2
+                    }
+                  ]
+                },
+                {
+                  "marketId": "1.235983588",
+                  "marketType": "Completed Match",
+                  "eventId": "35664715",
+                  "matchName": "RC Bengaluru v Gujarat Titans (T-20)",
+                  "sportName": "RC Bengaluru v Gujarat Titans (T-20)",
+                  "sportId": 4,
+                  "seriesId": 101480,
+                  "status": "INPLAY",
+                  "playStatus": true,
+                  "selectionIdData": [
+                    {
+                      "selectionId": 37302,
+                      "runnerName": "Yes",
+                      "handicap": 0,
+                      "sortPriority": 1
+                    },
+                    {
+                      "selectionId": 37303,
+                      "runnerName": "No",
+                      "handicap": 0,
+                      "sortPriority": 2
+                    }
+                  ]
+                }
+              ],
+              "marketName": "",
+              "matchDate": "31-05-2026 19:30:00 PM",
+              "matchName": "RC Bengaluru v Gujarat Titans (T-20)",
+              "matchType": "T20",
+              "maxMinCoins": {
+                "maximum_match_bet": 200000,
+                "minimum_match_bet": 100,
+                "maximum_session_bet": 200000,
+                "minimum_session_bet": 100,
+                "maximum_tie_coins": 200000,
+                "maximum_completed_coins": 200000,
+                "maximum_matchOdds_coins": 200000,
+                "maximum_toss_coins": 200000
+              },
+              "notification": "",
+              "otherMarketCacheUrl": "https://1excache.tresting.com/v2/api/dataByEventId?eventId=35664715",
+              "priority": 0,
+              "scoreIframe": "https://score.tresting.com/socket-iframe-21/crickexpo/35664715",
+              "scoreIframe2": "https://score.akamaized.uk/live-src?id35664715",
+              "seriesId": 101480,
+              "seriesName": "Indian Premier League",
+              "socketPerm": true,
+              "socketUrl": "https://1excache.tresting.com/",
+              "sportId": 4,
+              "sportName": "RC Bengaluru v Gujarat Titans (T-20)",
+              "sportType": "Cricket",
+              "status": "INPLAY",
+              "teamData": "[{\"selection_id\":1,\"market_id\":\"1.258730078\",\"runner_name\":\"Royal Challengers Bengaluru\",\"bookmakerSelectionId\":1,\"betfairSelectionId\":67868736},{\"selection_id\":2,\"market_id\":\"1.258730078\",\"runner_name\":\"Gujarat Titans\",\"bookmakerSelectionId\":2,\"betfairSelectionId\":42821394}]",
+              "tossRate": 0.95,
+              "trackName": "",
+              "tvId": 0,
+              "tvUrl": "https://getscoredata.com/score/0d860d2d03f4726091f7d2f3ab9b22021164ed5e/35263",
+              "updatedAt": "2026-05-30T19:17:04.451Z",
+              "wonCompletedSelectionId": "",
+              "wonTeamBetfairSelectionId": "",
+              "wonTeamBookmakerSelectionId": "",
+              "wonTeamName": null,
+              "wonTieSelectionId": "",
+              "wonTossSelectionId": "",
+              "wonTossTeamName": ""
+            },
+            {
+              "_id": "6a1b37b0b8d89bfea9ba966d",
+              "marketId": "1.258701746",
+              "__v": 0,
+              "betDelaySetting": {
+                "tieBetDelay": 0,
+                "completedBetDelay": 0,
+                "bookMakerBetDelay": 2,
+                "matchOddsBetDelay": 2,
+                "tossBetDelay": 0
+              },
+              "betDelayTime": 2,
+              "betPerm": true,
+              "betfairSocketUrl": "https://1excache.tresting.com/",
+              "bookmakerRange": 0,
+              "cacheUrl": "https://1excache.tresting.com/v2/api/oddsDataNew?market_id=1.258701746",
+              "checkOddsUrl": "https://1excache.tresting.com/v2/api/oddsDataNew?market_id=1.258701746",
+              "countryCode": "",
+              "createdAt": "2026-05-30T19:17:04.454Z",
+              "date": "1780168624000",
+              "dateWiseLedger": false,
+              "eventId": "35661299",
+              "isBookmaker": true,
+              "isCompletedOdds": true,
+              "isDeclare": false,
+              "isFancy": true,
+              "isLineMarketOdds": true,
+              "isMatchOdds": true,
+              "isScore": true,
+              "isTieOdds": true,
+              "isToss": true,
+              "isTv": true,
+              "marketList": [
+                {
+                  "marketId": "1.235983584",
+                  "marketType": "Tied Match",
+                  "eventId": "35661299",
+                  "matchName": "Nottinghamshire v Durham (T-20)",
+                  "sportName": "Nottinghamshire v Durham (T-20)",
+                  "sportId": 4,
+                  "seriesId": 11893330,
+                  "status": "INPLAY",
+                  "playStatus": true,
+                  "selectionIdData": [
+                    {
+                      "selectionId": 37302,
+                      "runnerName": "Yes",
+                      "handicap": 0,
+                      "sortPriority": 1
+                    },
+                    {
+                      "selectionId": 37303,
+                      "runnerName": "No",
+                      "handicap": 0,
+                      "sortPriority": 2
+                    }
+                  ]
+                },
+                {
+                  "marketId": "1.235983583",
+                  "marketType": "Match Odds",
+                  "eventId": "35661299",
+                  "matchName": "Nottinghamshire v Durham (T-20)",
+                  "sportName": "Nottinghamshire v Durham (T-20)",
+                  "sportId": 4,
+                  "seriesId": 11893330,
+                  "status": "INPLAY",
+                  "playStatus": true,
+                  "selectionIdData": [
+                    {
+                      "selectionId": 49749064,
+                      "runnerName": "West Indies Academy",
+                      "handicap": 0,
+                      "sortPriority": 1
+                    },
+                    {
+                      "selectionId": 17043776,
+                      "runnerName": "Windward Islands Volcanoes",
+                      "handicap": 0,
+                      "sortPriority": 2
+                    }
+                  ]
+                },
+                {
+                  "marketId": "1.235983588",
+                  "marketType": "Completed Match",
+                  "eventId": "35661299",
+                  "matchName": "Nottinghamshire v Durham (T-20)",
+                  "sportName": "Nottinghamshire v Durham (T-20)",
+                  "sportId": 4,
+                  "seriesId": 11893330,
+                  "status": "INPLAY",
+                  "playStatus": true,
+                  "selectionIdData": [
+                    {
+                      "selectionId": 37302,
+                      "runnerName": "Yes",
+                      "handicap": 0,
+                      "sortPriority": 1
+                    },
+                    {
+                      "selectionId": 37303,
+                      "runnerName": "No",
+                      "handicap": 0,
+                      "sortPriority": 2
+                    }
+                  ]
+                }
+              ],
+              "marketName": "",
+              "matchDate": "31-05-2026 19:30:00 PM",
+              "matchName": "Nottinghamshire v Durham (T-20)",
+              "matchType": "T20",
+              "maxMinCoins": {
+                "maximum_match_bet": 200000,
+                "minimum_match_bet": 100,
+                "maximum_session_bet": 200000,
+                "minimum_session_bet": 100,
+                "maximum_tie_coins": 200000,
+                "maximum_completed_coins": 200000,
+                "maximum_matchOdds_coins": 200000,
+                "maximum_toss_coins": 200000
+              },
+              "notification": "",
+              "otherMarketCacheUrl": "https://1excache.tresting.com/v2/api/dataByEventId?eventId=35661299",
+              "priority": 0,
+              "scoreIframe": "https://score.tresting.com/socket-iframe-21/crickexpo/35661299",
+              "scoreIframe2": "https://score.akamaized.uk/live-src?id35661299",
+              "seriesId": 11893330,
+              "seriesName": "T20 Blast",
+              "socketPerm": true,
+              "socketUrl": "https://1excache.tresting.com/",
+              "sportId": 4,
+              "sportName": "Nottinghamshire v Durham (T-20)",
+              "sportType": "Cricket",
+              "status": "INPLAY",
+              "teamData": "[{\"selection_id\":1,\"market_id\":\"1.258701746\",\"runner_name\":\"Nottinghamshire\",\"bookmakerSelectionId\":1,\"betfairSelectionId\":2780},{\"selection_id\":2,\"market_id\":\"1.258701746\",\"runner_name\":\"Durham\",\"bookmakerSelectionId\":2,\"betfairSelectionId\":31374}]",
+              "tossRate": 0.95,
+              "trackName": "",
+              "tvId": 0,
+              "tvUrl": "https://getscoredata.com/score/0d860d2d03f4726091f7d2f3ab9b22021164ed5e/35264",
+              "updatedAt": "2026-05-30T19:17:04.454Z",
+              "wonCompletedSelectionId": "",
+              "wonTeamBetfairSelectionId": "",
+              "wonTeamBookmakerSelectionId": "",
+              "wonTeamName": null,
+              "wonTieSelectionId": "",
+              "wonTossSelectionId": "",
+              "wonTossTeamName": ""
+            },
+            {
+              "_id": "6a1b37b0b8d89bfea9ba966e",
+              "marketId": "1.258718535",
+              "__v": 0,
+              "betDelaySetting": {
+                "tieBetDelay": 0,
+                "completedBetDelay": 0,
+                "bookMakerBetDelay": 2,
+                "matchOddsBetDelay": 2,
+                "tossBetDelay": 0
+              },
+              "betDelayTime": 2,
+              "betPerm": true,
+              "betfairSocketUrl": "https://1excache.tresting.com/",
+              "bookmakerRange": 0,
+              "cacheUrl": "https://1excache.tresting.com/v2/api/oddsDataNew?market_id=1.258718535",
+              "checkOddsUrl": "https://1excache.tresting.com/v2/api/oddsDataNew?market_id=1.258718535",
+              "countryCode": "",
+              "createdAt": "2026-05-30T19:17:04.460Z",
+              "date": "1780168624000",
+              "dateWiseLedger": false,
+              "eventId": "35662872",
+              "isBookmaker": true,
+              "isCompletedOdds": true,
+              "isDeclare": false,
+              "isFancy": true,
+              "isLineMarketOdds": true,
+              "isMatchOdds": true,
+              "isScore": true,
+              "isTieOdds": true,
+              "isToss": true,
+              "isTv": true,
+              "marketList": [
+                {
+                  "marketId": "1.235983584",
+                  "marketType": "Tied Match",
+                  "eventId": "35662872",
+                  "matchName": "Ireland W v Pakistan W (T-20)",
+                  "sportName": "Ireland W v Pakistan W (T-20)",
+                  "sportId": 4,
+                  "seriesId": 12072774,
+                  "status": "INPLAY",
+                  "playStatus": true,
+                  "selectionIdData": [
+                    {
+                      "selectionId": 37302,
+                      "runnerName": "Yes",
+                      "handicap": 0,
+                      "sortPriority": 1
+                    },
+                    {
+                      "selectionId": 37303,
+                      "runnerName": "No",
+                      "handicap": 0,
+                      "sortPriority": 2
+                    }
+                  ]
+                },
+                {
+                  "marketId": "1.235983583",
+                  "marketType": "Match Odds",
+                  "eventId": "35662872",
+                  "matchName": "Ireland W v Pakistan W (T-20)",
+                  "sportName": "Ireland W v Pakistan W (T-20)",
+                  "sportId": 4,
+                  "seriesId": 12072774,
+                  "status": "INPLAY",
+                  "playStatus": true,
+                  "selectionIdData": [
+                    {
+                      "selectionId": 49749064,
+                      "runnerName": "West Indies Academy",
+                      "handicap": 0,
+                      "sortPriority": 1
+                    },
+                    {
+                      "selectionId": 17043776,
+                      "runnerName": "Windward Islands Volcanoes",
+                      "handicap": 0,
+                      "sortPriority": 2
+                    }
+                  ]
+                },
+                {
+                  "marketId": "1.235983588",
+                  "marketType": "Completed Match",
+                  "eventId": "35662872",
+                  "matchName": "Ireland W v Pakistan W (T-20)",
+                  "sportName": "Ireland W v Pakistan W (T-20)",
+                  "sportId": 4,
+                  "seriesId": 12072774,
+                  "status": "INPLAY",
+                  "playStatus": true,
+                  "selectionIdData": [
+                    {
+                      "selectionId": 37302,
+                      "runnerName": "Yes",
+                      "handicap": 0,
+                      "sortPriority": 1
+                    },
+                    {
+                      "selectionId": 37303,
+                      "runnerName": "No",
+                      "handicap": 0,
+                      "sortPriority": 2
+                    }
+                  ]
+                }
+              ],
+              "marketName": "",
+              "matchDate": "31-05-2026 20:30:00 PM",
+              "matchName": "Ireland W v Pakistan W (T-20)",
+              "matchType": "T20",
+              "maxMinCoins": {
+                "maximum_match_bet": 200000,
+                "minimum_match_bet": 100,
+                "maximum_session_bet": 200000,
+                "minimum_session_bet": 100,
+                "maximum_tie_coins": 200000,
+                "maximum_completed_coins": 200000,
+                "maximum_matchOdds_coins": 200000,
+                "maximum_toss_coins": 200000
+              },
+              "notification": "",
+              "otherMarketCacheUrl": "https://1excache.tresting.com/v2/api/dataByEventId?eventId=35662872",
+              "priority": 0,
+              "scoreIframe": "https://score.tresting.com/socket-iframe-21/crickexpo/35662872",
+              "scoreIframe2": "https://score.akamaized.uk/live-src?id35662872",
+              "seriesId": 12072774,
+              "seriesName": "Womens International Twenty20 Matches",
+              "socketPerm": true,
+              "socketUrl": "https://1excache.tresting.com/",
+              "sportId": 4,
+              "sportName": "Ireland W v Pakistan W (T-20)",
+              "sportType": "Cricket",
+              "status": "INPLAY",
+              "teamData": "[{\"selection_id\":1,\"market_id\":\"1.258718535\",\"runner_name\":\"Ireland W\",\"bookmakerSelectionId\":1,\"betfairSelectionId\":86161054},{\"selection_id\":2,\"market_id\":\"1.258718535\",\"runner_name\":\"Pakistan W\",\"bookmakerSelectionId\":2,\"betfairSelectionId\":86568597}]",
+              "tossRate": 0.95,
+              "trackName": "",
+              "tvId": 0,
+              "tvUrl": "https://getscoredata.com/score/0d860d2d03f4726091f7d2f3ab9b22021164ed5e/35266",
+              "updatedAt": "2026-05-30T19:17:04.460Z",
+              "wonCompletedSelectionId": "",
+              "wonTeamBetfairSelectionId": "",
+              "wonTeamBookmakerSelectionId": "",
+              "wonTeamName": null,
+              "wonTieSelectionId": "",
+              "wonTossSelectionId": "",
+              "wonTossTeamName": ""
+            }
+          ]
+        }
+      }
+    },
+    {
+      "endpoint": "sports/sportByMarketId",
+      "url": "https://api.ons3.co/v1/sports/sportByMarketId",
+      "local_url": "http://localhost:8889/v1/sports/sportByMarketId",
+      "method": "POST",
+      "module": "Sports",
+      "mongodb_collection": "matches",
+      "operation": "read",
+      "request_body": {
+        "marketId": "required"
+      },
+      "request_fields": [
+        "marketId"
+      ],
+      "response": {
+        "message": "string",
+        "code": "number (0=success)",
+        "error": "boolean",
+        "data": "object|array \u2014 sample neeche",
+        "sample": null
+      }
+    },
+    {
+      "endpoint": "user/create",
+      "url": "https://api.ons3.co/v1/user/create",
+      "local_url": "http://localhost:8889/v1/user/create",
+      "method": "POST",
+      "module": "Users",
+      "mongodb_collection": "users",
+      "operation": "create",
+      "request_body": {
+        "username": "required",
+        "password": "required",
+        "name": "required",
+        "userType": "optional",
+        "parentId": "optional"
+      },
+      "request_fields": [
+        "username",
+        "password",
+        "name",
+        "userType",
+        "parentId"
+      ],
+      "response": {
+        "message": "string",
+        "code": "number (0=success)",
+        "error": "boolean",
+        "data": "object|array \u2014 sample neeche",
+        "sample": null
+      }
+    },
+    {
+      "endpoint": "user/deleteUserLedger",
+      "url": "https://api.ons3.co/v1/user/deleteUserLedger",
+      "local_url": "http://localhost:8889/v1/user/deleteUserLedger",
+      "method": "POST",
+      "module": "Ledger",
+      "mongodb_collection": "ledger_entries",
+      "operation": "delete",
+      "request_body": {
+        "ledgerId": "required"
+      },
+      "request_fields": [
+        "ledgerId"
+      ],
+      "response": {
+        "message": "string",
+        "code": "number (0=success)",
+        "error": "boolean",
+        "data": "object|array \u2014 sample neeche",
+        "sample": null
+      }
+    },
+    {
+      "endpoint": "user/domainList",
+      "url": "https://api.ons3.co/v1/user/domainList",
+      "local_url": "http://localhost:8889/v1/user/domainList",
+      "method": "POST",
+      "module": "Domain",
+      "mongodb_collection": "domains",
+      "operation": "read",
+      "request_body": {},
+      "request_fields": [],
+      "response": {
+        "message": "string",
+        "code": "number (0=success)",
+        "error": "boolean",
+        "data": "object|array \u2014 sample neeche",
+        "sample": {
+          "message": "You Are Not Authorised List Domain ! Only owner allowed to List domain",
+          "code": 1,
+          "error": true
+        }
+      }
+    },
+    {
+      "endpoint": "user/getUserShareData",
+      "url": "https://api.ons3.co/v1/user/getUserShareData",
+      "local_url": "http://localhost:8889/v1/user/getUserShareData",
+      "method": "POST",
+      "module": "Users",
+      "mongodb_collection": "users",
+      "operation": "read",
+      "request_body": {
+        "userId": "required"
+      },
+      "request_fields": [
+        "userId"
+      ],
+      "response": {
+        "message": "string",
+        "code": "number (0=success)",
+        "error": "boolean",
+        "data": "object|array \u2014 sample neeche",
+        "sample": null
+      }
+    },
+    {
+      "endpoint": "user/ledgerCreditDebit",
+      "url": "https://api.ons3.co/v1/user/ledgerCreditDebit",
+      "local_url": "http://localhost:8889/v1/user/ledgerCreditDebit",
+      "method": "POST",
+      "module": "Ledger",
+      "mongodb_collection": "ledger_entries",
+      "operation": "create",
+      "request_body": {
+        "userId": "required",
+        "amount": "required",
+        "type": "required",
+        "remark": "optional"
+      },
+      "request_fields": [
+        "userId",
+        "amount",
+        "type",
+        "remark"
+      ],
+      "response": {
+        "message": "string",
+        "code": "number (0=success)",
+        "error": "boolean",
+        "data": "object|array \u2014 sample neeche",
+        "sample": null
+      }
+    },
+    {
+      "endpoint": "user/lenaDena",
+      "url": "https://api.ons3.co/v1/user/lenaDena",
+      "local_url": "http://localhost:8889/v1/user/lenaDena",
+      "method": "POST",
+      "module": "Ledger",
+      "mongodb_collection": "ledger_entries",
+      "operation": "create",
+      "request_body": {
+        "fromUserId": "required",
+        "toUserId": "required",
+        "amount": "required"
+      },
+      "request_fields": [
+        "fromUserId",
+        "toUserId",
+        "amount"
+      ],
+      "response": {
+        "message": "string",
+        "code": "number (0=success)",
+        "error": "boolean",
+        "data": "object|array \u2014 sample neeche",
+        "sample": null
+      }
+    },
+    {
+      "endpoint": "user/login",
+      "url": "https://api.ons3.co/v1/user/login",
+      "local_url": "http://localhost:8889/v1/user/login",
+      "method": "POST",
+      "module": "Auth",
+      "mongodb_collection": "users",
+      "operation": "auth",
+      "request_body": {
+        "username": "required",
+        "password": "required",
+        "host": "required",
+        "isClient": "optional"
+      },
+      "request_fields": [
+        "username",
+        "password",
+        "host",
+        "isClient"
+      ],
+      "response": {
+        "message": "string",
+        "code": "number (0=success)",
+        "error": "boolean",
+        "data": "object|array \u2014 sample neeche",
+        "sample": {
+          "token": "local-admin-demo-token",
+          "user": {
+            "userId": "uid-admin",
+            "username": "ADMIN001",
+            "name": "Admin Demo",
+            "userType": "admin",
+            "userPriority": 6,
+            "parentId": "uid-superadmin",
+            "balance": 500000.0,
+            "coins": 500000.0,
+            "exposure": 0.0,
+            "profitLoss": 0.0,
+            "status": "1",
+            "isDeleted": "false",
+            "casinoStatus": true,
+            "intCasinoStatus": false,
+            "matchShare": 100,
+            "matchCommission": 0,
+            "sessionCommission": 0,
+            "casinoShare": 100,
+            "casinoCommission": 0,
+            "createdAt": 1780252901535,
+            "isPasswordChanged": true,
+            "betChipsData": {
+              "100": 100,
+              "500": 500,
+              "1000": 1000,
+              "5000": 5000,
+              "10000": 10000,
+              "50000": 50000,
+              "100000": 100000
+            }
+          }
+        }
+      }
+    },
+    {
+      "endpoint": "user/updateCoins",
+      "url": "https://api.ons3.co/v1/user/updateCoins",
+      "local_url": "http://localhost:8889/v1/user/updateCoins",
+      "method": "POST",
+      "module": "Users",
+      "mongodb_collection": "users",
+      "operation": "update",
+      "request_body": {
+        "userId": "required",
+        "coins": "required"
+      },
+      "request_fields": [
+        "userId",
+        "coins"
+      ],
+      "response": {
+        "message": "string",
+        "code": "number (0=success)",
+        "error": "boolean",
+        "data": "object|array \u2014 sample neeche",
+        "sample": null
+      }
+    },
+    {
+      "endpoint": "user/updateUserPassword",
+      "url": "https://api.ons3.co/v1/user/updateUserPassword",
+      "local_url": "http://localhost:8889/v1/user/updateUserPassword",
+      "method": "POST",
+      "module": "Users",
+      "mongodb_collection": "users",
+      "operation": "update",
+      "request_body": {
+        "userId": "required",
+        "password": "required"
+      },
+      "request_fields": [
+        "userId",
+        "password"
+      ],
+      "response": {
+        "message": "string",
+        "code": "number (0=success)",
+        "error": "boolean",
+        "data": "object|array \u2014 sample neeche",
+        "sample": null
+      }
+    },
+    {
+      "endpoint": "user/userActivity",
+      "url": "https://api.ons3.co/v1/user/userActivity",
+      "local_url": "http://localhost:8889/v1/user/userActivity",
+      "method": "POST",
+      "module": "Users",
+      "mongodb_collection": "user_activities",
+      "operation": "read",
+      "request_body": {
+        "userId": "required",
+        "fromDate": "required",
+        "toDate": "required"
+      },
+      "request_fields": [
+        "userId",
+        "fromDate",
+        "toDate"
+      ],
+      "response": {
+        "message": "string",
+        "code": "number (0=success)",
+        "error": "boolean",
+        "data": "object|array \u2014 sample neeche",
+        "sample": null
+      }
+    },
+    {
+      "endpoint": "user/userBalance",
+      "url": "https://api.ons3.co/v1/user/userBalance",
+      "local_url": "http://localhost:8889/v1/user/userBalance",
+      "method": "POST",
+      "module": "Users",
+      "mongodb_collection": "users",
+      "operation": "read",
+      "request_body": {
+        "userId": "required"
+      },
+      "request_fields": [
+        "userId"
+      ],
+      "response": {
+        "message": "string",
+        "code": "number (0=success)",
+        "error": "boolean",
+        "data": "object|array \u2014 sample neeche",
+        "sample": {
+          "message": "",
+          "code": 0,
+          "error": false,
+          "data": {
+            "intCasinoStatus": "false",
+            "exposure": "0",
+            "coins": "500000",
+            "status": "1",
+            "isDeleted": "false"
+          }
+        }
+      }
+    },
+    {
+      "endpoint": "user/userDetails",
+      "url": "https://api.ons3.co/v1/user/userDetails",
+      "local_url": "http://localhost:8889/v1/user/userDetails",
+      "method": "POST",
+      "module": "Users",
+      "mongodb_collection": "users",
+      "operation": "read",
+      "request_body": {
+        "userId": "required"
+      },
+      "request_fields": [
+        "userId"
+      ],
+      "response": {
+        "message": "string",
+        "code": "number (0=success)",
+        "error": "boolean",
+        "data": "object|array \u2014 sample neeche",
+        "sample": {
+          "message": "OK",
+          "code": 0,
+          "error": false,
+          "data": {
+            "userId": "uid-admin",
+            "username": "ADMIN001",
+            "name": "Admin Demo",
+            "userType": "admin",
+            "userPriority": 6,
+            "parentId": "uid-superadmin",
+            "balance": 500000.0,
+            "coins": 500000.0,
+            "exposure": 0.0,
+            "profitLoss": 0.0,
+            "status": "1",
+            "isDeleted": "false",
+            "casinoStatus": true,
+            "intCasinoStatus": false,
+            "matchShare": 100,
+            "matchCommission": 0,
+            "sessionCommission": 0,
+            "casinoShare": 100,
+            "casinoCommission": 0,
+            "createdAt": 1780252901535
+          }
+        }
+      }
+    },
+    {
+      "endpoint": "user/userLedger",
+      "url": "https://api.ons3.co/v1/user/userLedger",
+      "local_url": "http://localhost:8889/v1/user/userLedger",
+      "method": "POST",
+      "module": "Ledger",
+      "mongodb_collection": "ledger_entries",
+      "operation": "read",
+      "request_body": {
+        "userId": "required",
+        "fromDate": "required",
+        "toDate": "required"
+      },
+      "request_fields": [
+        "userId",
+        "fromDate",
+        "toDate"
+      ],
+      "response": {
+        "message": "string",
+        "code": "number (0=success)",
+        "error": "boolean",
+        "data": "object|array \u2014 sample neeche",
+        "sample": {
+          "message": "Ledger List fetched Successfully",
+          "code": 0,
+          "error": false,
+          "data": {
+            "totalCoins": 0,
+            "creditAmount": 0,
+            "debitAmount": 0,
+            "calAmount": 0,
+            "sportLedger": 0,
+            "diamondCasinoLedger": 0,
+            "intCasinoLedger": 0,
+            "matkaLedger": 0,
+            "cashLedger": 0,
+            "ledgerData": []
+          }
+        }
+      }
+    },
+    {
+      "endpoint": "user/userList",
+      "url": "https://api.ons3.co/v1/user/userList",
+      "local_url": "http://localhost:8889/v1/user/userList",
+      "method": "POST",
+      "module": "Users",
+      "mongodb_collection": "users",
+      "operation": "read",
+      "request_body": {
+        "downlineUserType": "required",
+        "parentId": "required",
+        "pageNo": "required",
+        "size": "optional"
+      },
+      "request_fields": [
+        "downlineUserType",
+        "parentId",
+        "pageNo",
+        "size"
+      ],
+      "response": {
+        "message": "string",
+        "code": "number (0=success)",
+        "error": "boolean",
+        "data": "object|array \u2014 sample neeche",
+        "sample": {
+          "message": "User List fetched Successfully",
+          "code": 0,
+          "error": false,
+          "data": {
+            "total": 1,
+            "list": [
+              {
+                "userId": "uid-client",
+                "username": "CLIENT001",
+                "name": "Client Demo",
+                "userType": "client",
+                "userPriority": 1,
+                "parentId": "uid-agent",
+                "balance": 5000.0,
+                "coins": 5000.0,
+                "exposure": 0.0,
+                "profitLoss": 0.0,
+                "status": "1",
+                "isDeleted": "false",
+                "casinoStatus": true,
+                "intCasinoStatus": false,
+                "matchShare": 100,
+                "matchCommission": 0,
+                "sessionCommission": 0,
+                "casinoShare": 100,
+                "casinoCommission": 0,
+                "createdAt": 1780252901535
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "endpoint": "user/userLoginActivity",
+      "url": "https://api.ons3.co/v1/user/userLoginActivity",
+      "local_url": "http://localhost:8889/v1/user/userLoginActivity",
+      "method": "POST",
+      "module": "Users",
+      "mongodb_collection": "user_activities",
+      "operation": "read",
+      "request_body": {
+        "userId": "required",
+        "fromDate": "required",
+        "toDate": "required"
+      },
+      "request_fields": [
+        "userId",
+        "fromDate",
+        "toDate"
+      ],
+      "response": {
+        "message": "string",
+        "code": "number (0=success)",
+        "error": "boolean",
+        "data": "object|array \u2014 sample neeche",
+        "sample": null
+      }
+    },
+    {
+      "endpoint": "user/userSearch",
+      "url": "https://api.ons3.co/v1/user/userSearch",
+      "local_url": "http://localhost:8889/v1/user/userSearch",
+      "method": "POST",
+      "module": "Users",
+      "mongodb_collection": "users",
+      "operation": "read",
+      "request_body": {
+        "searchTerm": "required",
+        "downlineUserType": "required"
+      },
+      "request_fields": [
+        "searchTerm",
+        "downlineUserType"
+      ],
+      "response": {
+        "message": "string",
+        "code": "number (0=success)",
+        "error": "boolean",
+        "data": "object|array \u2014 sample neeche",
+        "sample": {
+          "message": "User List fetched Successfully",
+          "code": 0,
+          "error": false,
+          "data": {
+            "total": 1,
+            "list": [
+              {
+                "userId": "uid-client",
+                "username": "CLIENT001",
+                "name": "Client Demo",
+                "userType": "client",
+                "userPriority": 1,
+                "parentId": "uid-agent",
+                "balance": 5000.0,
+                "coins": 5000.0,
+                "exposure": 0.0,
+                "profitLoss": 0.0,
+                "status": "1",
+                "isDeleted": "false",
+                "casinoStatus": true,
+                "intCasinoStatus": false,
+                "matchShare": 100,
+                "matchCommission": 0,
+                "sessionCommission": 0,
+                "casinoShare": 100,
+                "casinoCommission": 0,
+                "createdAt": 1780252901535
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "endpoint": "user/userUpdate",
+      "url": "https://api.ons3.co/v1/user/userUpdate",
+      "local_url": "http://localhost:8889/v1/user/userUpdate",
+      "method": "POST",
+      "module": "Users",
+      "mongodb_collection": "users",
+      "operation": "update",
+      "request_body": {
+        "userId": "required"
+      },
+      "request_fields": [
+        "userId"
+      ],
+      "response": {
+        "message": "string",
+        "code": "number (0=success)",
+        "error": "boolean",
+        "data": "object|array \u2014 sample neeche",
+        "sample": null
+      }
+    },
+    {
+      "endpoint": "user/userupdate",
+      "url": "https://api.ons3.co/v1/user/userupdate",
+      "local_url": "http://localhost:8889/v1/user/userupdate",
+      "method": "POST",
+      "module": "Users",
+      "mongodb_collection": "users",
+      "operation": "update",
+      "request_body": {
+        "userId": "required"
+      },
+      "request_fields": [
+        "userId"
+      ],
+      "response": {
+        "message": "string",
+        "code": "number (0=success)",
+        "error": "boolean",
+        "data": "object|array \u2014 sample neeche",
+        "sample": null
+      }
+    },
+    {
+      "endpoint": "website/domainSettingByDomainName",
+      "url": "https://api.ons3.co/v1/website/domainSettingByDomainName",
+      "local_url": "http://localhost:8889/v1/website/domainSettingByDomainName",
+      "method": "POST",
+      "module": "Domain",
+      "mongodb_collection": "domains",
+      "operation": "read",
+      "request_body": {
+        "domainName": "required"
+      },
+      "request_fields": [
+        "domainName"
+      ],
+      "response": {
+        "message": "string",
+        "code": "number (0=success)",
+        "error": "boolean",
+        "data": "object|array \u2014 sample neeche",
+        "sample": null
+      }
+    }
+  ]
+}

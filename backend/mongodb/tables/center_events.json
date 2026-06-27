@@ -1,0 +1,25 @@
+{
+  "collection": "center_events",
+  "database": "ex99_local",
+  "description": "centerPanel/getAllEvents \u2014 sport types + market counts",
+  "fields": {
+    "eventType": "object",
+    "marketCount": "number"
+  },
+  "indexes": [
+    {
+      "keys": {
+        "eventType.id": 1
+      }
+    }
+  ],
+  "apis": [],
+  "document_count": 4,
+  "sample_document": {
+    "eventType": {
+      "id": "4",
+      "name": "Cricket"
+    },
+    "marketCount": 203
+  }
+}

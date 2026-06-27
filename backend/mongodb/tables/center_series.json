@@ -1,0 +1,28 @@
+{
+  "collection": "center_series",
+  "database": "ex99_local",
+  "description": "centerPanel/getSeriesList, getSeriesBySportId",
+  "fields": {
+    "seriesId": "string",
+    "seriesName": "string",
+    "sportId": "number",
+    "marketCount": "number"
+  },
+  "indexes": [
+    {
+      "keys": {
+        "seriesId": 1
+      }
+    }
+  ],
+  "apis": [],
+  "document_count": 2,
+  "sample_document": {
+    "seriesId": "12444343",
+    "seriesName": "ICC World Test Championship",
+    "sportsId": 4,
+    "sportId": 4,
+    "sportName": "Cricket",
+    "marketCount": 12
+  }
+}

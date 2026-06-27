@@ -1,0 +1,17 @@
+{
+  "message": "",
+  "code": 0,
+  "error": false,
+  "data": {
+    "intCasinoStatus": "false",
+    "exposure": "0.0",
+    "intCasinoMultiply": "1",
+    "isDeleted": "false",
+    "status": "1",
+    "coins": "1000.0",
+    "casinoToken": "",
+    "authenticateToken": "5915d99a96a94227810380737a94baa6",
+    "creatorId": "uid-owner",
+    "profitLoss": "0.0"
+  }
+}

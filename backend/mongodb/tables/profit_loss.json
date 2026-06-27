@@ -1,0 +1,22 @@
+{
+  "collection": "profit_loss",
+  "database": "ex99_local",
+  "description": "reports/userProfitLoss \u2014 data array",
+  "fields": {
+    "payload": "object"
+  },
+  "indexes": [
+    {
+      "keys": {
+        "userId": 1
+      }
+    }
+  ],
+  "apis": [],
+  "document_count": 1,
+  "sample_document": {
+    "userId": "uid-admin",
+    "profitLoss": 1250.5,
+    "exposure": 0
+  }
+}

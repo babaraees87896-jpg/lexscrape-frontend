@@ -1,0 +1,20 @@
+[
+  {
+    "userId": "6946a4bc25b6ee438db6ff4d",
+    "marketId": "1.245690241",
+    "selectionId": 49749064,
+    "runnerName": "Team A",
+    "position": 500,
+    "exposure": -425
+  },
+  {
+    "userId": "6946a4bc25b6ee438db6ff4d",
+    "marketId": "1.259072606",
+    "eventId": "35706611",
+    "runners": {
+      "1": 157.0,
+      "2": -100.0
+    },
+    "exposure": 100
+  }
+]

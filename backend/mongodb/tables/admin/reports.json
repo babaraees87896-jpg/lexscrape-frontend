@@ -1,0 +1,69 @@
+{
+  "collection": "reports",
+  "database": "ex99_local",
+  "description": "casino/dayWiseCasinoReport, userProfitLoss, plus-minus reports \u2014 cached rows",
+  "indexes": [
+    {
+      "keys": {
+        "reportType": 1,
+        "userId": 1
+      }
+    },
+    {
+      "keys": {
+        "marketId": 1
+      }
+    }
+  ],
+  "fields": {
+    "reportType": {
+      "type": "string",
+      "examples": [
+        "dayWiseCasino",
+        "userProfitLoss",
+        "plusMinusMarket"
+      ]
+    },
+    "userId": {
+      "type": "string"
+    },
+    "marketId": {
+      "type": "string"
+    },
+    "eventId": {
+      "type": "number"
+    },
+    "fromDate": {
+      "type": "string"
+    },
+    "toDate": {
+      "type": "string"
+    },
+    "userNetProfitLoss": {
+      "type": "number"
+    },
+    "clientNetAmount": {
+      "type": "number"
+    },
+    "payload": {
+      "type": "object",
+      "note": "full API row store"
+    },
+    "createdAt": {
+      "type": "date"
+    }
+  },
+  "admin_apis": [
+    "bluexchReports/clientPlusMinus",
+    "casino/dayWiseCasinoReport",
+    "casino/diamondCasinoReportByUser",
+    "casino/getPlusMinusCasinoDetail",
+    "casino/getProfitLossPos",
+    "casino/realTimeDataPosDataDiamondCasino",
+    "decision/getPlusMinusByMarketId",
+    "matka/dayWiseMatkaReport",
+    "matka/getProfitLossPosMatka",
+    "reports/getPlusMinusByMarketIdByUserWise",
+    "reports/userProfitLoss"
+  ]
+}

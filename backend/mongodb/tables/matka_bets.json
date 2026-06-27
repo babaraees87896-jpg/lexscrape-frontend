@@ -1,0 +1,40 @@
+{
+  "collection": "matka_bets",
+  "database": "ex99_local",
+  "description": "matka/matkaPlaceBet, matkaBetList, matkaReportByUser",
+  "fields": {
+    "userId": "string",
+    "matkaEventId": "string",
+    "number": "string",
+    "stake": "number",
+    "profitLoss": "number",
+    "createdAt": "date"
+  },
+  "indexes": [
+    {
+      "keys": {
+        "userId": 1
+      }
+    }
+  ],
+  "apis": [
+    "matka/matkaBetList",
+    "matka/matkaPlaceBet",
+    "matka/matkaReportByUser"
+  ],
+  "document_count": 4,
+  "sample_document": {
+    "betId": "bet-matka-001",
+    "userId": "6946a4bc25b6ee438db6ff4d",
+    "matkaEventId": "matka-kalyan-001",
+    "number": "123",
+    "betNumber": "123",
+    "gameType": "SINGLE",
+    "betType": "OPEN",
+    "priority": 1,
+    "stake": 100,
+    "profitLoss": 0,
+    "status": "open",
+    "createdAt": "2026-06-12 08:21:58.040617+00:00"
+  }
+}

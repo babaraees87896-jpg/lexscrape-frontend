@@ -1,0 +1,17 @@
+{
+  "message": "Domain List fetched Successfully",
+  "code": 0,
+  "error": false,
+  "data": [
+    {
+      "id": "1ex99.in",
+      "domainName": "1ex99.in",
+      "domainUrl": "1ex99.in"
+    },
+    {
+      "id": "1ex99.live",
+      "domainName": "1ex99.live",
+      "domainUrl": "1ex99.live"
+    }
+  ]
+}

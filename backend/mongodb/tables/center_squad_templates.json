@@ -1,0 +1,32 @@
+{
+  "collection": "center_squad_templates",
+  "database": "ex99_local",
+  "description": "centerPanel/getSquadTemplates, saveSquadTemplate",
+  "fields": {
+    "templateId": "string",
+    "sportId": "number",
+    "name": "string",
+    "players": "array"
+  },
+  "indexes": [
+    {
+      "keys": {
+        "templateId": 1
+      }
+    }
+  ],
+  "apis": [
+    "centerPanel/getSquadTemplates",
+    "centerPanel/saveSquadTemplate"
+  ],
+  "document_count": 1,
+  "sample_document": {
+    "templateId": "sq-001",
+    "sportId": 4,
+    "name": "IPL Default Squad",
+    "players": [
+      "Player 1",
+      "Player 2"
+    ]
+  }
+}

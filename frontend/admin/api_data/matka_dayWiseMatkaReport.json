@@ -1,0 +1,23 @@
+{
+  "message": "Matka report fetched",
+  "code": 0,
+  "error": false,
+  "data": [
+    {
+      "matkaEventId": "matka-kalyan-001",
+      "name": "Kalyan",
+      "openTime": "2026-06-12 08:21:58.040000",
+      "closeTime": "2026-06-12 10:21:58.040000",
+      "result": "",
+      "status": "open"
+    },
+    {
+      "matkaEventId": "matka-milan-001",
+      "name": "Milan Day",
+      "openTime": "2026-06-12 08:21:58.040000",
+      "closeTime": "2026-06-12 12:21:58.040000",
+      "result": "456",
+      "status": "declared"
+    }
+  ]
+}

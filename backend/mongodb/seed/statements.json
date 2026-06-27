@@ -1,0 +1,24 @@
+[
+  {
+    "statementId": "stmt-001",
+    "userId": "6946a4bc25b6ee438db6ff4d",
+    "startDate": "2026-06-05 08:21:58.040636+00:00",
+    "endDate": "2026-06-12 08:21:58.040637+00:00",
+    "rows": [
+      {
+        "date": "2026-05-25",
+        "description": "Bet win",
+        "credit": 1000,
+        "debit": 0
+      },
+      {
+        "date": "2026-05-26",
+        "description": "Bet loss",
+        "credit": 0,
+        "debit": 500
+      }
+    ],
+    "totalCredit": 1000,
+    "totalDebit": 500
+  }
+]

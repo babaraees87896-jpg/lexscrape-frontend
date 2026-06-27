@@ -1,0 +1,32 @@
+{
+  "message": "",
+  "code": 0,
+  "error": false,
+  "data": {
+    "username": "OW1000",
+    "balance": 0,
+    "userId": "67caf7bab94fb3fab5e3ba9f",
+    "userType": "owner",
+    "isPasswordChanged": true,
+    "userPriority": 9,
+    "name": "owner 01",
+    "matchShare": 100,
+    "matchCommission": 10,
+    "sessionCommission": 10,
+    "casinoShare": 100,
+    "casinoCommission": 10,
+    "casinoStatus": true,
+    "intCasinoStatus": true,
+    "intCasinoMultiply": 1,
+    "parentId": null,
+    "betChipsModal": false,
+    "updatedAt": "2026-06-12T18:43:44.330Z",
+    "isOneClickBet": false,
+    "referralCode": "",
+    "oneClickBetAmount": 10,
+    "userFixLimit": 1000000000,
+    "creatorName": "",
+    "userCount": {}
+  },
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2NhZjdiYWI5NGZiM2ZhYjVlM2JhOWYiLCJ1c2VybmFtZSI6Ik9XMTAwMCIsIm5hbWUiOiJvd25lciAwMSIsInVzZXJUeXBlIjoib3duZXIiLCJhdXRoVG9rZW4iOiJjMjkyMTQ4MmQzZmZmOTdiMGEzZjgxNDRmMWI5MDRmZiIsImlhdCI6MTc4MTI4OTg5NiwiZXhwIjoxNzgxMzc2Mjk2fQ.zLOoPLgHIC8wkR4ixDTwp7UJXrUYPMcp54sWHP8kteE"
+}

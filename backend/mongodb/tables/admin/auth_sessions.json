@@ -1,0 +1,39 @@
+{
+  "collection": "auth_sessions",
+  "database": "ex99_local",
+  "description": "user/login token \u2014 JWT session store",
+  "indexes": [
+    {
+      "keys": {
+        "token": 1
+      }
+    },
+    {
+      "keys": {
+        "userId": 1
+      }
+    }
+  ],
+  "fields": {
+    "token": {
+      "type": "string",
+      "required": true
+    },
+    "userId": {
+      "type": "string",
+      "required": true
+    },
+    "username": {
+      "type": "string"
+    },
+    "expiresAt": {
+      "type": "date"
+    },
+    "createdAt": {
+      "type": "date"
+    }
+  },
+  "admin_apis": [
+    "logout"
+  ]
+}

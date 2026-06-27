@@ -1,0 +1,39 @@
+{
+  "collection": "casino_rounds",
+  "database": "ex99_local",
+  "description": "casino/roundWiseResult, resultByRoundWise",
+  "fields": {
+    "eventId": "number",
+    "roundId": "string",
+    "result": "object",
+    "createdAt": "date"
+  },
+  "indexes": [
+    {
+      "keys": {
+        "eventId": 1,
+        "roundId": 1
+      }
+    }
+  ],
+  "apis": [
+    "casino/resultByRoundWise",
+    "casino/roundWiseResult"
+  ],
+  "document_count": 1,
+  "sample_document": {
+    "eventId": 3030,
+    "roundId": "R-12345",
+    "gtype": "teen20",
+    "result": {
+      "winner": "Player A",
+      "gtype": "teen20",
+      "cards": [
+        "H7",
+        "D9",
+        "C3"
+      ]
+    },
+    "createdAt": "2026-06-12 08:21:58.040614+00:00"
+  }
+}

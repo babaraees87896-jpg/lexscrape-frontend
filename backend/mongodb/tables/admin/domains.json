@@ -1,0 +1,44 @@
+{
+  "collection": "domains",
+  "database": "ex99_local",
+  "description": "user/domainList, website/domainSettingByDomainName",
+  "indexes": [
+    {
+      "keys": {
+        "domainName": 1
+      },
+      "unique": true
+    }
+  ],
+  "fields": {
+    "domainName": {
+      "type": "string",
+      "required": true
+    },
+    "domainUrl": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "userNotification": {
+      "type": "string"
+    },
+    "clientNotification": {
+      "type": "string"
+    },
+    "themeSetting": {
+      "type": "object"
+    },
+    "banner": {
+      "type": "array"
+    },
+    "status": {
+      "type": "boolean"
+    }
+  },
+  "admin_apis": [
+    "user/domainList",
+    "website/domainSettingByDomainName"
+  ]
+}

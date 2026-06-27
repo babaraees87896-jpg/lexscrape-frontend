@@ -1,0 +1,100 @@
+{
+  "collection": "reports",
+  "database": "ex99_local",
+  "description": "reports/*, bluexchReports/*, crick365/* \u2014 cached report rows",
+  "fields": {
+    "reportType": "string",
+    "userId": "string",
+    "marketId": "string",
+    "payload": "object",
+    "createdAt": "date"
+  },
+  "indexes": [
+    {
+      "keys": {
+        "reportType": 1,
+        "userId": 1
+      }
+    }
+  ],
+  "apis": [
+    "bluexchReports/clientPlusMinus",
+    "casino/dayWiseCasinoReport",
+    "casino/diamondCasinoReportByUser",
+    "casino/getPlusMinusCasinoDetail",
+    "casino/getProfitLossPos",
+    "casino/realTimeDataPosDataDiamondCasino",
+    "centerPanel/createCustomMatch",
+    "centerPanel/deleteDomainIp",
+    "centerPanel/deleteFancyCategory",
+    "centerPanel/deleteMarket",
+    "centerPanel/deleteProject",
+    "centerPanel/deleteRacingEvents",
+    "centerPanel/deleteSquadTemplate",
+    "centerPanel/getFancyAuditLog",
+    "centerPanel/getLatiyalLiveScoreId",
+    "centerPanel/getLatiyalSeriesList",
+    "centerPanel/getManualScore",
+    "centerPanel/getManualScoreHistory",
+    "centerPanel/getMatchListBySeriesIdLatiyal",
+    "centerPanel/getRacingEventsByCompetitionId",
+    "centerPanel/getRacingEventsByEventId",
+    "centerPanel/getRacingSeriesList",
+    "centerPanel/getRacingSportsData",
+    "centerPanel/getSeriesBySportId",
+    "centerPanel/getSeriesList",
+    "centerPanel/getSessionByDatabase",
+    "centerPanel/getSessionListByApiAndDatabase",
+    "centerPanel/getSportDataByEventId",
+    "centerPanel/marketDecision",
+    "centerPanel/matchListByDatabase",
+    "centerPanel/retryFailedDecision",
+    "centerPanel/rollbackFancy",
+    "centerPanel/saveFancyAuditLog",
+    "centerPanel/saveFancyByCenterPanel",
+    "centerPanel/saveManualMatch",
+    "centerPanel/saveRacingEventByMarketIdAndEventId",
+    "centerPanel/saveSportsByEventId",
+    "centerPanel/saveSportsDataInRedisByDatabase",
+    "centerPanel/undoManualScore",
+    "centerPanel/updateCustomMatchStatus",
+    "centerPanel/updateCustomSeries",
+    "centerPanel/updateCustomSeriesStatus",
+    "centerPanel/updateCustomer",
+    "centerPanel/updateFancyCategory",
+    "centerPanel/updateFancyDecision",
+    "centerPanel/updateManualScore",
+    "centerPanel/updateProjectStatus",
+    "centerPanel/updateRacingEventListInredis",
+    "centerPanel/updateSportByEventId",
+    "centerPanel/website/fileUpload",
+    "crick365/agentProfitLossCrick",
+    "decision/getPlusMinusByMarketId",
+    "matka/dayWiseMatkaReport",
+    "matka/getProfitLossPosMatka",
+    "reports/casinoTransactionReport",
+    "reports/getOddsPositionForAllexch",
+    "reports/getPlusMinusByMarketIdByUserWise",
+    "reports/userProfitLoss",
+    "user/create1"
+  ],
+  "document_count": 5,
+  "sample_document": {
+    "reportType": "casino/dayWiseCasinoReport",
+    "userId": "uid-admin",
+    "marketId": null,
+    "payload": {
+      "_id": {
+        "date": "1780252200000"
+      },
+      "eventId": 3030,
+      "eventName": "20-20 Teenpatti (01-06-2026)",
+      "userNetProfitLoss": 1250.5,
+      "userOddsComm": 85.25,
+      "clientOddsAmount": 42.1,
+      "clientNetAmount": 1123.15,
+      "createdAt": 1780252901535
+    },
+    "createdAt": "2026-06-12 08:21:58.040667+00:00"
+  }
+}

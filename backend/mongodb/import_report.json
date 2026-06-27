@@ -1,0 +1,17 @@
+{
+  "collections": {
+    "users": 2,
+    "auth_sessions": 1,
+    "domains": 1,
+    "matches": 7,
+    "casino_games": 35,
+    "sports_bets": 0,
+    "casino_bets": 0,
+    "ledger_entries": 0,
+    "user_ledger": 1,
+    "day_wise_casino": 2,
+    "sports_catalog": 0,
+    "profit_loss": 0
+  },
+  "note": "Documents = real API data field-for-field"
+}

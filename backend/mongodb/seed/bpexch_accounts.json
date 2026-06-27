@@ -1,0 +1,18 @@
+[
+  {
+    "userId": "6946a4bc25b6ee438db6ff4d",
+    "balance": 2500,
+    "statement": [
+      {
+        "date": "2026-05-28",
+        "type": "credit",
+        "amount": 1000
+      },
+      {
+        "date": "2026-05-29",
+        "type": "debit",
+        "amount": 200
+      }
+    ]
+  }
+]

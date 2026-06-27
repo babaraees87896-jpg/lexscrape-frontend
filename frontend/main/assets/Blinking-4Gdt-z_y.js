@@ -1,0 +1,1 @@
+import{j as n}from"./index-CKjJtyLu.js";import{R as i}from"./vendor-BsdCPxnC.js";const s=()=>n.jsx("div",{children:n.jsx("span",{className:"h-2 w-2 rounded-full bg-[#bdff37] inline-block animate-Blinking"})}),r=i.memo(s);export{r as B};

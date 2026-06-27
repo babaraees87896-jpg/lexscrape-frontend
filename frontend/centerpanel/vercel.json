@@ -1,0 +1,24 @@
+{
+  "buildCommand": "python ../../scripts/vercel_build.py centerpanel",
+  "outputDirectory": "../../vercel-out/centerpanel",
+  "installCommand": "echo skip",
+  "framework": null,
+  "rewrites": [
+    { "source": "/v1/:path*", "destination": "https://api-center.1ex.in/v1/:path*" },
+    { "source": "/v2/:path*", "destination": "https://api-center.1ex.in/v2/:path*" },
+    { "source": "/excache/:path*", "destination": "https://api-center.1ex.in/excache/:path*" },
+    { "source": "/centerPanel/:path*", "destination": "https://api-center.1ex.in/centerPanel/:path*" },
+    { "source": "/sports/:path*", "destination": "https://api-center.1ex.in/sports/:path*" },
+    { "source": "/decision/:path*", "destination": "https://api-center.1ex.in/decision/:path*" },
+    { "source": "/user/:path*", "destination": "https://api-center.1ex.in/user/:path*" },
+    { "source": "/manualOdds/:path*", "destination": "https://api-center.1ex.in/manualOdds/:path*" },
+    { "source": "/logout", "destination": "https://api-center.1ex.in/logout" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ],
+  "headers": [
+    {
+      "source": "/static/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+    }
+  ]
+}

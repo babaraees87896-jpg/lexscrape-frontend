@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Auto Decision Settings — BlueWin</title>
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap" rel="stylesheet"/>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Poppins, sans-serif;
+      background: #f1f5f9;
+      color: #0f172a;
+      min-height: 100vh;
+    }
+    .header {
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      color: #fff;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 12px rgba(0,0,0,.15);
+    }
+    .header h1 { margin: 0; font-size: 18px; font-weight: 600; }
+    .header p { margin: 4px 0 0; font-size: 12px; opacity: .75; }
+    .btn-back {
+      border: none;
+      background: rgba(255,255,255,.12);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn-back:hover { background: rgba(255,255,255,.2); }
+    .wrap { max-width: 1100px; margin: 24px auto; padding: 0 16px 40px; }
+    .card {
+      background: #fff;
+      border-radius: 14px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 1px 3px rgba(0,0,0,.06);
+      overflow: hidden;
+    }
+    .toolbar {
+      padding: 14px 18px;
+      border-bottom: 1px solid #e2e8f0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .toolbar span { font-size: 13px; color: #64748b; }
+    .btn-refresh {
+      border: none;
+      background: linear-gradient(135deg, #7c3aed, #6d28d9);
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn-sync {
+      border: none;
+      background: linear-gradient(135deg, #0ea5e9, #0284c7);
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .toolbar-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 12px 14px; text-align: center; font-size: 13px; border-bottom: 1px solid #eef2f7; }
+    th {
+      background: #f8fafc;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      color: #64748b;
+      font-weight: 600;
+    }
+    td.match-name { text-align: left; font-weight: 500; }
+    td.match-id { font-family: ui-monospace, monospace; font-size: 12px; color: #475569; }
+    .empty { padding: 48px 16px; text-align: center; color: #94a3b8; font-size: 14px; }
+    .loading { padding: 48px 16px; text-align: center; color: #64748b; }
+    .toggle {
+      position: relative;
+      width: 52px;
+      height: 28px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .toggle input { opacity: 0; width: 0; height: 0; }
+    .slider {
+      position: absolute;
+      inset: 0;
+      background: #cbd5e1;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: .2s;
+    }
+    .slider:before {
+      content: "";
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      left: 3px;
+      top: 3px;
+      background: #fff;
+      border-radius: 50%;
+      transition: .2s;
+      box-shadow: 0 1px 3px rgba(0,0,0,.2);
+    }
+    .toggle input:checked + .slider { background: #16a34a; }
+    .toggle input:checked + .slider:before { transform: translateX(24px); }
+    .toggle input:disabled + .slider { opacity: .55; cursor: wait; }
+    .toggle-label {
+      display: block;
+      margin-top: 4px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .05em;
+    }
+    .toggle-label.on { color: #16a34a; }
+    .toggle-label.off { color: #94a3b8; }
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #0f172a;
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: .25s;
+      pointer-events: none;
+      z-index: 99;
+    }
+    .toast.show { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div>
+      <h1>Auto Decision Settings</h1>
+      <p>ON = result auto-declare hoga · OFF = manually declare karna hoga</p>
+    </div>
+    <button class="btn-back" type="button" onclick="goDashboard()">← Back to Dashboard</button>
+  </div>
+
+  <div class="wrap">
+    <div class="card">
+      <div class="toolbar">
+        <span id="summary">Loading matches…</span>
+        <div class="toolbar-actions">
+          <button class="btn-sync" type="button" onclick="runAutoSync()">Run Auto Sync</button>
+          <button class="btn-refresh" type="button" onclick="loadMatches()">Refresh</button>
+        </div>
+      </div>
+      <div id="tableWrap" class="loading">Loading…</div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script>
+    const API = "/v1/";
+
+    function getAuthToken() {
+      try {
+        const user = JSON.parse(localStorage.getItem("user") || "null");
+        if (user && user.token) return String(user.token);
+      } catch (e) {}
+      const t = localStorage.getItem("token");
+      return t ? String(t) : "";
+    }
+
+    function authHeaders() {
+      const token = getAuthToken();
+      const h = { "Content-Type": "application/json" };
+      if (token) h.Authorization = "Bearer " + token;
+      return h;
+    }
+
+    function goLogin() {
+      window.location.href = "/#/login";
+    }
+
+    function goDashboard() {
+      window.location.href = "/#/app/dashboard";
+    }
+
+    function showToast(msg) {
+      const el = document.getElementById("toast");
+      el.textContent = msg;
+      el.classList.add("show");
+      setTimeout(() => el.classList.remove("show"), 2200);
+    }
+
+    async function apiPost(endpoint, body) {
+      const res = await fetch(API + endpoint, {
+        method: "POST",
+        headers: authHeaders(),
+        body: JSON.stringify(body || {}),
+      });
+      const data = await res.json();
+      if (data && data.error && (data.code === 401 || data.code === 403)) {
+        showToast(data.message || "Session expired — login again");
+        setTimeout(goLogin, 1200);
+      }
+      return data;
+    }
+
+    function mapMatchRows(rows, flagsByMid) {
+      flagsByMid = flagsByMid || {};
+      const out = [];
+      const seen = {};
+      (rows || []).forEach((row) => {
+        const mid = String((row && row.marketId) || "");
+        if (!mid || seen[mid]) return;
+        seen[mid] = 1;
+        const flags = flagsByMid[mid] || {};
+        out.push({
+          sno: out.length + 1,
+          marketId: mid,
+          matchName:
+            (row && (row.matchName || row.eventName || row.marketName || row.sportName)) || "—",
+          bookmakerAuto: flags.bookmakerAuto !== false,
+          fancyAuto: flags.fancyAuto !== false,
+        });
+      });
+      return out;
+    }
+
+    async function fetchInplayMatches() {
+      const autoRes = await apiPost("decision/autoDecisionMatchList", {});
+      if (!autoRes.error && Array.isArray(autoRes.data) && autoRes.data.length) {
+        return autoRes.data;
+      }
+
+      const listRes = await apiPost("sports/matchList", { status: "INPLAY" });
+      if (listRes.error) {
+        throw new Error(listRes.message || "Failed to load matches");
+      }
+      const flags = {};
+      if (Array.isArray(autoRes.data)) {
+        autoRes.data.forEach((row) => {
+          if (row && row.marketId) flags[row.marketId] = row;
+        });
+      }
+      const mapped = mapMatchRows(listRes.data, flags);
+      if (mapped.length) return mapped;
+      if (autoRes.error) throw new Error(autoRes.message || "Failed to load matches");
+      return [];
+    }
+
+    function toggleCell(row, field) {
+      const on = !!row[field];
+      const id = field + "-" + row.marketId;
+      return `
+        <td>
+          <label class="toggle" title="${field === "bookmakerAuto" ? "Bookmaker" : "Fancy"} auto declare">
+            <input type="checkbox" id="${id}" ${on ? "checked" : ""}
+              onchange="updateToggle('${row.marketId}', '${field}', this)"/>
+            <span class="slider"></span>
+          </label>
+          <span class="toggle-label ${on ? "on" : "off"}" id="${id}-lbl">${on ? "ON" : "OFF"}</span>
+        </td>`;
+    }
+
+    function renderTable(rows) {
+      if (!rows.length) {
+        document.getElementById("tableWrap").innerHTML =
+          '<div class="empty">No INPLAY matches found</div>';
+        document.getElementById("summary").textContent = "0 matches";
+        return;
+      }
+      let html = `<table>
+        <thead><tr>
+          <th>S.No</th>
+          <th>Match Id</th>
+          <th>Match Name</th>
+          <th>Bookmaker</th>
+          <th>Fancy</th>
+        </tr></thead><tbody>`;
+      rows.forEach((row) => {
+        html += `<tr>
+          <td>${row.sno}</td>
+          <td class="match-id">${row.marketId}</td>
+          <td class="match-name">${escapeHtml(row.matchName || "—")}</td>
+          ${toggleCell(row, "bookmakerAuto")}
+          ${toggleCell(row, "fancyAuto")}
+        </tr>`;
+      });
+      html += "</tbody></table>";
+      document.getElementById("tableWrap").innerHTML = html;
+      document.getElementById("summary").textContent = rows.length + " match(es) · toggles default ON";
+    }
+
+    function escapeHtml(s) {
+      return String(s)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    async function loadMatches() {
+      if (!getAuthToken()) {
+        document.getElementById("tableWrap").innerHTML =
+          '<div class="empty">Login required — redirecting…</div>';
+        setTimeout(goLogin, 800);
+        return;
+      }
+      document.getElementById("tableWrap").innerHTML = '<div class="loading">Loading…</div>';
+      try {
+        const rows = await fetchInplayMatches();
+        renderTable(rows);
+      } catch (e) {
+        document.getElementById("tableWrap").innerHTML =
+          '<div class="empty">' + escapeHtml(e.message || "Network error") + "</div>";
+      }
+    }
+
+    async function runAutoSync() {
+      if (!getAuthToken()) {
+        goLogin();
+        return;
+      }
+      showToast("Auto sync chal raha hai…");
+      try {
+        const res = await apiPost("decision/automaticBetfairDecision", {});
+        if (res.error) {
+          showToast(res.message || "Auto sync failed");
+        } else {
+          showToast(res.message || "Auto sync done");
+          await loadMatches();
+        }
+      } catch (e) {
+        showToast("Auto sync failed");
+      }
+    }
+
+    async function updateToggle(marketId, field, input) {
+      const value = input.checked;
+      input.disabled = true;
+      try {
+        const res = await apiPost("decision/updateAutoDecisionSetting", {
+          marketId,
+          field,
+          value,
+        });
+        if (res.error) {
+          input.checked = !value;
+          showToast(res.message || "Update failed");
+        } else {
+          const lbl = document.getElementById(input.id + "-lbl");
+          if (lbl) {
+            lbl.textContent = value ? "ON" : "OFF";
+            lbl.className = "toggle-label " + (value ? "on" : "off");
+          }
+          showToast((field === "bookmakerAuto" ? "Bookmaker" : "Fancy") + " " + (value ? "ON" : "OFF"));
+        }
+      } catch (e) {
+        input.checked = !value;
+        showToast("Update failed");
+      } finally {
+        input.disabled = false;
+      }
+    }
+
+    loadMatches();
+  </script>
+</body>
+</html>

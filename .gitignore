@@ -1,0 +1,16 @@
+vercel-out/
+.vercel/
+logs/
+.mongo-data/
+__pycache__/
+*.pyc
+.env
+.env.*
+
+# Secrets — GitHub par mat bhejo
+secrets/
+saved_state/
+
+# Scrape cache (optional, bada hai)
+backend/scrape2/output/
+backend/scrape2/discovered/node_modules/

@@ -1,0 +1,34 @@
+{
+  "collection": "matka_events",
+  "database": "ex99_local",
+  "description": "matka/getMatkaList, getMatkaByMatkaEventId",
+  "fields": {
+    "matkaEventId": "string",
+    "name": "string",
+    "openTime": "date",
+    "closeTime": "date",
+    "result": "string",
+    "status": "string"
+  },
+  "indexes": [
+    {
+      "keys": {
+        "matkaEventId": 1
+      },
+      "unique": true
+    }
+  ],
+  "apis": [
+    "matka/getMatkaByMatkaEventId",
+    "matka/getMatkaList"
+  ],
+  "document_count": 2,
+  "sample_document": {
+    "matkaEventId": "matka-kalyan-001",
+    "name": "Kalyan",
+    "openTime": "2026-06-12 08:21:58.040614+00:00",
+    "closeTime": "2026-06-12 10:21:58.040615+00:00",
+    "result": "",
+    "status": "open"
+  }
+}

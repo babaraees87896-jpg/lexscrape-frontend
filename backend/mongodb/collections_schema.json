@@ -1,0 +1,452 @@
+{
+  "database": "ex99_local",
+  "mongo_uri": "mongodb://localhost:27017",
+  "collections": {
+    "users": {
+      "description": "Saari hierarchy — owner se client tak + login/auth",
+      "indexes": [
+        {"keys": {"username": 1}, "unique": true},
+        {"keys": {"userId": 1}, "unique": true},
+        {"keys": {"userType": 1}},
+        {"keys": {"parentId": 1}}
+      ],
+      "fields": {
+        "userId": "string (ObjectId)",
+        "username": "string",
+        "password": "string",
+        "name": "string",
+        "mobile": "string",
+        "userType": "owner|subowner|superadmin|admin|subadmin|master|superagent|agent|client",
+        "userPriority": "number 1-9",
+        "parentId": "string",
+        "creatorId": "string",
+        "coins": "number",
+        "exposure": "number",
+        "profitLoss": "number",
+        "casinoStatus": "boolean",
+        "matkaStatus": "boolean",
+        "betStatus": "boolean",
+        "matchShare": "number",
+        "casinoShare": "number",
+        "betChipsData": "object",
+        "status": "number",
+        "isDeleted": "boolean",
+        "createdAt": "date",
+        "updatedAt": "date"
+      }
+    },
+    "domains": {
+      "description": "website/domainSettingByDomainName",
+      "indexes": [{"keys": {"domainName": 1}, "unique": true}],
+      "fields": {
+        "domainName": "string",
+        "domainUrl": "string",
+        "title": "string",
+        "userNotification": "string",
+        "clientNotification": "string",
+        "themeSetting": "object",
+        "banner": "array",
+        "status": "boolean"
+      }
+    },
+    "matches": {
+      "description": "sports/matchList, sports/sportByMarketId",
+      "indexes": [
+        {"keys": {"marketId": 1}},
+        {"keys": {"eventId": 1}}
+      ],
+      "fields": {
+        "marketId": "string",
+        "eventId": "string",
+        "sportId": "number",
+        "seriesId": "number",
+        "matchName": "string",
+        "marketList": "array",
+        "betDelaySetting": "object",
+        "isMatchOdds": "boolean",
+        "isFancy": "boolean",
+        "isBookmaker": "boolean",
+        "status": "string",
+        "createdAt": "date"
+      }
+    },
+    "sports_bets": {
+      "description": "sports/oddBetPlaced, sessionBetPlaced, betsList, clientBetListByMarketId",
+      "indexes": [
+        {"keys": {"userId": 1}},
+        {"keys": {"marketId": 1}},
+        {"keys": {"createdAt": -1}}
+      ],
+      "fields": {
+        "userId": "string",
+        "marketId": "string",
+        "eventId": "string",
+        "selectionId": "number",
+        "stake": "number",
+        "odds": "number",
+        "betType": "string B|K|L|N",
+        "betFor": "string",
+        "oddsType": "string",
+        "marketType": "string",
+        "profitLoss": "number",
+        "status": "open|settled|void",
+        "createdAt": "date"
+      }
+    },
+    "casino_games": {
+      "description": "casino/getDiamondCasinoData, getDiamondCasinoByEventId",
+      "indexes": [{"keys": {"eventId": 1}, "unique": true}],
+      "fields": {
+        "eventId": "number",
+        "name": "string",
+        "shortName": "string",
+        "minStake": "number",
+        "maxStake": "number",
+        "betStatus": "boolean",
+        "socketURL": "string",
+        "cacheURL": "string",
+        "videoUrl1": "string",
+        "setting": "object"
+      }
+    },
+    "casino_bets": {
+      "description": "casino/casinoBetPlace, diamondBetsList, avaitorGamePlace",
+      "indexes": [
+        {"keys": {"userId": 1}},
+        {"keys": {"eventId": 1}}
+      ],
+      "fields": {
+        "userId": "string",
+        "eventId": "number",
+        "roundId": "string",
+        "stake": "number",
+        "selection": "string",
+        "profitLoss": "number",
+        "gameType": "diamond|aviator",
+        "status": "string",
+        "createdAt": "date"
+      }
+    },
+    "casino_rounds": {
+      "description": "casino/roundWiseResult, resultByRoundWise",
+      "indexes": [{"keys": {"eventId": 1, "roundId": 1}}],
+      "fields": {
+        "eventId": "number",
+        "roundId": "string",
+        "result": "object",
+        "createdAt": "date"
+      }
+    },
+    "matka_events": {
+      "description": "matka/getMatkaList, getMatkaByMatkaEventId",
+      "indexes": [{"keys": {"matkaEventId": 1}, "unique": true}],
+      "fields": {
+        "matkaEventId": "string",
+        "name": "string",
+        "openTime": "date",
+        "closeTime": "date",
+        "result": "string",
+        "status": "string"
+      }
+    },
+    "matka_bets": {
+      "description": "matka/matkaPlaceBet, matkaBetList, matkaReportByUser",
+      "indexes": [{"keys": {"userId": 1}}],
+      "fields": {
+        "userId": "string",
+        "matkaEventId": "string",
+        "number": "string",
+        "stake": "number",
+        "profitLoss": "number",
+        "createdAt": "date"
+      }
+    },
+    "ledger_entries": {
+      "description": "user/userLedger, completeLedgerDetails, ledgerCreditDebit",
+      "indexes": [{"keys": {"userId": 1, "createdAt": -1}}],
+      "fields": {
+        "userId": "string",
+        "type": "credit|debit",
+        "amount": "number",
+        "description": "string",
+        "category": "sport|casino|matka|cash",
+        "balanceAfter": "number",
+        "createdAt": "date"
+      }
+    },
+    "statements": {
+      "description": "user/userStatement, bpexch/bpexchAccountStatement",
+      "indexes": [{"keys": {"userId": 1}}],
+      "fields": {
+        "userId": "string",
+        "startDate": "date",
+        "endDate": "date",
+        "rows": "array",
+        "totalCredit": "number",
+        "totalDebit": "number"
+      }
+    },
+    "reports": {
+      "description": "reports/*, bluexchReports/*, crick365/* — cached report rows",
+      "indexes": [{"keys": {"reportType": 1, "userId": 1}}],
+      "fields": {
+        "reportType": "string",
+        "userId": "string",
+        "marketId": "string",
+        "payload": "object",
+        "createdAt": "date"
+      }
+    },
+    "positions": {
+      "description": "sports/userPositionByMarketId, getOddsPosition, halkabhari/*",
+      "indexes": [{"keys": {"userId": 1, "marketId": 1}}],
+      "fields": {
+        "userId": "string",
+        "marketId": "string",
+        "selectionId": "number",
+        "position": "number",
+        "exposure": "number"
+      }
+    },
+    "bpexch_accounts": {
+      "description": "bpexch/loadBalance, bpexchAccountStatement",
+      "indexes": [{"keys": {"userId": 1}}],
+      "fields": {
+        "userId": "string",
+        "balance": "number",
+        "statement": "array"
+      }
+    },
+    "center_projects": {
+      "description": "centerPanel/getProjectList, createUpdateProject",
+      "indexes": [{"keys": {"projectId": 1}}],
+      "fields": {
+        "projectId": "string",
+        "name": "string",
+        "status": "boolean"
+      }
+    },
+    "center_fancy_categories": {
+      "description": "centerPanel/getFancyCategoryList, createFancyCategory",
+      "indexes": [{"keys": {"categoryId": 1}}],
+      "fields": {
+        "categoryId": "string",
+        "name": "string",
+        "status": "boolean"
+      }
+    },
+    "center_domain_ips": {
+      "description": "centerPanel/getDomainIpList, assignDomainIpToUser",
+      "indexes": [{"keys": {"domainUrl": 1}}],
+      "fields": {
+        "domainUrl": "string",
+        "ip": "string",
+        "userId": "string"
+      }
+    },
+    "decision_logs": {
+      "description": "centerPanel/getDecisionLogs, decision/*",
+      "indexes": [{"keys": {"marketId": 1}}],
+      "fields": {
+        "marketId": "string",
+        "eventId": "string",
+        "action": "string",
+        "payload": "object",
+        "createdAt": "date"
+      }
+    },
+    "auth_sessions": {
+      "description": "JWT tokens — user/login response",
+      "indexes": [
+        {"keys": {"token": 1}},
+        {"keys": {"userId": 1}}
+      ],
+      "fields": {
+        "token": "string",
+        "userId": "string",
+        "username": "string",
+        "expiresAt": "date",
+        "createdAt": "date"
+      }
+    },
+    "user_activities": {
+      "description": "Admin: user/userActivity, user/userLoginActivity",
+      "indexes": [
+        {"keys": {"userId": 1, "createdAt": -1}},
+        {"keys": {"activityType": 1}}
+      ],
+      "fields": {
+        "userId": "string",
+        "activityType": "login|logout|bet|update|transfer",
+        "ip": "string",
+        "device": "string",
+        "payload": "object",
+        "createdAt": "date"
+      }
+    },
+    "user_ledger": {
+      "description": "user/userLedger API data — totalCoins, ledgerData, sportLedger...",
+      "indexes": [{"keys": {"userId": 1}}],
+      "fields": {
+        "userId": "string",
+        "totalCoins": "number",
+        "creditAmount": "number",
+        "debitAmount": "number",
+        "sportLedger": "number",
+        "diamondCasinoLedger": "number",
+        "matkaLedger": "number",
+        "cashLedger": "number",
+        "ledgerData": "array"
+      }
+    },
+    "day_wise_casino": {
+      "description": "casino/dayWiseCasinoReport — data array rows",
+      "indexes": [{"keys": {"eventId": 1}}],
+      "fields": {
+        "_id": "object",
+        "eventId": "number",
+        "eventName": "string",
+        "userNetProfitLoss": "number",
+        "clientNetAmount": "number",
+        "createdAt": "number|date"
+      }
+    },
+    "profit_loss": {
+      "description": "reports/userProfitLoss — data array",
+      "indexes": [{"keys": {"userId": 1}}],
+      "fields": {
+        "payload": "object"
+      }
+    },
+    "sports_catalog": {
+      "description": "decision/completeSportList",
+      "indexes": [{"keys": {"sportId": 1}, "unique": true}],
+      "fields": {
+        "sportId": "number",
+        "sportName": "string",
+        "status": "boolean"
+      }
+    },
+    "center_custom_series": {
+      "description": "centerPanel/getAllCustomSeries, createCustomSeries",
+      "indexes": [{"keys": {"seriesId": 1}}],
+      "fields": {
+        "seriesId": "string",
+        "sportId": "number",
+        "seriesName": "string",
+        "status": "string",
+        "source": "string",
+        "createdAt": "date"
+      }
+    },
+    "center_racing_events": {
+      "description": "centerPanel/getRacingEvents, saveRacingEventsList",
+      "indexes": [{"keys": {"eventId": 1}}],
+      "fields": {
+        "eventId": "string",
+        "competitionId": "string",
+        "eventName": "string",
+        "venue": "string",
+        "startTime": "date",
+        "status": "string"
+      }
+    },
+    "center_manual_fancy": {
+      "description": "centerPanel/getManualFancyList, saveManualFancy",
+      "indexes": [{"keys": {"fancyId": 1}}],
+      "fields": {
+        "fancyId": "string",
+        "marketId": "string",
+        "sessionName": "string",
+        "runsYes": "number",
+        "runsNo": "number",
+        "oddsYes": "number",
+        "oddsNo": "number",
+        "status": "string"
+      }
+    },
+    "center_manual_bookmaker": {
+      "description": "centerPanel/getManualBookmakerList, saveManualBookmaker",
+      "indexes": [{"keys": {"bookmakerId": 1}}],
+      "fields": {
+        "bookmakerId": "string",
+        "marketId": "string",
+        "runnerName": "string",
+        "back": "number",
+        "lay": "number",
+        "status": "string"
+      }
+    },
+    "center_squad_templates": {
+      "description": "centerPanel/getSquadTemplates, saveSquadTemplate",
+      "indexes": [{"keys": {"templateId": 1}}],
+      "fields": {
+        "templateId": "string",
+        "sportId": "number",
+        "name": "string",
+        "players": "array"
+      }
+    },
+    "center_betfair_results": {
+      "description": "centerPanel/getBetfairResults",
+      "indexes": [{"keys": {"marketId": 1}}],
+      "fields": {
+        "marketId": "string",
+        "eventId": "string",
+        "winnerSelectionId": "number",
+        "resultStatus": "string",
+        "declaredAt": "date"
+      }
+    },
+    "center_master_settings": {
+      "description": "centerPanel/getMasterSettingData, masterSettingUpdate",
+      "indexes": [{"keys": {"settingKey": 1}, "unique": true}],
+      "fields": {
+        "settingKey": "string",
+        "value": "mixed",
+        "description": "string",
+        "updatedAt": "date"
+      }
+    },
+    "center_events": {
+      "description": "centerPanel/getAllEvents — sport types + market counts",
+      "indexes": [{"keys": {"eventType.id": 1}}],
+      "fields": {
+        "eventType": "object",
+        "marketCount": "number"
+      }
+    },
+    "center_series": {
+      "description": "centerPanel/getSeriesList, getSeriesBySportId",
+      "indexes": [{"keys": {"seriesId": 1}}],
+      "fields": {
+        "seriesId": "string",
+        "seriesName": "string",
+        "sportId": "number",
+        "marketCount": "number"
+      }
+    },
+    "center_manual_scores": {
+      "description": "centerPanel/getManualScore, updateManualScore, getManualScoreHistory",
+      "indexes": [{"keys": {"eventId": 1, "marketId": 1}}],
+      "fields": {
+        "eventId": "string",
+        "marketId": "string",
+        "score": "object",
+        "updatedAt": "date"
+      }
+    },
+    "center_fancy_audit": {
+      "description": "centerPanel/getFancyAuditLog, saveFancyAuditLog",
+      "indexes": [{"keys": {"fancyId": 1}}],
+      "fields": {
+        "fancyId": "string",
+        "marketId": "string",
+        "action": "string",
+        "userId": "string",
+        "payload": "object",
+        "createdAt": "date"
+      }
+    }
+  }
+}

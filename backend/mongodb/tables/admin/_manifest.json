@@ -1,0 +1,21 @@
+{
+  "panel": "admin.1ex99.in",
+  "database": "ex99_local",
+  "total_admin_apis": 43,
+  "collections": [
+    "auth_sessions",
+    "casino_bets",
+    "casino_games",
+    "casino_rounds",
+    "domains",
+    "ledger_entries",
+    "matches",
+    "positions",
+    "reports",
+    "sports_bets",
+    "sports_catalog",
+    "user_activities",
+    "users"
+  ],
+  "table_files": "mongodb/tables/admin/*.json"
+}

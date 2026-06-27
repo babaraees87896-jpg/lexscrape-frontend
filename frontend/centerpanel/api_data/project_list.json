@@ -1,0 +1,16 @@
+{
+  "message": "OK",
+  "code": 0,
+  "error": false,
+  "data": {
+    "list": [
+      {
+        "projectId": "proj-001",
+        "projectName": "1ex99 Demo",
+        "domainUrl": "1ex99.in",
+        "status": 1
+      }
+    ],
+    "total": 1
+  }
+}

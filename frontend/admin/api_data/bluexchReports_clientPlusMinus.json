@@ -1,0 +1,14 @@
+{
+  "message": "Client plus minus fetched",
+  "code": 0,
+  "error": false,
+  "data": [
+    {
+      "_id": "ff693607734e",
+      "userId": "",
+      "marketId": "",
+      "plusMinus": 4.0,
+      "commission": 0
+    }
+  ]
+}

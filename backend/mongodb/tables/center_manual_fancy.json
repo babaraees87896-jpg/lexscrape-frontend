@@ -1,0 +1,37 @@
+{
+  "collection": "center_manual_fancy",
+  "database": "ex99_local",
+  "description": "centerPanel/getManualFancyList, saveManualFancy",
+  "fields": {
+    "fancyId": "string",
+    "marketId": "string",
+    "sessionName": "string",
+    "runsYes": "number",
+    "runsNo": "number",
+    "oddsYes": "number",
+    "oddsNo": "number",
+    "status": "string"
+  },
+  "indexes": [
+    {
+      "keys": {
+        "fancyId": 1
+      }
+    }
+  ],
+  "apis": [
+    "centerPanel/getManualFancyList",
+    "centerPanel/saveManualFancy"
+  ],
+  "document_count": 1,
+  "sample_document": {
+    "fancyId": "mf-001",
+    "marketId": "1.245690241",
+    "sessionName": "10 Over Runs",
+    "runsYes": 45,
+    "runsNo": 44,
+    "oddsYes": 100,
+    "oddsNo": 100,
+    "status": "active"
+  }
+}

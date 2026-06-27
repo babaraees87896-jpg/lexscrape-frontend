@@ -1,0 +1,46 @@
+{
+  "collection": "casino_bets",
+  "database": "ex99_local",
+  "description": "casino/diamondBetsList",
+  "indexes": [
+    {
+      "keys": {
+        "userId": 1
+      }
+    },
+    {
+      "keys": {
+        "eventId": 1
+      }
+    }
+  ],
+  "fields": {
+    "userId": {
+      "type": "string"
+    },
+    "eventId": {
+      "type": "number"
+    },
+    "roundId": {
+      "type": "string"
+    },
+    "stake": {
+      "type": "number"
+    },
+    "selection": {
+      "type": "string"
+    },
+    "profitLoss": {
+      "type": "number"
+    },
+    "status": {
+      "type": "string"
+    },
+    "createdAt": {
+      "type": "date"
+    }
+  },
+  "admin_apis": [
+    "casino/diamondBetsList"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "message": "Round result fetched",
+  "code": 0,
+  "error": false,
+  "data": [
+    {
+      "mid": "R-12345",
+      "roundId": "R-12345",
+      "eventId": 3030,
+      "gtype": "teen20",
+      "cards": "H7,D9,C3",
+      "winner": "Player A"
+    }
+  ]
+}

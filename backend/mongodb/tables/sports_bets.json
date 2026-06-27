@@ -1,0 +1,63 @@
+{
+  "collection": "sports_bets",
+  "database": "ex99_local",
+  "description": "sports/oddBetPlaced, sessionBetPlaced, betsList, clientBetListByMarketId",
+  "fields": {
+    "userId": "string",
+    "marketId": "string",
+    "eventId": "string",
+    "selectionId": "number",
+    "stake": "number",
+    "odds": "number",
+    "betType": "string B|K|L|N",
+    "betFor": "string",
+    "oddsType": "string",
+    "marketType": "string",
+    "profitLoss": "number",
+    "status": "open|settled|void",
+    "createdAt": "date"
+  },
+  "indexes": [
+    {
+      "keys": {
+        "userId": 1
+      }
+    },
+    {
+      "keys": {
+        "marketId": 1
+      }
+    },
+    {
+      "keys": {
+        "createdAt": -1
+      }
+    }
+  ],
+  "apis": [
+    "sports/betsList",
+    "sports/clientListByMarketId",
+    "sports/meterKhadoOddEvenCricketCassinoBetPlace",
+    "sports/oddBetPlaced",
+    "sports/sessionBetPlaced",
+    "user/clientBetListByMarketId"
+  ],
+  "document_count": 6,
+  "sample_document": {
+    "betId": "bet-sport-001",
+    "userId": "6946a4bc25b6ee438db6ff4d",
+    "marketId": "1.245690241",
+    "eventId": "28127348",
+    "selectionId": 49749064,
+    "runnerName": "Team A",
+    "stake": 500,
+    "odds": 1.85,
+    "betType": "B",
+    "betFor": "match",
+    "oddsType": "match",
+    "marketType": "Match Odds",
+    "profitLoss": 0,
+    "status": "open",
+    "createdAt": "2026-06-12 08:21:58.040338+00:00"
+  }
+}

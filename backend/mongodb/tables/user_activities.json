@@ -1,0 +1,43 @@
+{
+  "collection": "user_activities",
+  "database": "ex99_local",
+  "description": "Admin: user/userActivity, user/userLoginActivity",
+  "fields": {
+    "userId": "string",
+    "activityType": "login|logout|bet|update|transfer",
+    "ip": "string",
+    "device": "string",
+    "payload": "object",
+    "createdAt": "date"
+  },
+  "indexes": [
+    {
+      "keys": {
+        "userId": 1,
+        "createdAt": -1
+      }
+    },
+    {
+      "keys": {
+        "activityType": 1
+      }
+    }
+  ],
+  "apis": [
+    "user/userActivity",
+    "user/userLoginActivity"
+  ],
+  "document_count": 59,
+  "sample_document": {
+    "activityId": "act-login-uid-subowner-001",
+    "userId": "uid-subowner",
+    "activityType": "login",
+    "ip": "192.168.1.10",
+    "device": "Mobile/Android",
+    "payload": {
+      "panel": "admin.1ex99.in",
+      "isp": "Android"
+    },
+    "createdAt": "2026-06-12 05:51:58.040814+00:00"
+  }
+}

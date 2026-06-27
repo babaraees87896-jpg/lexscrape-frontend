@@ -1,0 +1,70 @@
+{
+  "collection": "matches",
+  "database": "ex99_local",
+  "description": "sports/matchList, sportByMarketId, reports/blockMarket",
+  "indexes": [
+    {
+      "keys": {
+        "marketId": 1
+      }
+    },
+    {
+      "keys": {
+        "eventId": 1
+      }
+    }
+  ],
+  "fields": {
+    "marketId": {
+      "type": "string"
+    },
+    "eventId": {
+      "type": "string"
+    },
+    "sportId": {
+      "type": "number"
+    },
+    "seriesId": {
+      "type": "number"
+    },
+    "matchName": {
+      "type": "string"
+    },
+    "matchDate": {
+      "type": "string"
+    },
+    "marketList": {
+      "type": "array",
+      "note": "sub-markets: Match Odds, Fancy, Bookmaker"
+    },
+    "betDelaySetting": {
+      "type": "object"
+    },
+    "maxMinCoins": {
+      "type": "object"
+    },
+    "isMatchOdds": {
+      "type": "boolean"
+    },
+    "isFancy": {
+      "type": "boolean"
+    },
+    "isBookmaker": {
+      "type": "boolean"
+    },
+    "isDeclare": {
+      "type": "boolean"
+    },
+    "status": {
+      "type": "string"
+    },
+    "createdAt": {
+      "type": "date"
+    }
+  },
+  "admin_apis": [
+    "reports/blockMarket",
+    "sports/matchList",
+    "sports/sportByMarketId"
+  ]
+}

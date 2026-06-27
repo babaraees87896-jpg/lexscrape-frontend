@@ -1,0 +1,33 @@
+{
+  "collection": "center_racing_events",
+  "database": "ex99_local",
+  "description": "centerPanel/getRacingEvents, saveRacingEventsList",
+  "fields": {
+    "eventId": "string",
+    "competitionId": "string",
+    "eventName": "string",
+    "venue": "string",
+    "startTime": "date",
+    "status": "string"
+  },
+  "indexes": [
+    {
+      "keys": {
+        "eventId": 1
+      }
+    }
+  ],
+  "apis": [
+    "centerPanel/getRacingEvents",
+    "centerPanel/saveRacingEventsList"
+  ],
+  "document_count": 1,
+  "sample_document": {
+    "eventId": "race-001",
+    "competitionId": "comp-001",
+    "eventName": "Demo Horse Race",
+    "venue": "Mumbai",
+    "startTime": "2026-06-12 11:21:58.040897+00:00",
+    "status": "scheduled"
+  }
+}

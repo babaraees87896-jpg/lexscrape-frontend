@@ -1,0 +1,12 @@
+[
+  {
+    "logId": "dec-001",
+    "marketId": "1.245690241",
+    "eventId": "28127348",
+    "action": "declare_result",
+    "payload": {
+      "winnerSelectionId": 49749064
+    },
+    "createdAt": "2026-06-12 08:21:58.040812+00:00"
+  }
+]

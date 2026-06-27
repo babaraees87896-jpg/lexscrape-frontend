@@ -1,0 +1,6 @@
+{
+  "message": "fromUserId, toUserId, amount required",
+  "code": 1,
+  "error": true,
+  "data": {}
+}

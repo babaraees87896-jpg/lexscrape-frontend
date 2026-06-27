@@ -1,0 +1,35 @@
+{
+  "collection": "positions",
+  "database": "ex99_local",
+  "description": "sports/userPositionByMarketId, getOddsPosition, halkabhari/*",
+  "fields": {
+    "userId": "string",
+    "marketId": "string",
+    "selectionId": "number",
+    "position": "number",
+    "exposure": "number"
+  },
+  "indexes": [
+    {
+      "keys": {
+        "userId": 1,
+        "marketId": 1
+      }
+    }
+  ],
+  "apis": [
+    "halkabhari/inplayOddsPositionHalkaBhari",
+    "sports/getOddsPosition",
+    "sports/getSessionPositionBySelectionId",
+    "sports/userPositionByMarketId"
+  ],
+  "document_count": 2,
+  "sample_document": {
+    "userId": "6946a4bc25b6ee438db6ff4d",
+    "marketId": "1.245690241",
+    "selectionId": 49749064,
+    "runnerName": "Team A",
+    "position": 500,
+    "exposure": -425
+  }
+}

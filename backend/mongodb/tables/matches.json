@@ -1,0 +1,181 @@
+{
+  "collection": "matches",
+  "database": "ex99_local",
+  "description": "sports/matchList, sports/sportByMarketId",
+  "fields": {
+    "marketId": "string",
+    "eventId": "string",
+    "sportId": "number",
+    "seriesId": "number",
+    "matchName": "string",
+    "marketList": "array",
+    "betDelaySetting": "object",
+    "isMatchOdds": "boolean",
+    "isFancy": "boolean",
+    "isBookmaker": "boolean",
+    "status": "string",
+    "createdAt": "date"
+  },
+  "indexes": [
+    {
+      "keys": {
+        "marketId": 1
+      }
+    },
+    {
+      "keys": {
+        "eventId": 1
+      }
+    }
+  ],
+  "apis": [
+    "centerPanel/diamondMatchList",
+    "centerPanel/getAllEvents",
+    "centerPanel/getSportsMatchList",
+    "reports/blockMarket",
+    "sports/matchList",
+    "sports/sportByMarketId"
+  ],
+  "document_count": 3,
+  "sample_document": {
+    "_id": "6a29a7ff8669e65c9ad9a358",
+    "marketId": "1.259035639",
+    "__v": 0,
+    "betDelaySetting": {
+      "tieBetDelay": 0,
+      "completedBetDelay": 0,
+      "bookMakerBetDelay": 2,
+      "matchOddsBetDelay": 2,
+      "tossBetDelay": 0
+    },
+    "betDelayTime": 2,
+    "betPerm": true,
+    "betfairSocketUrl": "https://1excache.tresting.com/",
+    "bookmakerRange": 0,
+    "cacheUrl": "https://1excache.tresting.com/v2/api/oddsDataNew?market_id=1.259035639",
+    "checkOddsUrl": "https://1excache.tresting.com/v2/api/oddsDataNew?market_id=1.259035639",
+    "countryCode": "",
+    "createdAt": "2026-06-10T18:07:59.346Z",
+    "date": "1781114879000",
+    "dateWiseLedger": false,
+    "eventId": "35701756",
+    "isBookmaker": true,
+    "isCompletedOdds": true,
+    "isDeclare": false,
+    "isFancy": true,
+    "isLineMarketOdds": true,
+    "isMatchOdds": true,
+    "isScore": true,
+    "isTieOdds": true,
+    "isToss": true,
+    "isTv": true,
+    "marketList": [
+      {
+        "marketId": "1.235983584",
+        "marketType": "Tied Match",
+        "eventId": "35701756",
+        "matchName": "Bangladesh v Australia (ODI)",
+        "sportName": "Bangladesh v Australia (ODI)",
+        "sportId": 4,
+        "seriesId": 9962116,
+        "status": "INPLAY",
+        "playStatus": true,
+        "selectionIdData": [
+          {
+            "selectionId": 37302,
+            "runnerName": "Yes",
+            "handicap": 0,
+            "sortPriority": 1
+          },
+          {
+            "selectionId": 37303,
+            "runnerName": "No",
+            "handicap": 0,
+            "sortPriority": 2
+          }
+        ]
+      },
+      {
+        "marketId": "1.235983583",
+        "marketType": "Match Odds",
+        "eventId": "35701756",
+        "matchName": "Bangladesh v Australia (ODI)",
+        "sportName": "Bangladesh v Australia (ODI)",
+        "sportId": 4,
+        "seriesId": 9962116,
+        "status": "INPLAY",
+        "playStatus": true,
+        "selectionIdData": [
+          {
+            "selectionId": 49749064,
+            "runnerName": "West Indies Academy",
+            "handicap": 0,
+            "sortPriority": 1
+          },
+          {
+            "selectionId": 17043776,
+            "runnerName": "Windward Islands Volcanoes",
+            "handicap": 0,
+            "sortPriority": 2
+          }
+        ]
+      },
+      {
+        "marketId": "1.235983588",
+        "marketType": "Completed Match",
+        "eventId": "35701756",
+        "matchName": "Bangladesh v Australia (ODI)",
+        "sportName": "Bangladesh v Australia (ODI)",
+        "sportId": 4,
+        "seriesId": 9962116,
+        "status": "INPLAY",
+        "playStatus": true,
+        "selectionIdData": [
+          {
+            "selectionId": 37302,
+            "runnerName": "Yes",
+            "handicap": 0,
+            "sortPriority": 1
+          },
+          {
+            "selectionId": 37303,
+            "runnerName": "No",
+            "handicap": 0,
+            "sortPriority": 2
+          }
+        ]
+      }
+    ],
+    "marketName": "",
+    "matchDate": "11-06-2026 10:30:00 AM",
+    "matchName": "Bangladesh v Australia ODI",
+    "matchType": "One-Day",
+    "maxMinCoins": "{maximum_match_bet:200000,minimum_match_bet:100,maximum_session_bet:200000,minimum_session_bet:100,maximum_tie_coins:200000,maximum_completed_coins:200000,maximum_bookmaker_coins:0,maximum_matchOdds_coins:200000,maximum_toss_coins:200000,minimum_coins:0}",
+    "notification": "",
+    "otherMarketCacheUrl": "https://1excache.tresting.com/v2/api/dataByEventId?eventId=35701756",
+    "priority": 0,
+    "scoreIframe": "https://score.tresting.com/socket-iframe-21/crickexpo/35701756",
+    "scoreIframe2": "https://score.akamaized.uk/live-src?id35701756",
+    "seriesId": 9962116,
+    "seriesName": "One Day Internationals",
+    "socketPerm": true,
+    "socketUrl": "https://1excache.tresting.com/",
+    "sportId": 4,
+    "sportName": "Bangladesh v Australia (ODI)",
+    "sportType": "Cricket",
+    "status": "INPLAY",
+    "teamData": "[{\"selection_id\":1,\"market_id\":\"1.259035639\",\"runner_name\":\"Bangladesh\",\"bookmakerSelectionId\":1,\"betfairSelectionId\":7659},{\"selection_id\":2,\"market_id\":\"1.259035639\",\"runner_name\":\"Australia\",\"bookmakerSelectionId\":2,\"betfairSelectionId\":16606}]",
+    "tossRate": 0.95,
+    "trackName": "",
+    "tvId": 0,
+    "tvUrl": "https://scorewidget.org/score/0d860d2d03f4726091f7d2f3ab9b22021164ed5e/35244",
+    "updatedAt": "2026-06-11T04:57:54.309Z",
+    "wonCompletedSelectionId": "",
+    "wonTeamBetfairSelectionId": "",
+    "wonTeamBookmakerSelectionId": "",
+    "wonTeamName": "",
+    "wonTieSelectionId": "",
+    "wonTossSelectionId": "20000",
+    "wonTossTeamName": ""
+  }
+}

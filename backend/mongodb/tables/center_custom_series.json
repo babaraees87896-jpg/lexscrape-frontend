@@ -1,0 +1,33 @@
+{
+  "collection": "center_custom_series",
+  "database": "ex99_local",
+  "description": "centerPanel/getAllCustomSeries, createCustomSeries",
+  "fields": {
+    "seriesId": "string",
+    "sportId": "number",
+    "seriesName": "string",
+    "status": "string",
+    "source": "string",
+    "createdAt": "date"
+  },
+  "indexes": [
+    {
+      "keys": {
+        "seriesId": 1
+      }
+    }
+  ],
+  "apis": [
+    "centerPanel/createCustomSeries",
+    "centerPanel/getAllCustomSeries"
+  ],
+  "document_count": 1,
+  "sample_document": {
+    "seriesId": "cs-101480",
+    "sportId": 4,
+    "seriesName": "Indian Premier League",
+    "status": "active",
+    "source": "latiyal",
+    "createdAt": "2026-06-12 08:21:58.040896+00:00"
+  }
+}

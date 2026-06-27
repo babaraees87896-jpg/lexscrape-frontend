@@ -1,0 +1,158 @@
+{
+  "collection": "users",
+  "database": "ex99_local",
+  "description": "Poori user hierarchy \u2014 owner se client tak. Login, userList, userDetails, balance.",
+  "indexes": [
+    {
+      "keys": {
+        "username": 1
+      },
+      "unique": true
+    },
+    {
+      "keys": {
+        "userId": 1
+      },
+      "unique": true
+    },
+    {
+      "keys": {
+        "userType": 1
+      }
+    },
+    {
+      "keys": {
+        "parentId": 1
+      }
+    }
+  ],
+  "fields": {
+    "userId": {
+      "type": "string",
+      "required": true,
+      "example": "6946a4bc25b6ee438db6ff4d"
+    },
+    "username": {
+      "type": "string",
+      "required": true,
+      "example": "ADMIN001"
+    },
+    "password": {
+      "type": "string",
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "example": "Admin Demo"
+    },
+    "mobile": {
+      "type": "string"
+    },
+    "userType": {
+      "type": "enum",
+      "values": [
+        "owner",
+        "subowner",
+        "superadmin",
+        "admin",
+        "subadmin",
+        "master",
+        "superagent",
+        "agent",
+        "client"
+      ]
+    },
+    "userPriority": {
+      "type": "number",
+      "range": "1-9"
+    },
+    "parentId": {
+      "type": "string"
+    },
+    "creatorId": {
+      "type": "string"
+    },
+    "coins": {
+      "type": "number",
+      "note": "UI .toFixed() \u2014 hamesha number rakho"
+    },
+    "balance": {
+      "type": "number",
+      "note": "coins ke barabar hota hai list mein"
+    },
+    "exposure": {
+      "type": "number",
+      "default": 0
+    },
+    "profitLoss": {
+      "type": "number",
+      "default": 0
+    },
+    "creditLimit": {
+      "type": "number"
+    },
+    "matchShare": {
+      "type": "number"
+    },
+    "matchCommission": {
+      "type": "number"
+    },
+    "sessionCommission": {
+      "type": "number"
+    },
+    "casinoShare": {
+      "type": "number"
+    },
+    "casinoCommission": {
+      "type": "number"
+    },
+    "casinoStatus": {
+      "type": "boolean"
+    },
+    "intCasinoStatus": {
+      "type": "boolean"
+    },
+    "matkaStatus": {
+      "type": "boolean"
+    },
+    "betStatus": {
+      "type": "boolean"
+    },
+    "betChipsData": {
+      "type": "object",
+      "example": {
+        "100": 100,
+        "500": 500
+      }
+    },
+    "status": {
+      "type": "string|number",
+      "example": "1"
+    },
+    "isDeleted": {
+      "type": "boolean|string"
+    },
+    "referralCode": {
+      "type": "string"
+    },
+    "createdAt": {
+      "type": "date|timestamp"
+    },
+    "updatedAt": {
+      "type": "date|timestamp"
+    }
+  },
+  "admin_apis": [
+    "user/create",
+    "user/getUserShareData",
+    "user/login",
+    "user/updateCoins",
+    "user/updateUserPassword",
+    "user/userBalance",
+    "user/userDetails",
+    "user/userList",
+    "user/userSearch",
+    "user/userUpdate",
+    "user/userupdate"
+  ]
+}

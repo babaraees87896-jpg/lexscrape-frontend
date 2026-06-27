@@ -1,0 +1,31 @@
+{
+  "message": "Reset commission history fetched",
+  "code": 0,
+  "error": false,
+  "data": [
+    {
+      "_id": "709ad385a2744f12b165bdaf",
+      "oddsComm": 0.0,
+      "sessionComm": 0.0,
+      "casinoComm": 0.0,
+      "remark": "Commission reset",
+      "createdAt": 1781280897227
+    },
+    {
+      "_id": "led-comm-001",
+      "oddsComm": 25.0,
+      "sessionComm": 10.0,
+      "casinoComm": 85.0,
+      "remark": "Commission len den",
+      "createdAt": 1781232718040
+    },
+    {
+      "_id": "led-owner-comm-001",
+      "oddsComm": 0.0,
+      "sessionComm": 0.0,
+      "casinoComm": 0.0,
+      "remark": "Casino commission received",
+      "createdAt": 1781225518040
+    }
+  ]
+}
