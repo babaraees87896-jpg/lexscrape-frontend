@@ -1,0 +1,8 @@
+{
+  "message": "Diamond Casino Bet List Fetch Successfully",
+  "code": 0,
+  "error": false,
+  "data": {
+    "casinoBetData": []
+  }
+}

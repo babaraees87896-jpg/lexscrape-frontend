@@ -1,0 +1,18 @@
+{
+  "message": "",
+  "code": 0,
+  "error": false,
+  "data": {
+    "profitLoss": "0",
+    "isDeleted": "false",
+    "intCasinoStatus": "false",
+    "coins": "0",
+    "status": "1",
+    "authenticateToken": "3266e241c31afe38a5eac053d83672ff2ce49a2d1d876c56fd180c25f8c1d140",
+    "jwtToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTQ2YTRiYzI1YjZlZTQzOGRiNmZmNGQiLCJ1c2VybmFtZSI6IkMzNTgxNjciLCJuYW1lIjoiU2hhcm1hIiwidXNlclR5cGUiOiJjbGllbnQiLCJhdXRoVG9rZW4iOiIwN2NhZWY3ZjVmMzdlM2VjM2YyNWVjZTEyYjgzZWY1ZCIsImlzRGVtb0NsaWVudCI6ZmFsc2UsImNyZWF0b3JJZCI6IjY5MzgyMTg0MmM0NGU1ZmNiYjUyZjE4ZSIsImRldmljZUhhc2giOiJiZDI5NmEzOWQ5YzgzMjY0Y2NhOWI3MDM1MTc5MDRmYmI4YzdmODE0NTRkY2NiMDhlOGU0NDc1OWQ1NGEzNGY2IiwiaWF0IjoxNzgxMjU0MTIzLCJleHAiOjE3ODEzNDA1MjN9.SI4WbPFVS66-5wZjVMujKtY3AI8PwetuUkTq3egoKww",
+    "creatorId": "693821842c44e5fcbb52f18e",
+    "casinoToken": "",
+    "exposure": "0",
+    "intCasinoMultiply": "1"
+  }
+}

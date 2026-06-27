@@ -1,5 +1,6 @@
 vercel-out/
 **/dist/
+!frontend/main/dist/
 .vercel/
 logs/
 .mongo-data/

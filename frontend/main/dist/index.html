@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <link rel="icon" href="/favicon.ico" sizes="any"/><link rel="icon" type="image/png" href="/images/1exlogo.png"/><link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+  <meta charset="UTF-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&amp;display=swap" rel="stylesheet"/>
+  <title>1ex</title>
+  <script crossorigin="" src="/assets/index-CKjJtyLu.js?v=ex99orig27" type="module">
+  </script>
+  <link crossorigin="" href="/assets/vendor-BsdCPxnC.js" rel="modulepreload"/>
+  <link crossorigin="" href="/assets/redux-BTxmzMm4.js" rel="modulepreload"/>
+  <link crossorigin="" href="/assets/ui-DLBEMYc6.js" rel="modulepreload"/>
+  <link crossorigin="" href="/assets/index-MSowpFy_.css" rel="stylesheet"/>
+ <link rel="preconnect" href="https://score.tresting.com" crossorigin>
+<link rel="dns-prefetch" href="//score.tresting.com">
+<script>
+(function(){
+  var SP="/casino-stream";
+  function rw(u){
+    if(!u||typeof u!=="string")return u;
+    if(/score\.tresting\.com|akamaized|socket-iframe|crickexpo\/\d+/i.test(u))return u;
+    if(u.indexOf("scorecard.html")>=0){
+      var sm=u.match(/gmid=(\d+)/);
+      if(sm) return "https://score.tresting.com/socket-iframe-21/crickexpo/"+sm[1];
+    }
+    return u
+      .replace("https://casinostream.tresting.com",SP)
+      .replace("http://casinostream.tresting.com",SP)
+      .replace("https://stream.1ex99.in",SP+"/stream99");
+  }
+  var desc=Object.getOwnPropertyDescriptor(HTMLIFrameElement.prototype,"src");
+  if(desc&&desc.set){
+    Object.defineProperty(HTMLIFrameElement.prototype,"src",{
+      set:function(v){desc.set.call(this,rw(v));},
+      get:desc.get,configurable:true
+    });
+  }
+  var origSetAttribute=Element.prototype.setAttribute;
+  Element.prototype.setAttribute=function(name,value){
+    if(this.tagName==="IFRAME"&&String(name).toLowerCase()==="src"){
+      value=rw(value);
+    }
+    return origSetAttribute.call(this,name,value);
+  };
+  new MutationObserver(function(){
+    document.querySelectorAll("iframe[src]").forEach(function(el){
+      var f=el.getAttribute("src");
+      var n=rw(f);
+      if(n&&n!==f)el.setAttribute("src",n);
+    });
+  }).observe(document.documentElement,{childList:true,subtree:true,attributes:true,attributeFilter:["src"]});
+  window.ex99WarmScore=function(eid){
+    if(!eid)return;
+    eid=String(eid).replace(/\D/g,"");
+    if(!eid)return;
+    window.__ex99ScEid=eid;
+    if(window.__ex99ScPf)return;
+    var u="https://score.tresting.com/socket-iframe-21/crickexpo/"+eid;
+    var f=document.createElement("link");
+    f.rel="prefetch";f.href=u;f.as="document";
+    document.head.appendChild(f);
+  };
+  window.ex99WarmMatchList=function(list){
+    try{
+      if(!list||!list.length)return;
+      var m=list.find(function(x){return x&&x.eventId&&(x.isScore||x.scoreIframe);});
+      if(m)window.ex99WarmScore(m.eventId);
+    }catch(e){}
+  };
+  function ex99WarmFromStorage(){
+    try{
+      var ml=JSON.parse(localStorage.getItem("matchList")||"[]");
+      window.ex99WarmMatchList(ml);
+    }catch(e){}
+  }
+  var _ex99SSI=Storage.prototype.setItem;
+  Storage.prototype.setItem=function(k,v){
+    _ex99SSI.apply(this,arguments);
+    if(k==="matchList")setTimeout(ex99WarmFromStorage,0);
+  };
+  ex99WarmFromStorage();
+  function ex99PrefetchRoute(){
+    try{
+      var m=location.pathname.match(/\/match-detail\/[^/]+\/(\d+)/);
+      if(m)window.ex99WarmScore(m[1]);
+    }catch(e){}
+  }
+  ex99PrefetchRoute();
+  window.addEventListener("popstate",ex99PrefetchRoute);
+  var _ps=history.pushState;history.pushState=function(){_ps.apply(this,arguments);ex99PrefetchRoute()};
+  var _rs=history.replaceState;history.replaceState=function(){_rs.apply(this,arguments);ex99PrefetchRoute()};
+  window.addEventListener("message",function(ev){
+    if(!ev.data||ev.data.type!=="ex99-sc-height")return;
+    var raw=Number(ev.data.height)||88;
+    document.querySelectorAll('iframe[src*="scorecard.html"]').forEach(function(f){
+      if(!(ev.source&&f.contentWindow===ev.source))return;
+      var full=(f.className||"").indexOf("280")>=0||f.getAttribute("data-ex99-full")==="1"||ev.data.expanded;
+      var cap=full?420:180;
+      var h=Math.max(44,Math.min(raw,cap));
+      f.style.height=h+"px";
+    });
+  });
+})();
+</script>
+<style id="ex99-mobile-fix">
+iframe[src*="scorecard.html"]{transition:none!important;animation:none!important}
+.scorecard,.scorecard *{transition:none!important;animation:none!important}
+.animate-Blinking,.animate-pulse,.animate-blink{animation:none!important}
+@media (max-width: 768px) {
+  .theme1.fixed {
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+    top: 0 !important;
+  }
+  .theme1 .overflow-y-auto {
+    -webkit-overflow-scrolling: touch;
+    max-height: 100dvh !important;
+    padding-bottom: calc(9rem + env(safe-area-inset-bottom, 0px)) !important;
+  }
+  .theme1 nav.flex.flex-col {
+    padding-bottom: calc(2.5rem + env(safe-area-inset-bottom, 0px)) !important;
+  }
+}
+</style>
+</head>
+ <body>
+  <div id="root">
+  </div>
+  
+ </body>
+</html>
