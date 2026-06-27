@@ -30,7 +30,18 @@ echo "=== 1ex live poll remote setup ==="
 APP_DIR="$(find_app_dir || true)"
 
 if [[ -z "${APP_DIR:-}" ]]; then
-  APP_DIR="${APP_DIR:-/opt/lex}"
+  for d in /opt/lex /opt/1ex; do
+    if [[ -d "$d" ]]; then
+      APP_DIR="$d"
+      echo "Using existing directory $APP_DIR (no serve_local.py check)"
+      sync_deploy_scripts "$APP_DIR"
+      break
+    fi
+  done
+fi
+
+if [[ -z "${APP_DIR:-}" ]]; then
+  APP_DIR="/opt/lex"
   echo "No existing app — cloning into $APP_DIR"
   mkdir -p "$(dirname "$APP_DIR")"
   git clone --branch "$BRANCH" --depth 1 "$REPO" "$APP_DIR"
