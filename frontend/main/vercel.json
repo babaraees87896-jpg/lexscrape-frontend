@@ -1,7 +1,6 @@
 {
-  "buildCommand": "python3 ../../scripts/vercel_build.py main || python ../../scripts/vercel_build.py main",
   "outputDirectory": "dist",
-  "installCommand": "python3 -m pip install -r ../../backend/requirements.txt -q || python -m pip install -r ../../backend/requirements.txt -q",
+  "installCommand": "echo skip",
   "framework": null,
   "rewrites": [
     { "source": "/v1/:path*", "destination": "https://api.1ex.in/v1/:path*" },
