@@ -3,7 +3,29 @@
 # Usage: cd /opt/lex && sudo bash deploy/digitalocean/enable-live-poll.sh
 set -euo pipefail
 
-APP_DIR="${APP_DIR:-/opt/lex}"
+APP_DIR="${APP_DIR:-}"
+
+find_app_dir() {
+  for d in "$APP_DIR" /opt/lex /opt/1ex /root/lex /root/1ex; do
+    [[ -n "$d" && -f "$d/backend/serve_local.py" ]] && echo "$d" && return 0
+  done
+  local hit
+  hit="$(find /opt /root -maxdepth 4 -path '*/backend/serve_local.py' 2>/dev/null | head -1 || true)"
+  if [[ -n "$hit" ]]; then
+    dirname "$(dirname "$hit")"
+    return 0
+  fi
+  return 1
+}
+
+APP_DIR="$(find_app_dir || true)"
+if [[ -z "$APP_DIR" ]]; then
+  echo "ERROR: app not found. Tried /opt/lex /opt/1ex"
+  echo "Run: pm2 describe lex-main | grep cwd"
+  exit 1
+fi
+
+echo "APP_DIR=$APP_DIR"
 cd "$APP_DIR"
 
 if [[ ! -f .env ]]; then
