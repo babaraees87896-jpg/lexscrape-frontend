@@ -1,0 +1,7 @@
+{
+  "name": "lexscrape-frontend",
+  "private": true,
+  "scripts": {
+    "build": "python3 scripts/vercel_build.py main || python scripts/vercel_build.py main"
+  }
+}
