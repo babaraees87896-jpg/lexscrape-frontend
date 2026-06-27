@@ -12,7 +12,14 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BACKEND = ROOT / "backend"
-OUT_ROOT = ROOT / "vercel-out"
+FRONTEND = ROOT / "frontend"
+
+OUT_DIRS = {
+    "main": FRONTEND / "main" / "dist",
+    "admin": FRONTEND / "admin" / "dist",
+    "center": FRONTEND / "centerpanel" / "dist",
+    "staff": FRONTEND / "staff" / "dist",
+}
 
 # Hosts for runtime patches (center/staff login payloads)
 os.environ.setdefault("EX99_HOST", "1ex.in")
@@ -211,8 +218,7 @@ def main() -> int:
     args = parser.parse_args()
 
     target = "center" if args.target == "centerpanel" else args.target
-    out_name = "centerpanel" if target == "center" else target
-    out_dir = OUT_ROOT / out_name
+    out_dir = OUT_DIRS[target]
     print(f"Building {target} -> {out_dir}")
 
     BUILDERS[target](out_dir)

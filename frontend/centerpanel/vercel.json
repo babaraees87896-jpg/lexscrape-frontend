@@ -1,7 +1,7 @@
 {
-  "buildCommand": "python ../../scripts/vercel_build.py centerpanel",
-  "outputDirectory": "../../vercel-out/centerpanel",
-  "installCommand": "echo skip",
+  "buildCommand": "python3 ../../scripts/vercel_build.py centerpanel || python ../../scripts/vercel_build.py centerpanel",
+  "outputDirectory": "dist",
+  "installCommand": "python3 -m pip install -r ../../backend/requirements.txt -q || python -m pip install -r ../../backend/requirements.txt -q",
   "framework": null,
   "rewrites": [
     { "source": "/v1/:path*", "destination": "https://api-center.1ex.in/v1/:path*" },
