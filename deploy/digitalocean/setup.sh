@@ -108,6 +108,11 @@ pm2 start deploy/digitalocean/ecosystem.config.cjs
 pm2 save
 pm2 startup systemd -u root --hp /root 2>/dev/null || true
 
+# Live sport poll (optional — needs LOGIN_PASS in .env)
+if [[ -n "${LOGIN_PASS:-}" ]] && [[ "${EX99_ENABLE_SPORT_POLL:-1}" != "0" ]]; then
+  bash deploy/digitalocean/enable-live-poll.sh || echo "  WARN: live poll setup failed"
+fi
+
 # Firewall
 if command -v ufw >/dev/null 2>&1; then
   ufw allow OpenSSH
@@ -136,5 +141,8 @@ echo "    certbot --nginx -d api.1ex.in -d api-admin.1ex.in -d api-center.1ex.in
 echo ""
 echo "  Test:"
 echo "    curl -s http://127.0.0.1:1456/ | head"
-echo "    curl -s https://api.1ex.in/v1/ -X POST ..."
+echo ""
+echo "  Live match poll (after LOGIN_PASS in .env):"
+echo "    bash deploy/digitalocean/enable-live-poll.sh"
+echo "    pm2 logs 1ex-sport-poll"
 echo "============================================"
