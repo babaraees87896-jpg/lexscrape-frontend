@@ -16,3 +16,6 @@ saved_state/
 # Scrape cache (optional, bada hai)
 backend/scrape2/output/
 backend/scrape2/discovered/node_modules/
+
+.vercel
+.env*

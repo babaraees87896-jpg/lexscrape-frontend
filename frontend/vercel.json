@@ -1,5 +1,5 @@
 {
-  "outputDirectory": "frontend/main/dist",
+  "outputDirectory": "main/dist",
   "installCommand": "echo skip",
   "framework": null,
   "rewrites": [
