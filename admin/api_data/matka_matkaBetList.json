@@ -1,0 +1,29 @@
+{
+  "message": "Matka bet list fetched",
+  "code": 0,
+  "error": false,
+  "data": [
+    {
+      "matkaEventId": "matka-kalyan-001",
+      "matkaName": "Kalyan",
+      "gameType": "SINGLE",
+      "priority": 1,
+      "profitLoss": 0,
+      "amount": 0,
+      "isDeclare": false,
+      "isDeleted": false,
+      "result": ""
+    },
+    {
+      "matkaEventId": "matka-milan-001",
+      "matkaName": "Milan Day",
+      "gameType": "SINGLE",
+      "priority": 1,
+      "profitLoss": 0,
+      "amount": 0,
+      "isDeclare": true,
+      "isDeleted": false,
+      "result": "456"
+    }
+  ]
+}

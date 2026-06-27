@@ -1,0 +1,21 @@
+{
+  "message": "Login successful",
+  "code": 0,
+  "error": false,
+  "token": "local-centerpanel-demo-token",
+  "data": {
+    "userId": "cp-admin-001",
+    "username": "ADMIN001",
+    "name": "Admin Demo",
+    "role": "admin",
+    "email": "admin@demo.local",
+    "status": "active",
+    "permissions": {
+      "can_view_dashboard": true,
+      "can_manage_cricket": true,
+      "can_declare_fancy": true,
+      "can_manage_users": true
+    },
+    "token": "local-centerpanel-demo-token"
+  }
+}

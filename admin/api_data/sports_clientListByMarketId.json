@@ -1,0 +1,16 @@
+{
+  "message": "Client list fetched",
+  "code": 0,
+  "error": false,
+  "data": [
+    {
+      "clientId": "6a1bd2d7356a85a557003d5d",
+      "userInfo": {
+        "userId": "6a1bd2d7356a85a557003d5d",
+        "username": "C324001",
+        "name": "Demo User",
+        "userType": "client"
+      }
+    }
+  ]
+}

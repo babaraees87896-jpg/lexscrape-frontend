@@ -1,0 +1,371 @@
+{
+  "message": "Login activity fetched",
+  "code": 0,
+  "error": false,
+  "data": [
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781280897095
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781280798759
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781279417045
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781278949953
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781278400330
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781278191968
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781278184048
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781278179258
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781278164845
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781278102518
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781278095115
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781277904527
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781277869501
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781277535656
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781277263998
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781277261152
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781276903723
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781276739913
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781276596080
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781276551812
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781276456718
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781276422737
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781276216898
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781276216888
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781276190455
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781276181332
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781276133274
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781275754283
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781275503281
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781274518268
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781274284706
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781274241087
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781274207296
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781274036053
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781273655453
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781271115427
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781271075561
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781270912126
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781270678608
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781270672474
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781270668341
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781263183898
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781262974580
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781262784417
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781262643949
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781262625476
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781262592175
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781262473687
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781262363436
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781262335230
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781262220485
+    },
+    {
+      "userId": "uid-owner",
+      "username": "OWNER001",
+      "ip": "127.0.0.1",
+      "isp": "Browser",
+      "createdAt": 1781232924878
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "message": "OK",
+  "code": 0,
+  "error": false,
+  "data": {
+    "matchData": {
+      "0": {
+        "marketId": "1.259059770",
+        "matchName": "England W v Sri Lanka W (T-20)",
+        "matchDate": "12-06-2026 23:00:00 PM",
+        "matchType": "T20",
+        "sportId": 4,
+        "eventId": "35705124",
+        "isDeclare": false,
+        "wonTeamName": "",
+        "totalProfit": 15.0
+      }
+    },
+    "totalCount": 1
+  }
+}

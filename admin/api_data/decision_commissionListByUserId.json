@@ -1,0 +1,58 @@
+{
+  "message": "Commission list fetched",
+  "code": 0,
+  "error": false,
+  "data": [
+    {
+      "_id": "sport-6b26b5c0f228",
+      "userInfo": {
+        "userId": "6a1bd2d7356a85a557003d5d",
+        "username": "C324001",
+        "name": "Demo User",
+        "userType": "client"
+      },
+      "eventName": "England W v Sri Lanka W (T-20)",
+      "marketId": "1.259059770",
+      "isCasino": 0,
+      "clientOddsComm": 5.0,
+      "clientSessionComm": 0,
+      "agentOddsComm": 0.0,
+      "agentSessionComm": 0,
+      "createdAt": 1781286811566
+    },
+    {
+      "_id": "sport-4b6b1d97d777",
+      "userInfo": {
+        "userId": "6a1bd2d7356a85a557003d5d",
+        "username": "C324001",
+        "name": "Demo User",
+        "userType": "client"
+      },
+      "eventName": "England W v Sri Lanka W (T-20)",
+      "marketId": "1.259059770",
+      "isCasino": 0,
+      "clientOddsComm": 1.0,
+      "clientSessionComm": 0,
+      "agentOddsComm": 0.0,
+      "agentSessionComm": 0,
+      "createdAt": 1781286809942
+    },
+    {
+      "_id": "sport-ce68319d6195",
+      "userInfo": {
+        "userId": "6a1bd2d7356a85a557003d5d",
+        "username": "C324001",
+        "name": "Demo User",
+        "userType": "client"
+      },
+      "eventName": "England W v Sri Lanka W (T-20)",
+      "marketId": "1.259059770",
+      "isCasino": 0,
+      "clientOddsComm": 0,
+      "clientSessionComm": 1.0,
+      "agentOddsComm": 0,
+      "agentSessionComm": 0.0,
+      "createdAt": 1781286679582
+    }
+  ]
+}

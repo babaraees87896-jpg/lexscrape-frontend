@@ -1,0 +1,10 @@
+{
+  "message": "OK",
+  "code": 0,
+  "error": false,
+  "data": {
+    "ownerMatchShare": 100.0,
+    "ownerCasinoShare": 100.0,
+    "ownerMatkaShare": 0.0
+  }
+}

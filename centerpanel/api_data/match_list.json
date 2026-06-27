@@ -1,0 +1,16 @@
+{
+  "message": "OK",
+  "code": 0,
+  "error": false,
+  "data": [
+    {
+      "eventId": "demo-001",
+      "eventName": "Demo Match - India vs Australia",
+      "sportId": 4,
+      "seriesName": "Demo Series",
+      "marketCount": 3,
+      "openDate": "2026-05-31T10:00:00.000Z",
+      "inPlay": true
+    }
+  ]
+}

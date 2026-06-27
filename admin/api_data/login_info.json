@@ -1,0 +1,61 @@
+{
+  "token": "local-ex99-1s8AL_qhQ4ycUi1herWlbRiKs6GU_PTBtJoBt13BhVY",
+  "user": {
+    "userId": "uid-owner",
+    "username": "OWNER001",
+    "name": "Owner Demo",
+    "mobile": "9999999999",
+    "userType": "owner",
+    "userPriority": 9,
+    "parentId": "",
+    "creatorId": "uid-owner",
+    "coins": 1000.0,
+    "creditLimit": 1000.0,
+    "exposure": 0.0,
+    "profitLoss": 0.0,
+    "casinoStatus": true,
+    "matkaStatus": true,
+    "betStatus": true,
+    "matchStatus": true,
+    "intCasinoStatus": false,
+    "matchShare": 100,
+    "casinoShare": 100,
+    "matchCommission": 2,
+    "sessionCommission": 3,
+    "casinoCommission": 2,
+    "commissionType": "BetByBet",
+    "betChipsData": {
+      "100": 100,
+      "500": 500,
+      "1000": 1000,
+      "2000": 2000,
+      "5000": 5000,
+      "10000": 10000,
+      "25000": 25000,
+      "50000": 50000,
+      "100000": 100000,
+      "200000": 200000,
+      "300000": 300000,
+      "500000": 500000
+    },
+    "isPasswordChanged": true,
+    "status": "1",
+    "isDeleted": "false",
+    "referralCode": "OWNER001100100",
+    "createdAt": "2026-06-12 08:21:58.039000",
+    "updatedAt": "2026-06-12T21:02:05.130000",
+    "balance": 1000.0,
+    "userCount": [
+      {
+        "userCount": 4,
+        "adminCount": 4,
+        "agentCount": 2,
+        "masterCount": 3,
+        "subadminCount": 3,
+        "sunOwnerCount": 3,
+        "superadminCount": 3,
+        "superagentCount": 3
+      }
+    ]
+  }
+}

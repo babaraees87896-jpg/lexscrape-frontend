@@ -1,0 +1,35 @@
+{
+  "message": "OK",
+  "code": 0,
+  "error": false,
+  "data": [
+    {
+      "eventType": {
+        "id": "4",
+        "name": "Cricket"
+      },
+      "marketCount": 203
+    },
+    {
+      "eventType": {
+        "id": "1",
+        "name": "Soccer"
+      },
+      "marketCount": 19748
+    },
+    {
+      "eventType": {
+        "id": "2",
+        "name": "Tennis"
+      },
+      "marketCount": 2155
+    },
+    {
+      "eventType": {
+        "id": "7",
+        "name": "Horse Racing"
+      },
+      "marketCount": 800
+    }
+  ]
+}

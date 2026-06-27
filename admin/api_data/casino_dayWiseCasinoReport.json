@@ -1,0 +1,29 @@
+{
+  "message": "Casino report fetched",
+  "code": 0,
+  "error": false,
+  "data": [
+    {
+      "eventId": 3030,
+      "eventName": "20-20 Teenpatti (01-06-2026)",
+      "userNetProfitLoss": 1250.5,
+      "userOddsComm": 85.25,
+      "clientOddsAmount": 42.1,
+      "clientNetAmount": 1123.15,
+      "createdAt": 1780252901535,
+      "userId": "uid-admin",
+      "marketId": null
+    },
+    {
+      "eventId": 3031,
+      "eventName": "Dragon Tiger (31-05-2026)",
+      "userNetProfitLoss": -320.0,
+      "userOddsComm": 15.0,
+      "clientOddsAmount": 8.5,
+      "clientNetAmount": -296.5,
+      "createdAt": 1780166501535,
+      "userId": "uid-admin",
+      "marketId": null
+    }
+  ]
+}

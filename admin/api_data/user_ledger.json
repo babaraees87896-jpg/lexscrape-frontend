@@ -1,0 +1,17 @@
+{
+  "message": "Ledger List fetched Successfully",
+  "code": 0,
+  "error": false,
+  "data": {
+    "totalCoins": 0,
+    "creditAmount": 0,
+    "debitAmount": 0,
+    "calAmount": 0,
+    "sportLedger": 0,
+    "diamondCasinoLedger": 0,
+    "intCasinoLedger": 0,
+    "matkaLedger": 0,
+    "cashLedger": 0,
+    "ledgerData": []
+  }
+}

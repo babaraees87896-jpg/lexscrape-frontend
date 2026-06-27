@@ -1,0 +1,27 @@
+{
+  "message": "OK",
+  "code": 0,
+  "error": false,
+  "data": {
+    "userId": "uid-admin",
+    "username": "ADMIN001",
+    "name": "Admin Demo",
+    "userType": "admin",
+    "userPriority": 6,
+    "parentId": "uid-superadmin",
+    "balance": 500000.0,
+    "coins": 500000.0,
+    "exposure": 0.0,
+    "profitLoss": 0.0,
+    "status": "1",
+    "isDeleted": "false",
+    "casinoStatus": true,
+    "intCasinoStatus": false,
+    "matchShare": 100,
+    "matchCommission": 0,
+    "sessionCommission": 0,
+    "casinoShare": 100,
+    "casinoCommission": 0,
+    "createdAt": 1781300668042
+  }
+}

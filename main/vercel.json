@@ -1,0 +1,19 @@
+{
+  "buildCommand": "python ../../scripts/vercel_build.py main",
+  "outputDirectory": "../../vercel-out/main",
+  "installCommand": "echo skip",
+  "framework": null,
+  "rewrites": [
+    { "source": "/v1/:path*", "destination": "https://api.1ex.in/v1/:path*" },
+    { "source": "/excache/:path*", "destination": "https://api.1ex.in/excache/:path*" },
+    { "source": "/casino-stream/:path*", "destination": "https://api.1ex.in/casino-stream/:path*" },
+    { "source": "/sport/scorecard/:path*", "destination": "https://api.1ex.in/sport/scorecard/:path*" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ],
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+    }
+  ]
+}

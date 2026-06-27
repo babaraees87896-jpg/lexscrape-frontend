@@ -1,0 +1,67 @@
+{
+  "message": "Statement fetched",
+  "code": 0,
+  "error": false,
+  "data": [
+    {
+      "amount": 0.0,
+      "gameType": "commission",
+      "remark": "Commission reset",
+      "userRemark": "Commission reset",
+      "statementFor": "BET",
+      "isComm": true,
+      "marketId": "",
+      "createdAt": 1781300697227
+    },
+    {
+      "amount": 100000.0,
+      "gameType": "settle",
+      "remark": "Withdrawal from SUBOWNER001",
+      "userRemark": "Limit returned",
+      "statementFor": "ACCOUNT_STATEMENT",
+      "isComm": false,
+      "marketId": "",
+      "createdAt": 1781248918040
+    },
+    {
+      "amount": 15000.0,
+      "gameType": "commission",
+      "remark": "Casino commission received",
+      "userRemark": "Downline casino commission",
+      "statementFor": "BET",
+      "isComm": true,
+      "marketId": "",
+      "createdAt": 1781245318040
+    },
+    {
+      "amount": -250000.0,
+      "gameType": "settle",
+      "remark": "Transfer to SUBOWNER001",
+      "userRemark": "Additional limit",
+      "statementFor": "ACCOUNT_STATEMENT",
+      "isComm": false,
+      "marketId": "",
+      "createdAt": 1781230918040
+    },
+    {
+      "amount": -500000.0,
+      "gameType": "settle",
+      "remark": "Transfer to SUBOWNER001",
+      "userRemark": "Deposit to sub owner",
+      "statementFor": "ACCOUNT_STATEMENT",
+      "isComm": false,
+      "marketId": "",
+      "createdAt": 1781079718040
+    },
+    {
+      "amount": 10000000.0,
+      "gameType": "settle",
+      "remark": "Opening balance credit",
+      "userRemark": "Owner opening limit",
+      "statementFor": "ACCOUNT_STATEMENT",
+      "isComm": false,
+      "marketId": "",
+      "createdAt": 1780820518040
+    }
+  ]
+}
